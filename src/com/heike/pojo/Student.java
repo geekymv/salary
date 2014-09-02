@@ -1,5 +1,6 @@
 package com.heike.pojo;
 
+import java.util.Date;
 import java.util.LinkedHashSet;
 import java.util.Set;
 
@@ -9,6 +10,8 @@ import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 /**
  * 学生类
@@ -26,6 +29,7 @@ public class Student {
 	private String college;	//学院
 	private String profession;	//专业
 	private String mobile;
+	private Date regTime;	//注册时间
 	
 	private Set<Employer> employers = new LinkedHashSet<Employer>();	//Student与Employer是多对多的关联关系(双向)
 
@@ -48,6 +52,14 @@ public class Student {
 		return employers;
 	}
 	
+	@Temporal(TemporalType.TIMESTAMP)
+	public Date getRegTime() {
+		return regTime;
+	}
+	public void setRegTime(Date regTime) {
+		this.regTime = regTime;
+	}
+
 	public void setSalarys(Set<Salary> salarys) {
 		this.salarys = salarys;
 	}
@@ -101,13 +113,6 @@ public class Student {
 		this.profession = profession;
 	}
 
-	@Override
-	public String toString() {
-		return "Student [id=" + id + ", number=" + number + ", password="
-				+ password + ", name=" + name + ", gender=" + gender
-				+ ", college=" + college + ", profession=" + profession
-				+ ", mobile=" + mobile + "]";
-	}
 	
 	
 }

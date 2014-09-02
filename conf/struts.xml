@@ -10,17 +10,30 @@
     <constant name="struts.enable.DynamicMethodInvocation" value="true" />
     <constant name="struts.devMode" value="true" />
 
+	<package name="default" namespace="/" extends="struts-default">
+		<action name="emp">
+			<result>/WEB-INF/employer/publish.jsp</result>
+		</action>
+	</package>
+
 	<package name="user" namespace="/user" extends="struts-default">
 		
-		<action name="user-*" class="user" method="{1}">
-			<result name="student" type="redirect">/main.jsp</result>
+		<action name="user-*" class="userAction" method="{1}">
+			<result name="student">/WEB-INF/student/main.jsp</result>
 			<result name="employer">/success.jsp</result>
-			<result name="success" type="redirect">/success.jsp</result>
+			<result name="success" type="redirect">/login.jsp</result>
 			
 			<result name="input">/login.jsp</result>
 		</action>
 	
 	
+	</package>
+	
+	<!-- 学院和社团 -->
+	<package name="emp" namespace="/employer" extends="struts-default">
+		<action name="emp-*" class="employerAction" method="{1}">
+			<result>/index.jsp</result>
+		</action>
 	</package>
 
 	<package name="salary" namespace="/salary" extends="struts-default">
@@ -32,3 +45,29 @@
 	</package>
 
 </struts>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

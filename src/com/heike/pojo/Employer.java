@@ -4,6 +4,7 @@ import java.util.LinkedHashSet;
 import java.util.Set;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
@@ -33,7 +34,8 @@ public class Employer {
 	
 	private Set<Student> students = new LinkedHashSet<Student>();
 	
-	private Set<Recruit> recruits = new LinkedHashSet<Recruit>();	//Employer与Recruit是一对多的关联关系
+	//Employer与Recruit是一对多的关联关系，设置成单向的关联关系
+//	private Set<Recruit> recruits = new LinkedHashSet<Recruit>();	
 	
 	
 	@Id
@@ -54,13 +56,13 @@ public class Employer {
 		return students;
 	}
 	
-	@OneToMany(mappedBy="employer")
-	public Set<Recruit> getRecruits() {
-		return recruits;
-	}
-	public void setRecruits(Set<Recruit> recruits) {
-		this.recruits = recruits;
-	}
+//	@OneToMany(mappedBy="employer")
+//	public Set<Recruit> getRecruits() {
+//		return recruits;
+//	}
+//	public void setRecruits(Set<Recruit> recruits) {
+//		this.recruits = recruits;
+//	}
 
 	public void setStudents(Set<Student> students) {
 		this.students = students;

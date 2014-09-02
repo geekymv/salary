@@ -1,9 +1,12 @@
 package com.heike.action;
 
+import java.util.Date;
 import java.util.Map;
 
 import org.apache.struts2.interceptor.RequestAware;
+import org.apache.struts2.interceptor.SessionAware;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
 import com.heike.pojo.Employer;
@@ -12,8 +15,9 @@ import com.heike.service.EmployerService;
 import com.heike.service.RecruitService;
 import com.opensymphony.xwork2.ActionSupport;
 
-@Controller("employer")
-public class EmployerAction extends ActionSupport implements RequestAware {
+@Controller("employerAction")
+@Scope("prototype")
+public class EmployerAction extends ActionSupport implements RequestAware, SessionAware {
 	private static final long serialVersionUID = -3913472914242259117L;
 
 	@Autowired
@@ -22,8 +26,8 @@ public class EmployerAction extends ActionSupport implements RequestAware {
 	@Autowired
 	private RecruitService recruitService;
 	
-	private Employer employer;
 	private Recruit recruit;
+	private Employer employer;
 	
 	
 	/**
@@ -33,34 +37,41 @@ public class EmployerAction extends ActionSupport implements RequestAware {
 	 */
 	public String publish() throws Exception {
 		
-		employer.getRecruits().add(recruit);
+		recruit.setReleaseDate(new Date());	//发布日期
+		
+		employer = (Employer) session.get("employer");
 		recruit.setEmployer(employer);
 		
-		recruitService.publish(recruit);
+		recruitService.publish(recruit);	//保存招聘信息
 		
+//		System.out.println(recruit);
 		
 		return SUCCESS;
 	}
 
-
-	public Employer getEmployer() {
-		return employer;
-	}
-	public void setEmployer(Employer employer) {
-		this.employer = employer;
-	}
 	public Recruit getRecruit() {
 		return recruit;
 	}
 	public void setRecruit(Recruit recruit) {
 		this.recruit = recruit;
 	}
+	public Employer getEmployer() {
+		return employer;
+	}
+	public void setEmployer(Employer employer) {
+		this.employer = employer;
+	}
+	
 
 	private Map<String, Object> request;
-	
+	private Map<String, Object> session;
 	@Override
 	public void setRequest(Map<String, Object> request) {
 		this.request = request;
+	}
+	@Override
+	public void setSession(Map<String, Object> session) {
+		this.session = session;
 	}
 	
 

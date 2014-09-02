@@ -114,6 +114,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	                       这是我的导航条
 	                          这是我的导航条
 		</pre>
+		
+		<a href="emp.action">发布招聘信息</a>
+		
       </div>
       
       <div class="col-md-4">

@@ -1,5 +1,6 @@
 package com.heike.action;
 
+import java.util.Date;
 import java.util.Map;
 
 import org.apache.struts2.interceptor.SessionAware;
@@ -13,7 +14,7 @@ import com.heike.service.EmployerService;
 import com.heike.service.StudentService;
 import com.opensymphony.xwork2.ActionSupport;
 
-@Controller("user")
+@Controller("userAction")
 @Scope("prototype")
 public class UserAction extends ActionSupport implements SessionAware{
 	private static final long serialVersionUID = 837098305141530374L;
@@ -72,7 +73,9 @@ public class UserAction extends ActionSupport implements SessionAware{
 	 * @throws Exception
 	 */
 	public String register() throws Exception {
-
+		
+		student.setRegTime(new Date());	//设置注册时间
+		
 		studentService.register(student);
 		
 		return SUCCESS;
