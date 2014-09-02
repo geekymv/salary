@@ -5,7 +5,6 @@ import java.util.List;
 import com.heike.pojo.Employer;
 
 public interface EmployerDAO {
-	
 	/**
 	 * 添加或更新
 	 * @param employer

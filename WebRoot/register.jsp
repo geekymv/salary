@@ -15,7 +15,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 #wizard {border:5px solid #789;font-size:12px;height:460px;margin:20px auto;width:570px;overflow:hidden;position:relative;-moz-border-radius:5px;-webkit-border-radius:5px;}
 #wizard .items{width:20000px; clear:both; position:absolute;}
 #wizard .right{float:right;}
-#wizard #status{height:35px;background:#123;padding-left:25px !important;}
+#wizard #status{height:35px;background:#333333;padding-left:25px !important;}
 #status li{float:left;color:#fff;padding:10px 30px;}
 #status li.active{background-color:#369;font-weight:normal;}
 .input{width:240px; height:18px; margin:10px auto; line-height:15px; border:1px solid #d3d3d3; padding:2px}
@@ -97,7 +97,7 @@ $(function(){
 			if(i==1){
 				var user = $("#user").val();
 				if(user==""){
-					alert("请输入用户名！");
+					alert("请输入学号！");
 					return false;
 				}
 				var pass = $("#pass").val();

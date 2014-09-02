@@ -38,7 +38,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 	<div class="container">
 		<h1 class="page-header">用户登录</h1>
-		<form class="form-horizontal" role="form"  action="user/user!login" method="post">
+		<form class="form-horizontal" role="form"  action="user/user-login.action" method="post">
 			<fieldset> 
 				<legend>登录也是一种美德哦！</legend>	
 				<div class="errors">
@@ -47,7 +47,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			  	<div class="form-group">
 			    	<label class="col-sm-5 control-label" for="usermame">用户名</label>
 			   		<div class="col-sm-3">
-			      		<input type="text" class="form-control" placeholder="username" id="usermame" name="user.username" required autofocus>
+			      		<input type="text" class="form-control" placeholder="username" id="usermame" name="account" required autofocus>
 			  			<span class="help-block">请输入用户名</span>
 			  		</div>
 			  	</div>
@@ -55,7 +55,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			  	<div class="form-group">
 			    	<label class="col-sm-5 control-label" for="password">密码</label>
 			    	<div class="col-sm-3">
-			      		<input type="password" class="form-control" id="password" placeholder="password" name="user.password" required>
+			      		<input type="password" class="form-control" id="password" placeholder="password" name="password" required>
 			    		<span class="help-block">请输入密码</span>
 			    	</div>
 			  	</div>

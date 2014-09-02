@@ -26,6 +26,8 @@ public class UserAction extends ActionSupport implements SessionAware{
 	
 	private String account;
 	private String password;
+	private String rememberMe;	//记住我
+	
 	
 	private String repassword;
 	private Student student;
@@ -40,6 +42,8 @@ public class UserAction extends ActionSupport implements SessionAware{
 	 */
 	public String login() throws Exception {
 	
+		System.out.println(rememberMe);
+		
 		employer = employerService.login(account, password);
 		
 		if(null != employer){
@@ -58,6 +62,7 @@ public class UserAction extends ActionSupport implements SessionAware{
 			return "student";
 		}
 		
+		this.addActionError("用户名或密码错误！");
 		return INPUT;
 	}
 	
@@ -92,6 +97,12 @@ public class UserAction extends ActionSupport implements SessionAware{
 	}
 	public void setPassword(String password) {
 		this.password = password;
+	}
+	public void setRememberMe(String rememberMe) {
+		this.rememberMe = rememberMe;
+	}
+	public String getRememberMe() {
+		return rememberMe;
 	}
 	public String getRepassword() {
 		return repassword;
