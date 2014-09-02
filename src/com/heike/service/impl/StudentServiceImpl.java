@@ -19,4 +19,10 @@ public class StudentServiceImpl implements StudentService {
 		return studentDAO.saveOrUpdate(student);
 	}
 
+	@Override
+	public Student login(String account, String password) {
+		
+		return studentDAO.query(account, password);
+	}
+
 }

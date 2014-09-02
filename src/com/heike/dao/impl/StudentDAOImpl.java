@@ -28,8 +28,18 @@ public class StudentDAOImpl implements StudentDAO {
 	}
 
 	@Override
-	public Student query(Integer number) {
+	public Student query(String number) {
 		return null;
+	}
+
+
+	@Override
+	public Student query(String number, String password) {
+		
+		String hql = "from Student s where s.number = ? and s.password = ? ";
+		
+		return (Student) getSession().createQuery(hql).
+			setString(0, number).setString(1, password).uniqueResult();
 	}
 
 }

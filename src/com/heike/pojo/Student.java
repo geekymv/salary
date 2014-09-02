@@ -19,7 +19,7 @@ import javax.persistence.Table;
 public class Student {
 	
 	private Integer id;
-	private Integer number;	//学号
+	private String number;	//学号
 	private String password;
 	private String name;
 	private String gender;
@@ -54,7 +54,7 @@ public class Student {
 	public void setEmployers(Set<Employer> employers) {
 		this.employers = employers;
 	}
-	public Integer getNumber() {
+	public String getNumber() {
 		return number;
 	}
 	public String getPassword() {
@@ -90,7 +90,7 @@ public class Student {
 	public void setName(String name) {
 		this.name = name;
 	}
-	public void setNumber(Integer number) {
+	public void setNumber(String number) {
 		this.number = number;
 	}
 	public void setPassword(String password) {

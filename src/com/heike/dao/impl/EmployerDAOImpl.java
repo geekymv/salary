@@ -36,4 +36,15 @@ public class EmployerDAOImpl implements EmployerDAO {
 		return employers;
 	}
 
+
+	@Override
+	public Employer query(String number, String password) {
+		
+		String hql = "from Employer e where e.account = ? and e.password = ? ";
+		
+		return (Employer) getSession().createQuery(hql).
+			setString(0, number).setString(1, password).uniqueResult();
+		
+	}
+
 }

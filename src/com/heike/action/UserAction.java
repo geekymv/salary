@@ -7,7 +7,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
+import com.heike.pojo.Employer;
 import com.heike.pojo.Student;
+import com.heike.service.EmployerService;
 import com.heike.service.StudentService;
 import com.opensymphony.xwork2.ActionSupport;
 
@@ -19,11 +21,17 @@ public class UserAction extends ActionSupport implements SessionAware{
 	@Autowired
 	private StudentService studentService;
 	
+	@Autowired
+	private EmployerService employerService;
+	
 	private String account;
 	private String password;
-	private String repassword;
 	
+	private String repassword;
 	private Student student;
+	
+	private Employer employer;
+	
 	
 	/**
 	 * 用户登录验证
@@ -31,8 +39,29 @@ public class UserAction extends ActionSupport implements SessionAware{
 	 * @throws Exception
 	 */
 	public String login() throws Exception {
+	
+		employer = employerService.login(account, password);
 		
-		return SUCCESS;
+		if(null != employer){
+			
+			System.out.println("emp...");
+			
+			session.put("employer", employer);
+			
+			return "employer";
+		}
+		
+		student = studentService.login(account, password);
+		
+		if(null != student){
+			
+			System.out.println("stu...");
+			
+			session.put("student", student);
+			return "student";
+		}
+		
+		return INPUT;
 	}
 	
 	/**
@@ -78,6 +107,12 @@ public class UserAction extends ActionSupport implements SessionAware{
 	}
 	public Student getStudent() {
 		return student;
+	}
+	public void setEmployer(Employer employer) {
+		this.employer = employer;
+	}
+	public Employer getEmployer() {
+		return employer;
 	}
 
 }

@@ -18,10 +18,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <link rel="stylesheet" type="text/css" href="template/ue-content/templates/css/style.css" />
 
 <script src="js/jquery-1.11.1.js" type="text/javascript"></script>
+
 <script type="text/javascript" src="script/jquery.easing.min.js"></script>
 <script type="text/javascript" src="script/custom.js"></script>
 
-<link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">	
+
 
 </head>
 <body style="padding-top:90px">
@@ -30,8 +31,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <div class="login fr">
       <div class="loginmenu"><a title="登录或注册"></a></div>
       <ul>
-        <li class="openlogin"><button type="button" class="btn btn-success">登录</button></li>
-        <li><button type="button" class="btn btn-success"  onClick="window.location.href='register.jsp'">注册</button></li>
+        <li class="openlogin"><a href="login" onclick="return false;">登录</a>&nbsp;&nbsp;</li>
+        <li class="reg"><a href="register.jsp" >注册</a></li>
+        
+        <%--
+        onClick="window.location.href='register.jsp'"
+        --%>
       </ul>
     </div>   
     <div class="clear"></div>
@@ -54,10 +59,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
       </div>
 	  <div class="clear"></div>
 
-      <form action="login.jsp" method="post" id="login_form">
+      <form action="user/user-login.do" method="post" id="login_form">
         <div class="logininput">
-          <input type="text" name="username" class="loginusername" placeholder="用户名"/>
+          <input type="text" name="account" class="loginusername" placeholder="用户名"/>
           <input type="password" name="password" class="loginuserpasswordt" placeholder="密码" />
+          
+          <input type="radio" name="identity" value="employer">部门
+          <input type="radio" name="identity" value="student">学生
+          
         </div>
         <div class="loginbtn">
           <div class="loginsubmit fl">
@@ -83,9 +92,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <div style="text-align:center;clear:both">
 	<p>首页</p>
 </div>
-
-<script type="text/javascript" src="jquery/jquery-1.11.1.js"></script>
-<script src="bootstrap/js/bootstrap.min.js"></script>
 
 </body>
 </html>

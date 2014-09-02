@@ -14,6 +14,14 @@ public interface EmployerDAO {
 	public Employer saveOrUpdate(Employer employer);
 	
 	/**
+	 * 根据学号和密码查询Employer
+	 * @param number
+	 * @param password
+	 * @return
+	 */
+	public Employer query(String number, String password);
+	
+	/**
 	 * 查询所有
 	 * @return
 	 */
