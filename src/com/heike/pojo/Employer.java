@@ -120,8 +120,16 @@ public class Employer {
 	public void setExamine(boolean examine) {
 		this.examine = examine;
 	}
+	@Override
+	public String toString() {
+		return "Employer [id=" + id + ", account=" + account + ", password="
+				+ password + ", name=" + name + ", mobile=" + mobile
+				+ ", totalMoney=" + totalMoney + ", postNum=" + postNum
+				+ ", authority=" + authority + ", remarks=" + remarks
+				+ ", examine=" + examine +"]";
+	}
 	
-
+	
 }
 
 

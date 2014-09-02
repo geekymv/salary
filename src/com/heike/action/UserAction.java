@@ -43,9 +43,6 @@ public class UserAction extends ActionSupport implements SessionAware{
 		employer = employerService.login(account, password);
 		
 		if(null != employer){
-			
-			System.out.println("emp...");
-			
 			session.put("employer", employer);
 			
 			return "employer";

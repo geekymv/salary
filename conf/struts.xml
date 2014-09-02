@@ -13,6 +13,8 @@
 	<package name="user" namespace="/user" extends="struts-default">
 		
 		<action name="user-*" class="user" method="{1}">
+			<result name="student">/success.jsp</result>
+			<result name="employer">/success.jsp</result>
 			<result name="success" type="redirect">/success.jsp</result>
 		</action>
 	

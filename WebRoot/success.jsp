@@ -23,6 +23,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   </head>
   
   <body>
-    <h1>成功！</h1>
+    <h1>${sessionScope.student }成功！</h1>
+    <h1>${sessionScope.employer }成功！</h1>
+    
+    
+    
   </body>
 </html>

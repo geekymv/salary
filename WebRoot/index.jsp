@@ -1,98 +1,153 @@
-<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
+<%@taglib prefix="s" uri="/struts-tags" %>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 %>
 
-<!DOCTYPE html>
-<html>
-<head>
-<base href="<%=basePath%>">
-<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=0.5, maximum-scale=0.95, user-scalable=no" />
-<title>系统首页</title>
+<!doctype html>
+<html lang="zh-CN">
+	<head>
+	<base href="<%=basePath%>">
+	<meta charset="utf-8">
+	<title>Bootstrap3.2</title>
+	<link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">	
+	
+	<style type="text/css">
+		.custom{
+			height:51px;
+		}
+		
+		.footer {
+			background-color:  #333;
+			width: 100%;
+			height: 200px;
+			
+			margin-top: 450px;
+		}
+		
+	</style>
+	
+	</head>
 
-<link rel="stylesheet" type="text/css" href="template/ue-content/templates/images/ue_grid.css" />
-<link rel="stylesheet" type="text/css" href="template/ue-content/templates/images/style.css" />
-<link rel="stylesheet" type="text/css" href="template/ue-content/templates/css/style.css" />
+<body>
+	<div class="container">
 
-<script src="js/jquery-1.11.1.js" type="text/javascript"></script>
+		<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+		  <div class="container">
+			<!-- Brand and toggle get grouped for better mobile display -->
+			<div class="navbar-header">
+              
+			  <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" 			     
+               data-target="#bs-example-navbar-collapse-1">
+				<span class="sr-only">Toggle navigation</span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			  </button>
+              
+			  <a class="navbar-brand" href="#">
+              	<img alt="首页" src="img/index.png" height="25"/>
+              	首页
+              </a>
+			</div>
 
-<script type="text/javascript" src="script/jquery.easing.min.js"></script>
-<script type="text/javascript" src="script/custom.js"></script>
-
-
-
-</head>
-<body style="padding-top:90px">
-<div id="header">
-  <div class="common"> 
-    <div class="login fr">
-      <div class="loginmenu"><a title="登录或注册"></a></div>
-      <ul>
-        <li class="openlogin"><a href="login" onclick="return false;">登录</a>&nbsp;&nbsp;</li>
-        <li class="reg"><a href="register.jsp" >注册</a></li>
-        
-        <%--
-        onClick="window.location.href='register.jsp'"
-        --%>
-      </ul>
-    </div>   
-    <div class="clear"></div>
-  </div>
-</div>
-<div class="clear"></div>
-<div class="loginmask"></div>
-<div id="loginalert">
-  <div class="pd20 loginpd">
-  	<!-- 关闭登录框--> 
-    <h3>
-    	<i class="closealert fr"></i>
-    </h3>
-     
-    <div class="loginwrap">
-      <div class="loginh">
-        <div class="fl">用户登录</div>
-        <div class="fr">还没有账号<a id="sigup_now" href="register.jsp" >立即注册</a></div>
-        <div class="clear"></div>
-      </div>
-	  <div class="clear"></div>
-
-      <form action="user/user-login.do" method="post" id="login_form">
-        <div class="logininput">
-          <input type="text" name="account" class="loginusername" placeholder="用户名"/>
-          <input type="password" name="password" class="loginuserpasswordt" placeholder="密码" />
-          
-          <input type="radio" name="identity" value="employer">部门
-          <input type="radio" name="identity" value="student">学生
-          
-        </div>
-        <div class="loginbtn">
-          <div class="loginsubmit fl">
-            <input type="submit" value="登录" />
-            <div class="loginsubmiting">
-              <div class="loginsubmiting_inner"></div>
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    	<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+           <ul class="nav navbar-nav">
+                <li><a href="#">系统简介</a></li>
+                <li><a href="#">关于我们</a></li>
+              
+                <li role="presentation" class="dropdown">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+               		 开发人员
+                    <span class="caret"></span>
+                  </a>
+                 
+                  <ul class="dropdown-menu" role="menu">
+                    <li><a href="#">Geek_ymv</a></li>
+                    <li><a href="#">Another action</a></li>
+                    <li><a href="#">Something else here</a></li>
+                    <li class="divider"></li>
+                    <li><a href="#">Separated link</a></li>
+                    <li class="divider"></li>
+                    <li><a href="#">One more separated link</a></li>
+                  </ul>
+                    
+                </li>
+                
+          </ul>
+          <form action="#" class="navbar-form navbar-left" role="search">
+            <div class="form-group">
+              <input type="text" class="form-control" placeholder="Search">
             </div>
-          </div>
-          <div class="logcheckbox fl">
-            <input id="bcdl" type="checkbox" checked="checked" />
-          	  记住我一周
-		  </div>
-          <div class="fr"><a href="#">忘记密码?</a></div>
-          <div class="clear"></div>
-        </div>
-      </form>
+            <button type="submit" class="btn btn-default">搜索</button>
+          </form>
 
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="login.jsp">登录 <span class="glyphicon glyphicon-log-in"></span></a></li>
+            <li class="divider-vertical"></li>
+            <li><a href="register.jsp">注册 <span class="glyphicon glyphicon-user"></span></a></li>
+          </ul>
+               
+        </div><!-- /.navbar-collapse -->
+      </div><!-- /.container-fluid -->
+    </nav>
+    <!-- 以上是导航菜单-->
+    
+    <!--空白处-->
+    <div class="custom">
+    
     </div>
-  </div>
+    
+    
+    <div class="row">
+      <div class="col-md-8">
+       <pre>
+	        这是我的导航条
+	           这是我的导航条
+	           
+	              这是我的导航条
+	                 这是我的导航条
+	                    这是我的导航条
+	                    
+	                       这是我的导航条
+	                          这是我的导航条
+		</pre>
+      </div>
+      
+      <div class="col-md-4">
+      	<pre>右边</pre>
+      	<img src="img/hello.jpg" alt="这是一张图片" title="这是一张图片吗" class="img-thumbnail">
 
-</div>
- 
-<div style="text-align:center;clear:both">
-	<p>首页</p>
-</div>
+        <div class="btn-group">
+		  <button type="button" class="btn btn-success">Action</button>
+		  <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown">
+		    <span class="caret"></span>
+		    <span class="sr-only">Toggle Dropdown</span>
+		  </button>
+		  <ul class="dropdown-menu" role="menu">
+		    <li><a href="#">Action</a></li>
+		    <li><a href="#">Another action</a></li>
+		    <li><a href="#">Something else here</a></li>
+		    <li class="divider"></li>
+		    <li><a href="#">Separated link</a></li>
+		  </ul>
+		</div>
+      </div>
+      
+	</div>
+    
+   </div><!-- /.container -->
+   
+   
+   <div class="footer">
+   
+   </div>
+
+
+<script type="text/javascript" src="js/jquery-1.11.1.js"></script>
+<script src="bootstrap/js/bootstrap.min.js"></script>
 
 </body>
 </html>
-
