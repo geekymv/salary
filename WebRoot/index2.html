@@ -1,13 +1,6 @@
-<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
-<%
-String path = request.getContextPath();
-String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
-%>
-
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
 <head>
-<base href="<%=basePath%>">
 <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=0.5, maximum-scale=0.95, user-scalable=no" />
@@ -21,8 +14,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <script type="text/javascript" src="script/jquery.easing.min.js"></script>
 <script type="text/javascript" src="script/custom.js"></script>
 
-<link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">	
-
 </head>
 <body style="padding-top:90px">
 <div id="header">
@@ -30,8 +21,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <div class="login fr">
       <div class="loginmenu"><a title="登录或注册"></a></div>
       <ul>
-        <li class="openlogin"><button type="button" class="btn btn-success">登录</button></li>
-        <li><button type="button" class="btn btn-success"  onClick="window.location.href='register.jsp'">注册</button></li>
+        <li class="openlogin"><button>登录</button></li>
+        <li class="reg"><a href="register.jsp">注册</a></li>
       </ul>
     </div>   
     <div class="clear"></div>
@@ -48,7 +39,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
      
     <div class="loginwrap">
       <div class="loginh">
-        <div class="fl">用户登录</div>
+        <div class="fl">用户登录</div>	<!-- onclick="return false;" -->
         <div class="fr">还没有账号<a id="sigup_now" href="register.jsp" >立即注册</a></div>
         <div class="clear"></div>
       </div>
@@ -79,13 +70,22 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   </div>
 
 </div>
- 
-<div style="text-align:center;clear:both">
-	<p>首页</p>
+<div id="reg_setp">
+  <div class="back_setp">返回</div>
+
+  <div class="blogo"></div>
+  <div id="setp_quicklogin">
+    <h3>您可以选择以下第三方帐号直接登录站长素材，一分钟完成注册</h3>
+    <ul class="quicklogin_socical">
+      <li class="quicklogin_socical_weibo"><a href="http://sc.chinaz.com/">微博帐号注册</a></li>
+      <li class="quicklogin_socical_qq"><a href="http://sc.chinaz.com/">QQ帐号注册</a></li>
+    </ul>
+  </div>
 </div>
 
-<script type="text/javascript" src="jquery/jquery-1.11.1.js"></script>
-<script src="bootstrap/js/bootstrap.min.js"></script>
+<div style="text-align:center;clear:both">
+<p>首页</p>
+</div>
 
 </body>
 </html>
