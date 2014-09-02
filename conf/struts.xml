@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+	<!-- 配置3种扩展名 .action .do  默认不写-->
+	<constant name="struts.action.extension" value="=action,do,,"></constant>
+	<!-- 允许动态方法调用 -->
+    <constant name="struts.enable.DynamicMethodInvocation" value="true" />
+    <constant name="struts.devMode" value="true" />
+
+	<package name="user" namespace="/user" extends="struts-default">
+		
+		<action name="user-*" class="user" method="{1}">
+			<result name="success" type="redirect">/login.jsp</result>
+		</action>
+	
+	
+	</package>
+
+	<package name="salary" namespace="/salary" extends="struts-default">
+		
+		<action name="salaryAction" class="salaryAction">
+			<result>/index.jsp</result>
+		</action>
+			
+	</package>
+
+</struts>
