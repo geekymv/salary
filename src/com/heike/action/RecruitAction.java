@@ -10,7 +10,10 @@ import com.opensymphony.xwork2.ActionSupport;
 public class RecruitAction extends ActionSupport {
 	private static final long serialVersionUID = 6350175517297697212L;
 
+	private Integer id;	//招聘信息id
+	
 	public String details() throws Exception {
+
 		
 		
 		return SUCCESS;

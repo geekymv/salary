@@ -12,6 +12,14 @@ public interface RecruitService {
 	 */
 	public Recruit publish(Recruit recruit);
 
+	
+	/**
+	 * 通过id查询招聘信息
+	 * @param id
+	 * @return
+	 */
+	public Recruit get(Integer id);
+	
 	/**
 	 * 分页查询招聘信息
 	 * @param page	页号

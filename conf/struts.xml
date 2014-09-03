@@ -17,45 +17,66 @@
 	</package>
 
 	<package name="user" namespace="/user" extends="struts-default">
-		
 		<action name="user-*" class="userAction" method="{1}">
 			<result name="loginSuccess" type="redirectAction">
 				<param name="actionName">login-success</param>
 			</result>
 
 			<result name="registerSuccess" type="redirect">/login.jsp</result>
-			
 			<result name="input">/login.jsp</result>
 		</action>
 		
-		
+		<!-- 用户区分不同的用户 -->
 		<action name="login-success" class="loginSuccessAction" method="success">
-			<result name="student">/WEB-INF/student/main.jsp</result>
-			<result name="employer">/WEB-INF/employer/main.jsp</result>
+			<result name="student" type="redirectAction">
+				<param name="actionName">loginSuccess</param>
+				<param name="namespace">/student</param>
+			</result>
+			<result name="employer" type="redirectAction">
+				<param name="actionName">loginSuccess</param>
+				<param name="namespace">/employer</param>
+			</result>
 			<result name="admin">/WEB-INF/admin/main.jsp</result>
 			<result name="error" type="redirect">/login.jsp</result>
 		</action>
 	
-	
 	</package>
-	
-	<package name="recruit" namespace="/recruit" extends="struts-default">
+
+	<!-- 学生 -->
+	<package name="student" namespace="/student" extends="struts-default">
+		<action name="loginSuccess"  class="studentAction" method="list">
+			<result>/WEB-INF/student/main.jsp</result>
+		</action>
 		
-		<action name="recruit-*" class="recruitAction" method="{1}">
-			<result>/index.jsp</result>
+		<action name="recruit-list" class="studentAction" method="list">
+			<result>/WEB-INF/student/main.jsp</result>
 		</action>
 	
-	
 	</package>
+	
+	
+	
+	
+	
 	
 	
 	<!-- 学院和社团 -->
-	<package name="emp" namespace="/employer" extends="struts-default">
+	<package name="employer" namespace="/employer" extends="struts-default">
+		<action name="loginSuccess">
+			<result>/WEB-INF/employer/main.jsp</result>
+		</action>
 		<action name="emp-*" class="employerAction" method="{1}">
 			<result>/index.jsp</result>
 		</action>
 	</package>
-
+	
+	
+	<package name="recruit" namespace="/recruit" extends="struts-default">
+		<action name="recruit-*" class="recruitAction" method="{1}">
+			<result>/index.jsp</result>
+		</action>
+	</package>
+	
 	<package name="salary" namespace="/salary" extends="struts-default">
 		<action name="salaryAction" class="salaryAction">
 			<result>/index.jsp</result>

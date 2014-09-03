@@ -27,4 +27,11 @@ public class RecruitServiceImpl implements RecruitService {
 		return recruitDAO.getRecruitsByPage(page, pageSize);
 	}
 
+
+	@Override
+	public Recruit get(Integer id) {
+		
+		return null;
+	}
+
 }
