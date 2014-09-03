@@ -25,10 +25,6 @@ public class PageUtil<T> {
 	public void setDatas(List<T> datas) {
 		this.datas = datas;
 	}
-	
-	public void setRowCounts(int rowCounts) {
-	}
-
 	public int getTotalPage() {
 		return totalPage;
 	}

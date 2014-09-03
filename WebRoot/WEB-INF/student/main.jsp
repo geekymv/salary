@@ -79,7 +79,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
           </ul>
 		  <ul class="nav navbar-nav navbar-right">
 	          
-	           	<li><a href="login.jsp">用户：${sessionScope.student.name } <span class="glyphicon glyphicon-user"></span></a></li>
+	           	<li><a href="login.jsp">用户：${student.name } <span class="glyphicon glyphicon-user"></span></a></li>
 	            
 	           	<li class="divider-vertical"></li>
 	           	<li><a href="login.jsp">退出 <span class="glyphicon glyphicon-log-out"></span></a></li>
@@ -130,26 +130,29 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	          <!-- Table -->
 	          <table class="table table-bordered table-hover table-condensed">
 	            <thead>
-	            	
 	                <tr>
-	                   	<th>招聘信息标题</th> <th>发布单位</th> <th>发布时间</th>
-			  			<th>岗位名称</th><th>截止日期</th>  <th>查看</th>
+	                   	<th>招聘信息标题</th> <th>岗位名称</th> <th>发布单位</th>
+			  			<th>发布时间</th> <th>截止日期</th>  <th>查看详情</th>
 	                </tr>
 	            </thead>
 	            <tbody>
-	            
-            	 	<tr>
-                   		<td>招聘信息标题</td> <td>发布单位</td> <td>发布时间</td>
-		  				<td>岗位名称</td><td>截止日期</td>  <td>备注</td>
-                 	</tr>
-                 	<tr>
-                   		<td>招聘信息标题</td> <td>发布单位</td> <td>发布时间</td>
-		  				<td>岗位名称</td><td>截止日期</td>  <td>备注</td>
-                 	</tr>
-                 	<tr>
-                   		<td>招聘信息标题</td> <td>发布单位</td> <td>发布时间</td>
-		  				<td>岗位名称</td><td>截止日期</td>  <td>备注</td>
-                 	</tr>
+	            	
+	            	<s:if test="#request.pageUtil == null || #request.pageUtil.datas.size() == 0">
+	            		没有招聘信息！
+	            	</s:if>
+	            	<s:else>
+	            		<s:iterator value="#request.pageUtil.datas">
+	            			<tr>
+		            			<td>${title }</td> 
+		            			<td>${postName }</td> 
+		            			<td>${employer.name }</td>
+		            			<td><s:date name="releaseDate" format="yyyy-MM-dd"/></td>
+			  					<td><s:date name="endDate" format="yyyy-MM-dd"/></td>
+			  					<td><a href="recruit/recruit-details.action?id=${id }">查看</a></td>
+	            			</tr>
+	            		</s:iterator>
+	            	
+	            	</s:else>
 	            <!-- 
 	            	<s:if test="#request.pageUtil == null || #request.pageUtil.datas.size() == 0">
 	            		没有设备信息！

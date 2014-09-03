@@ -20,7 +20,7 @@
 		
 		<action name="user-*" class="userAction" method="{1}">
 			<result name="loginSuccess" type="redirectAction">
-				<param name="actionName">loginSuccessAction</param>
+				<param name="actionName">login-success</param>
 			</result>
 
 			<result name="registerSuccess" type="redirect">/login.jsp</result>
@@ -29,15 +29,25 @@
 		</action>
 		
 		
-		<action name="loginSuccessAction" class="loginSuccessAction" method="success">
+		<action name="login-success" class="loginSuccessAction" method="success">
 			<result name="student">/WEB-INF/student/main.jsp</result>
 			<result name="employer">/WEB-INF/employer/main.jsp</result>
 			<result name="admin">/WEB-INF/admin/main.jsp</result>
-			<result name="error">/login.jsp</result>
+			<result name="error" type="redirect">/login.jsp</result>
 		</action>
 	
 	
 	</package>
+	
+	<package name="recruit" namespace="/recruit" extends="struts-default">
+		
+		<action name="recruit-*" class="recruitAction" method="{1}">
+			<result>/index.jsp</result>
+		</action>
+	
+	
+	</package>
+	
 	
 	<!-- 学院和社团 -->
 	<package name="emp" namespace="/employer" extends="struts-default">
@@ -47,11 +57,9 @@
 	</package>
 
 	<package name="salary" namespace="/salary" extends="struts-default">
-		
 		<action name="salaryAction" class="salaryAction">
 			<result>/index.jsp</result>
 		</action>
-			
 	</package>
 
 </struts>

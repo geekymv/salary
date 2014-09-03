@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 import com.heike.dao.RecruitDAO;
 import com.heike.pojo.Recruit;
 import com.heike.service.RecruitService;
+import com.heike.utils.PageUtil;
 
 @Service("recruitService")
 public class RecruitServiceImpl implements RecruitService {
@@ -17,6 +18,13 @@ public class RecruitServiceImpl implements RecruitService {
 	public Recruit publish(Recruit recruit) {
 		
 		return recruitDAO.save(recruit);
+	}
+
+	
+	@Override
+	public PageUtil<Recruit> getRecruits(int page, int pageSize) {
+		
+		return recruitDAO.getRecruitsByPage(page, pageSize);
 	}
 
 }
