@@ -11,6 +11,7 @@ import org.springframework.stereotype.Controller;
 import com.heike.pojo.Employer;
 import com.heike.pojo.Student;
 import com.heike.service.EmployerService;
+import com.heike.service.RecruitService;
 import com.heike.service.StudentService;
 import com.opensymphony.xwork2.ActionSupport;
 
@@ -43,14 +44,14 @@ public class UserAction extends ActionSupport implements SessionAware{
 	 */
 	public String login() throws Exception {
 	
-		System.out.println(rememberMe);
+//		System.out.println(rememberMe);
 		
 		employer = employerService.login(account, password);
 		
 		if(null != employer){
-			session.put("employer", employer);
+			session.put("user", employer);
 			
-			return "employer";
+			return "loginSuccess";
 		}
 		
 		student = studentService.login(account, password);
@@ -59,8 +60,9 @@ public class UserAction extends ActionSupport implements SessionAware{
 			
 			System.out.println("stu...");
 			
-			session.put("student", student);
-			return "student";
+			session.put("user", student);
+			
+			return "loginSuccess";
 		}
 		
 		this.addActionError("用户名或密码错误！");
@@ -78,7 +80,7 @@ public class UserAction extends ActionSupport implements SessionAware{
 		
 		studentService.register(student);
 		
-		return SUCCESS;
+		return "registerSuccess";
 	}
 	
 	

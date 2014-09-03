@@ -1,0 +1,61 @@
+package com.heike.action;
+
+import java.util.Map;
+
+import org.apache.struts2.interceptor.SessionAware;
+import org.springframework.stereotype.Controller;
+
+import com.heike.pojo.Employer;
+import com.heike.pojo.Student;
+import com.heike.utils.ConstantUtils;
+import com.opensymphony.xwork2.ActionSupport;
+
+@Controller("loginSuccessAction")
+public class LoginSuccessAction extends ActionSupport implements SessionAware{
+	private static final long serialVersionUID = 274552440422174537L;
+
+	/**
+	 * 登录成功
+	 * @return
+	 * @throws Exception
+	 */
+	public String success() throws Exception {
+
+		Object user = session.get("user");
+		
+		if(user instanceof Student){	//学生
+			
+			Student student = (Student)user;
+			
+			System.out.println("student....");
+			
+			return "student";
+			
+		}else if (user instanceof Employer){
+			
+			Employer employer = (Employer)user;
+			
+			System.out.println("employer....");
+			
+			Integer authority = employer.getAuthority();
+			
+			if(ConstantUtils.ADMIN == authority){	//admin
+				return "admin";
+			
+			}else if (ConstantUtils.EMPLOYER == authority){	//学院或社团
+				return "employer";
+			}
+		}
+		
+		return ERROR;
+	}
+
+	private Map<String, Object> session;
+	
+	
+	@Override
+	public void setSession(Map<String, Object> session) {
+		this.session = session;
+	}
+
+}
