@@ -45,7 +45,9 @@ public class LoginSuccessAction extends ActionSupport implements SessionAware{
 		}else if (user instanceof Employer){
 			
 			Employer employer = (Employer)user;
-
+			
+			session.put("employer", employer);
+			
 			System.out.println("employer....");
 			
 			Integer authority = employer.getAuthority();

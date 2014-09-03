@@ -11,8 +11,8 @@
     <constant name="struts.devMode" value="true" />
 
 	<package name="default" namespace="/" extends="struts-default">
-		<action name="emp">
-			<result>/WEB-INF/employer/publish.jsp</result>
+		<action name="index" class="indexAction">
+			<result>/main.jsp</result>
 		</action>
 	</package>
 
