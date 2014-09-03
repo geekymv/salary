@@ -31,7 +31,7 @@ public class RecruitServiceImpl implements RecruitService {
 	@Override
 	public Recruit get(Integer id) {
 		
-		return null;
+		return recruitDAO.query(id);
 	}
 
 }

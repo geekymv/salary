@@ -44,19 +44,29 @@
 
 	<!-- 学生 -->
 	<package name="student" namespace="/student" extends="struts-default">
-		<action name="loginSuccess"  class="studentAction" method="list">
-			<result>/WEB-INF/student/main.jsp</result>
+		<action name="loginSuccess"  class="studentAction" method="listRecruit">
+			<result name="listRecruit" type="redirectAction">
+				<param name="actionName">recruit-list</param>
+				<param name="namespace">/recruit</param>
+			</result>
 		</action>
 		
-		<action name="recruit-list" class="studentAction" method="list">
+		<action name="stu-*" class="studentAction" method="{1}">
 			<result>/WEB-INF/student/main.jsp</result>
 		</action>
 	
 	</package>
 	
 	
-	
-	
+	<package name="recruit" namespace="/recruit" extends="struts-default">
+		<action name="recruit-*" class="recruitAction" method="{1}">
+			<result name="student">/WEB-INF/student/main.jsp</result>
+			<result name="details">/WEB-INF/student/details.jsp</result>	
+			<result name="error" type="redirect">/login.jsp</result>
+		</action>
+		
+		
+	</package>
 	
 	
 	
@@ -71,11 +81,6 @@
 	</package>
 	
 	
-	<package name="recruit" namespace="/recruit" extends="struts-default">
-		<action name="recruit-*" class="recruitAction" method="{1}">
-			<result>/index.jsp</result>
-		</action>
-	</package>
 	
 	<package name="salary" namespace="/salary" extends="struts-default">
 		<action name="salaryAction" class="salaryAction">

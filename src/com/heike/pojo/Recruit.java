@@ -133,7 +133,8 @@ public class Recruit {
 		return "Recruit [id=" + id + ", title=" + title + ", postName="
 				+ postName + ", postNum=" + postNum + ", salary=" + salary
 				+ ", context=" + context + ", releaseDate=" + releaseDate
-				+ ", endDate=" + endDate + ", remarks=" + remarks + "]";
+				+ ", applyNum=" + applyNum + ", endDate=" + endDate
+				+ ", remarks=" + remarks + ", employer=" + employer + "]";
 	}
 	
 }

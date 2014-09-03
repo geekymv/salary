@@ -64,4 +64,11 @@ public class RecruitDAOImpl implements RecruitDAO {
 		return Integer.valueOf(String.valueOf(rowCounts));
 	}
 
+
+	@Override
+	public Recruit query(Integer id) {
+
+		return (Recruit) getSession().get(Recruit.class, id);
+	}
+
 }

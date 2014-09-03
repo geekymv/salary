@@ -18,26 +18,24 @@ import com.opensymphony.xwork2.ActionSupport;
 public class StudentAction extends ActionSupport implements SessionAware, RequestAware{
 	private static final long serialVersionUID = -9121763308525676529L;
 	
-	@Autowired
-	private RecruitService recruitService;
-	
-	private int page = 1;
-	private PageUtil<Recruit> pageUtil;
-	
-	
-	public String list() throws Exception {
+//	@Autowired
+//	private RecruitService recruitService;
+//	
+//	private int page = 1;
+//	private PageUtil<Recruit> pageUtil;
+//	
+	/**
+	 * 分页显示招聘信息
+	 * @return
+	 * @throws Exception
+	 */
+	public String listRecruit() throws Exception {
 		
-		pageUtil = recruitService.getRecruits(page, 2);
-		System.out.println(pageUtil.getDatas());
-		
-		request.put("pageUtil", pageUtil);
-		
-		
-		return SUCCESS;
+		return "listRecruit";
 	}
-	
-	
-	
+//	
+//	
+//	
 	private Map<String, Object> session;
 	private Map<String, Object> request;
 	
@@ -50,18 +48,18 @@ public class StudentAction extends ActionSupport implements SessionAware, Reques
 	public void setRequest(Map<String, Object> request) {
 		this.request = request;
 	}
-	public int getPage() {
-		return page;
-	}
-	public void setPage(int page) {
-		this.page = page;
-	}
-
-	public PageUtil<Recruit> getPageUtil() {
-		return pageUtil;
-	}
-	public void setPageUtil(PageUtil<Recruit> pageUtil) {
-		this.pageUtil = pageUtil;
-	}
-	
+//	public int getPage() {
+//		return page;
+//	}
+//	public void setPage(int page) {
+//		this.page = page;
+//	}
+//
+//	public PageUtil<Recruit> getPageUtil() {
+//		return pageUtil;
+//	}
+//	public void setPageUtil(PageUtil<Recruit> pageUtil) {
+//		this.pageUtil = pageUtil;
+//	}
+//	
 }

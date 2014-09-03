@@ -17,17 +17,17 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		.custom{
 			height:51px;
 		}
-		
 		.footer {
 			background-color:  #333;
 			width: 100%;
 			height: 200px;
-			
 			margin-top: 450px;
 		}
 		
+		ul li {
+			line-height: 40px;
+		}
 	</style>
-	
 	</head>
 
 <body>
@@ -122,40 +122,78 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     	
       	<div class="col-md-9">
 	        <div class="panel panel-primary">
-	          <div class="panel-heading">招聘信息</div>
+	          <div class="panel-heading">招聘信息详情</div>
 	          <div class="panel-body">
 	            <p>招聘啦！student</p>
 	          </div>
 	        
-	          <!-- Table -->
+	        <s:if test="#request.recruit == null">
+	            	没有招聘信息！
+	        </s:if>
+	        <s:else>
+	         <ul>
+	        	<li>招聘信息标题：${recruit.title }</li>
+	        	<li>发布单位：${recruit.employer.name }</li>
+	        	<li>岗位名称：${recruit.postName }</li>
+	        	<li>招聘人数：${recruit.postNum } 人</li>
+	        	<li>薪资待遇：${recruit.salary }</li>
+	        	<li>
+	        		工作要求：
+	        		<s:if test="recruit.context  == null">
+	        			暂无
+	        		</s:if>
+	        		<s:else>
+	        			${recruit.context }
+	        		</s:else>
+	        		
+	        	</li>
+	        				<%--${recruit.releaseDate} --%>
+	        	<li>
+	        		发布时间：<s:date name="recruit.releaseDate" format="yyyy-MM-dd"/>
+	        	</li>
+	        	<li>截止时间：${recruit.endDate }</li>
+	        	<li>备注：${recruit.remarks }</li>
+	        </ul>	
+	        
+	        
+	        
+	        
+	        </s:else>
+	       
+	        
+	        
+	          <!-- Table
 	          <table class="table table-bordered table-hover table-condensed">
 	            <thead>
 	                <tr>
+	                	<td>已报名人数</td>
+	                	
 	                   	<th>招聘信息标题</th> <th>岗位名称</th> <th>发布单位</th>
 			  			<th>发布时间</th> <th>截止日期</th>  <th>查看详情</th>
 	                </tr>
 	            </thead>
 	            <tbody>
 	            	
-	            	<s:if test="#request.pageUtil == null || #request.pageUtil.datas.size() == 0">
+	            	<s:if test="#request.recruit == null">
 	            		没有招聘信息！
 	            	</s:if>
 	            	<s:else>
-	            		<s:iterator value="#request.pageUtil.datas">
-	            			<tr>
-		            			<td>${title }</td> 
-		            			<td>${postName }</td> 
-		            			<td>${employer.name }</td>
-		            			<td><s:date name="releaseDate" format="yyyy-MM-dd"/></td>
-			  					<td><s:date name="endDate" format="yyyy-MM-dd"/></td>
-			  					<td><a href="recruit/recruit-details.do?id=${id }">查看</a></td>
-	            			</tr>
-	            		</s:iterator>
+	            		
+            			<tr>
+	            			<td>${recruit.title }</td> 
+	            			<td>${postName }</td> 
+	            			<td>${employer.name }</td>
+	            			<td><s:date name="releaseDate" format="yyyy-MM-dd"/></td>
+		  					<td><s:date name="endDate" format="yyyy-MM-dd"/></td>
+		  					<td><a href="recruit/recruit-details.do?id=${id }">查看</a></td>
+            			</tr>
 	            	
 	            	</s:else>
 	            </tbody>
 	          
 	          </table>
+	             -->
+	            <!--
 	            <div class="panel-footer">
 	          	 <ul class="pager">
 	
@@ -175,6 +213,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 				</ul>
 	          </div>
+	          
+	          -->
 	         
 	        </div> <!-- end of panel -->
 	      

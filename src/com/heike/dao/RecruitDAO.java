@@ -13,6 +13,13 @@ public interface RecruitDAO {
 	public Recruit save(Recruit recruit);
 	
 	/**
+	 * 通过id查询招聘信息
+	 * @param id
+	 * @return
+	 */
+	public Recruit query(Integer id);
+	
+	/**
 	 * 分页查询招聘信息
 	 * @return
 	 */
