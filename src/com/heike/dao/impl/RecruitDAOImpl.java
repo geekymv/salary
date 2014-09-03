@@ -56,9 +56,12 @@ public class RecruitDAOImpl implements RecruitDAO {
 	@Override
 	public int getRowCounts() {
 		
-		int rowCounts = getSession().createQuery("from Recruit").list().size();
+//		int rowCounts = getSession().createQuery("from Recruit").list().size();
 		
-		return rowCounts;
+		long rowCounts = (Long) getSession().	//
+					createQuery("select count(*) from Recruit").uniqueResult();
+		
+		return Integer.valueOf(String.valueOf(rowCounts));
 	}
 
 }
