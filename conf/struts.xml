@@ -11,12 +11,19 @@
     <constant name="struts.devMode" value="true" />
 
 	<package name="default" namespace="/" extends="struts-default">
-		<action name="index" class="indexAction">
-			<result>/main.jsp</result>
+		<action name="index" class="indexAction" method="list">
+			<result name="list">/main.jsp</result>
 		</action>
+		
+		<action name="index-*" class="indexAction" method="{1}">
+			<result name="list">/main.jsp</result>
+			<result name="details">/WEB-INF/main/details.jsp</result>
+		</action>
+
 	</package>
 
-	<package name="user" namespace="/user" extends="struts-default">
+	 <package name="user" namespace="/user" extends="struts-default">
+    
 		<action name="user-*" class="userAction" method="{1}">
 			<result name="loginSuccess" type="redirectAction">
 				<param name="actionName">login-success</param>
@@ -57,18 +64,15 @@
 	
 	</package>
 	
-	
+	<!-- 招聘信息 -->
 	<package name="recruit" namespace="/recruit" extends="struts-default">
 		<action name="recruit-*" class="recruitAction" method="{1}">
 			<result name="student">/WEB-INF/student/main.jsp</result>
 			<result name="details">/WEB-INF/student/details.jsp</result>	
 			<result name="error" type="redirect">/login.jsp</result>
 		</action>
-		
-		
 	</package>
-	
-	
+
 	
 	<!-- 学院和社团 -->
 	<package name="employer" namespace="/employer" extends="struts-default">
@@ -76,14 +80,6 @@
 			<result>/WEB-INF/employer/main.jsp</result>
 		</action>
 		<action name="emp-*" class="employerAction" method="{1}">
-			<result>/index.jsp</result>
-		</action>
-	</package>
-	
-	
-	
-	<package name="salary" namespace="/salary" extends="struts-default">
-		<action name="salaryAction" class="salaryAction">
 			<result>/index.jsp</result>
 		</action>
 	</package>

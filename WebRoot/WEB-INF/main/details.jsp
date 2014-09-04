@@ -77,6 +77,20 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 </li>
                 
           </ul>
+          
+          <form action="#" class="navbar-form navbar-left" role="search">
+            <div class="form-group">
+              <input type="text" class="form-control" placeholder="Search">
+            </div>
+            <button type="submit" class="btn btn-default">搜索</button>
+          </form>
+
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="login.jsp">登录 <span class="glyphicon glyphicon-log-in"></span></a></li>
+            <li class="divider-vertical"></li>
+            <li><a href="register.jsp">注册 <span class="glyphicon glyphicon-user"></span></a></li>
+          </ul>
+          <!-- 
 		  <ul class="nav navbar-nav navbar-right">
 	          
 	           	<li><a href="login.jsp">用户：${student.name } <span class="glyphicon glyphicon-user"></span></a></li>
@@ -84,6 +98,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	           	<li class="divider-vertical"></li>
 	           	<li><a href="login.jsp">退出 <span class="glyphicon glyphicon-log-out"></span></a></li>
 	      </ul>
+	       -->
+	      
         </div><!-- /.navbar-collapse -->
       </div><!-- /.container-fluid -->
     </nav>
