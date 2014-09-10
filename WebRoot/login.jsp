@@ -42,8 +42,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			<fieldset> 
 				<legend>登录也是一种美德哦！</legend>	
 				<div class="errors">
-					<s:property value="actionErrors[0]"/>
+					<s:if test="actionErrors != null && actionErrors.size() != 0">
+						<s:property value="actionErrors[0]"/>
+					</s:if>
 				</div>
+
 			  	<div class="form-group">
 			    	<label class="col-sm-5 control-label" for="usermame">用户名</label>
 			   		<div class="col-sm-3">

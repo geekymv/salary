@@ -10,7 +10,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<head>
 	<base href="<%=basePath%>">
 	<meta charset="utf-8">
-	<title>系统首页</title>
+	<title>学生首页</title>
 	<link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">	
 	
 	<style type="text/css">
@@ -79,10 +79,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
           </ul>
 		  <ul class="nav navbar-nav navbar-right">
 	          
-	           	<li><a href="login.jsp">用户：${student.name } <span class="glyphicon glyphicon-user"></span></a></li>
+	           	<li><a href="stu-info.jsp">用户：${student.name } <span class="glyphicon glyphicon-user"></span></a></li>
 	            
 	           	<li class="divider-vertical"></li>
-	           	<li><a href="login.jsp">退出 <span class="glyphicon glyphicon-log-out"></span></a></li>
+	           	<li><a href="user/user-logout">退出 <span class="glyphicon glyphicon-log-out"></span></a></li>
 	      </ul>
         </div><!-- /.navbar-collapse -->
       </div><!-- /.container-fluid -->
@@ -97,8 +97,37 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
      
       
     <div class="row">
-    
-    	<div class="col-md-3">
+     
+    	<div class="col-md-2">
+    	
+    	<div class="list-group">
+		  <a href="#" class="list-group-item active">
+		   	个人信息
+		  </a>
+		  <a href="#" class="list-group-item">我的资料</a>
+		  <a href="#" class="list-group-item">我的工作</a>
+		  <a href="#" class="list-group-item">Porta ac</a>
+		  <a href="#" class="list-group-item">Vestibulum at eros</a>
+		</div>
+    	<!-- 
+    	<div class="btn-group-vertical">
+		  <button type="button" class="btn btn-success">我的工作</button>
+		  <button type="button" class="btn btn-default">2</button>
+		
+		  <div class="btn-group-lg">
+		    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+		      	我的信息
+		      <span class="caret"></span>
+		    </button>
+		    <ul class="dropdown-menu" role="menu">
+		      <li><a href="#">修改信息</a></li>
+		      <li><a href="#">Dropdown link</a></li>
+		    </ul>
+		  </div>
+		</div>
+		-->
+    	
+    	<%--	
 	      	<pre>左边</pre>
 	      	<img src="img/hello.jpg" alt="这是一张图片" title="这是一张图片吗" class="img-thumbnail">
 	
@@ -116,11 +145,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			    <li><a href="#">Separated link</a></li>
 			  </ul>
 			</div>
+		 --%>
+		 	
       	</div>
     
     
     	
-      	<div class="col-md-9">
+      	<div class="col-md-10">
 	        <div class="panel panel-primary">
 	          <div class="panel-heading">招聘信息</div>
 	          <div class="panel-body">

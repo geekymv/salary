@@ -84,22 +84,46 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             </div>
             <button type="submit" class="btn btn-default">搜索</button>
           </form>
-
-          <ul class="nav navbar-nav navbar-right">
-            <li><a href="login.jsp">登录 <span class="glyphicon glyphicon-log-in"></span></a></li>
+          
+                <ul class="nav navbar-nav navbar-right">
+           	<s:if test="#session.user != null">
+           	<li role="presentation" class="dropdown">
+                 <a href="stu-info.jsp" class="dropdown-toggle" data-toggle="dropdown">
+              		用户：${user.name }
+                   <span class="caret"></span>
+                 </a>
+                
+                 <ul class="dropdown-menu" role="menu">
+                   <li><a href="#">进入个人主页</a></li>
+                   <%-->
+                   <li><a href="#">Another action</a></li>
+                   <li><a href="#">Something else here</a></li>
+                   <li class="divider"></li>
+                   <li><a href="#">Separated link</a></li>
+                   <li class="divider"></li>
+                   <li><a href="#">One more separated link</a></li>
+                 	--%>
+                 </ul>
+                   
+               </li>
+           		
+           	</s:if>
+           	<s:else>
+           		<li>
+            	<a href="login.jsp">登录 <span class="glyphicon glyphicon-log-in"></span></a>
+           		</li>
+           	</s:else>
+           	
             <li class="divider-vertical"></li>
-            <li><a href="register.jsp">注册 <span class="glyphicon glyphicon-user"></span></a></li>
+            <li>
+            	<s:if test="#session.user != null">
+            		<a href="user/user-logout">退出 <span class="glyphicon glyphicon-log-out"></span></a>
+            	</s:if>
+            	<s:else>
+	            	<a href="register.jsp">注册 <span class="glyphicon glyphicon-user"></span></a>
+            	</s:else>
+            </li>
           </ul>
-          <!-- 
-		  <ul class="nav navbar-nav navbar-right">
-	          
-	           	<li><a href="login.jsp">用户：${student.name } <span class="glyphicon glyphicon-user"></span></a></li>
-	            
-	           	<li class="divider-vertical"></li>
-	           	<li><a href="login.jsp">退出 <span class="glyphicon glyphicon-log-out"></span></a></li>
-	      </ul>
-	       -->
-	      
         </div><!-- /.navbar-collapse -->
       </div><!-- /.container-fluid -->
     </nav>
@@ -114,7 +138,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
       
     <div class="row">
     
-    	<div class="col-md-3">
+    	<div class="col-md-2">
 	      	<pre>左边</pre>
 	      	<img src="img/hello.jpg" alt="这是一张图片" title="这是一张图片吗" class="img-thumbnail">
 	
@@ -136,11 +160,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     
     
     	
-      	<div class="col-md-9">
+      	<div class="col-md-10">
 	        <div class="panel panel-primary">
 	          <div class="panel-heading">招聘信息详情</div>
 	          <div class="panel-body">
-	            <p>招聘啦！student</p>
+	            <p>招聘啦！main</p>
 	          </div>
 	        
 	        <s:if test="#request.recruit == null">

@@ -85,9 +85,45 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
           </form>
 
           <ul class="nav navbar-nav navbar-right">
-            <li><a href="login.jsp">登录 <span class="glyphicon glyphicon-log-in"></span></a></li>
+           	<s:if test="#session.user != null">
+           	<li role="presentation" class="dropdown">
+                 <a href="stu-info.jsp" class="dropdown-toggle" data-toggle="dropdown">
+              		用户：${user.name }
+                   <span class="caret"></span>
+                 </a>
+                
+                 <ul class="dropdown-menu" role="menu">
+                   <li><a href="#">进入个人主页</a></li>
+                   <%-->
+                   <li><a href="#">Another action</a></li>
+                   <li><a href="#">Something else here</a></li>
+                   <li class="divider"></li>
+                   <li><a href="#">Separated link</a></li>
+                   <li class="divider"></li>
+                   <li><a href="#">One more separated link</a></li>
+                 	--%>
+                 </ul>
+                   
+               </li>
+           		<%--
+           			<a href="stu-info.jsp">用户：${user.name } <span class="glyphicon glyphicon-user"></span></a>
+           		--%>
+           	</s:if>
+           	<s:else>
+           		<li>
+            	<a href="login.jsp">登录 <span class="glyphicon glyphicon-log-in"></span></a>
+           		</li>
+           	</s:else>
+           	
             <li class="divider-vertical"></li>
-            <li><a href="register.jsp">注册 <span class="glyphicon glyphicon-user"></span></a></li>
+            <li>
+            	<s:if test="#session.user != null">
+            		<a href="user/user-logout">退出 <span class="glyphicon glyphicon-log-out"></span></a>
+            	</s:if>
+            	<s:else>
+	            	<a href="register.jsp">注册 <span class="glyphicon glyphicon-user"></span></a>
+            	</s:else>
+            </li>
           </ul>
                
         </div><!-- /.navbar-collapse -->

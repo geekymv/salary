@@ -3,6 +3,7 @@ package com.heike.action;
 import java.util.Date;
 import java.util.Map;
 
+import org.apache.struts2.dispatcher.SessionMap;
 import org.apache.struts2.interceptor.SessionAware;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
@@ -11,7 +12,6 @@ import org.springframework.stereotype.Controller;
 import com.heike.pojo.Employer;
 import com.heike.pojo.Student;
 import com.heike.service.EmployerService;
-import com.heike.service.RecruitService;
 import com.heike.service.StudentService;
 import com.opensymphony.xwork2.ActionSupport;
 
@@ -68,6 +68,28 @@ public class UserAction extends ActionSupport implements SessionAware{
 		this.addActionError("用户名或密码错误！");
 		return INPUT;
 	}
+	
+	/**
+	 * 用户退出
+	 * @return
+	 * @throws Exception
+	 */
+	public String logout() throws Exception {
+		
+		if(session instanceof SessionMap){
+
+			System.out.println("退出...");
+			
+			SessionMap<String, Object> sessionMap = (SessionMap<String, Object>)session;
+			
+			sessionMap.invalidate();
+			
+		}
+
+		return "logout";
+		
+	}
+	
 	
 	/**
 	 * 用户注册
