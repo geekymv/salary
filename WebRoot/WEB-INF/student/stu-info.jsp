@@ -25,7 +25,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			
 			margin-top: 450px;
 		}
-		
+		ul li {
+			line-height: 40px;
+		}
 	</style>
 	
 	</head>
@@ -85,7 +87,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
       
     <div class="row">
     	<div class="col-md-2">
-	    	<div class="panel panel-primary">
+    		<div class="panel panel-primary">
 		        <div class="panel-heading">功能导航</div>
 			   	<div class="list-group">
 				  <a href="student/stu-stuInfo.do" class="list-group-item">我的资料</a>
@@ -97,63 +99,18 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
       	</div>
     
       	<div class="col-md-10">
-	        <div class="panel panel-primary">
-	          <div class="panel-heading">招聘信息</div>
-	          <div class="panel-body">
-	            <p>招聘啦！student</p>
-	          </div>
-	        
-	          <!-- Table -->
-	          <table class="table table-bordered table-hover table-condensed">
-	            <thead>
-	                <tr>
-	                   	<th>招聘信息标题</th> <th>岗位名称</th> <th>发布单位</th>
-			  			<th>发布时间</th> <th>截止日期</th>  <th>查看详情</th>
-	                </tr>
-	            </thead>
-	            <tbody>
-	            	
-	            	<s:if test="#request.pageUtil == null || #request.pageUtil.datas.size() == 0">
-	            		没有招聘信息！
-	            	</s:if>
-	            	<s:else>
-	            		<s:iterator value="#request.pageUtil.datas">
-	            			<tr>
-		            			<td>${title }</td> 
-		            			<td>${postName }</td> 
-		            			<td>${employer.name }</td>
-		            			<td><s:date name="releaseDate" format="yyyy-MM-dd"/></td>
-			  					<td><s:date name="endDate" format="yyyy-MM-dd"/></td>
-			  					<td><a href="student/stu-details.do?id=${id }">查看</a></td>
-	            			</tr>
-	            		</s:iterator>
-	            	
-	            	</s:else>
-	            </tbody>
-	          
-	          </table>
-	            <div class="panel-footer">
-	          	 <ul class="pager">
-	
-	          	 	<li>当前页 ：<s:property value="page"/>&nbsp;&nbsp;</li>
-	          	 	<li>总页数：<s:property value="#request.pageUtil.totalPage"/></li>
-	          	 	
-	          	 	<s:if test="page-1 > 0">
-	          	 		<li><a href="student/stu-listRecruit.do?page=<s:property value=" page-1 "/>" >上一页</a></li>
-	          	 	</s:if>
-			
-					<s:set var="totalPage" value="#request.pageUtil.totalPage"></s:set>
-					<%-- totalPage: <s:property value="#totalPage"/>--%>
-
-	          	 	<s:if test="page+1 <= #totalPage">
-				  		<li><a href="student/stu-listRecruit.do?page=<s:property value=" page+1 "/>" >下一页</a></li>
-	          	 	</s:if>
-
-				</ul>
-	          </div>
-	         
-	        </div> <!-- end of panel -->
-	      
+      		 <div class="panel panel-primary">
+	          <div class="panel-heading">${student.name }的资料</div>
+		     	 <ul>
+		        	<li>学号：${student.number}</li>
+		        	<li>姓名：${student.name }</li>
+		        	<li>性别：${student.gender }</li>
+		        	<li>学院：${student.college }</li>
+		        	<li>专业：${student.profession }</li>
+		        	<li>手机号码：${student.mobile }</li>
+		        	<li>注册时间：<s:date name="student.regTime" format="yyyy-MM-dd hh:mm:ss" /></li>
+		        </ul>	
+		     </div>
     	</div>
       
 	</div>

@@ -113,6 +113,14 @@ public class Student {
 		this.profession = profession;
 	}
 
+	@Override
+	public String toString() {
+		return "Student [id=" + id + ", number=" + number + ", password="
+				+ password + ", name=" + name + ", gender=" + gender
+				+ ", college=" + college + ", profession=" + profession
+				+ ", mobile=" + mobile + ", regTime=" + regTime + "]";
+	}
+
 	
 	
 }

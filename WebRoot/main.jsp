@@ -10,7 +10,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<head>
 	<base href="<%=basePath%>">
 	<meta charset="utf-8">
-	<title>Bootstrap3.2</title>
+	<title>首页</title>
 	<link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">	
 	
 	<style type="text/css">
@@ -93,7 +93,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                  </a>
                 
                  <ul class="dropdown-menu" role="menu">
-                   <li><a href="#">进入个人主页</a></li>
+                   <li><a href="user/login-success.do">进入个人主页</a></li>
                    <%-->
                    <li><a href="#">Another action</a></li>
                    <li><a href="#">Something else here</a></li>
@@ -142,7 +142,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         <div class="panel panel-primary">
 	          <div class="panel-heading">招聘信息</div>
 	          <div class="panel-body">
-	            <p>招聘啦！student</p>
+	            <p>招聘啦！main</p>
 	          </div>
 	        
 	          <!-- Table -->
