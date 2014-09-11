@@ -62,10 +62,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                </div>
             </div>
 			<div class="page">
-               <h3>填写联系信息<br/><em>请告诉我们您的联系方式。</em></h3>
                <p><label>学院</label><input type="text" class="input" name="student.college" /></p>
                <p><label>专业</label><input type="text" class="input" name="student.profession" /></p>
                <p><label>手机号码：</label><input type="text" class="input" name="student.mobile" /></p>
+               <p><label>自我介绍：</label><textarea rows="5" cols="40" name="student.introduce"></textarea> </p>
                <div class="btn_nav">
                   <input type="button" class="prev" style="float:left" value="&laquo;上一步" />
                   <input type="button" class="next right" value="下一步&raquo;" />

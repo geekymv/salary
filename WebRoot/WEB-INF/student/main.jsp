@@ -90,7 +90,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			   	<div class="list-group">
 				  <a href="student/stu-stuInfo.do" class="list-group-item">我的资料</a>
 				  <a href="#" class="list-group-item">我的工作</a>
-				  <a href="#" class="list-group-item">报名记录</a>
+				  <a href="student/stu-listJob.do" class="list-group-item">报名记录</a>
 				  <a href="student/stu-listRecruit.do" class="list-group-item">查看招聘</a>
 				</div>
 			</div>
@@ -103,6 +103,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	            <p>招聘啦！student</p>
 	          </div>
 	        
+		      <s:if test="#request.pageUtil == null || #request.pageUtil.datas.size() == 0">
+	            		没有招聘信息！
+	          </s:if>	
+	        
+	          <s:else>
 	          <!-- Table -->
 	          <table class="table table-bordered table-hover table-condensed">
 	            <thead>
@@ -112,26 +117,21 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	                </tr>
 	            </thead>
 	            <tbody>
+            		<s:iterator value="#request.pageUtil.datas">
+            			<tr>
+	            			<td>${title }</td> 
+	            			<td>${postName }</td> 
+	            			<td>${employer.name }</td>
+	            			<td><s:date name="releaseDate" format="yyyy-MM-dd"/></td>
+		  					<td><s:date name="endDate" format="yyyy-MM-dd"/></td>
+		  					<td><a href="student/stu-details.do?id=${id }">查看</a></td>
+            			</tr>
+            		</s:iterator>
 	            	
-	            	<s:if test="#request.pageUtil == null || #request.pageUtil.datas.size() == 0">
-	            		没有招聘信息！
-	            	</s:if>
-	            	<s:else>
-	            		<s:iterator value="#request.pageUtil.datas">
-	            			<tr>
-		            			<td>${title }</td> 
-		            			<td>${postName }</td> 
-		            			<td>${employer.name }</td>
-		            			<td><s:date name="releaseDate" format="yyyy-MM-dd"/></td>
-			  					<td><s:date name="endDate" format="yyyy-MM-dd"/></td>
-			  					<td><a href="student/stu-details.do?id=${id }">查看</a></td>
-	            			</tr>
-	            		</s:iterator>
-	            	
-	            	</s:else>
 	            </tbody>
 	          
 	          </table>
+	          
 	            <div class="panel-footer">
 	          	 <ul class="pager">
 	
@@ -151,6 +151,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 				</ul>
 	          </div>
+	         </s:else>
+	         
 	         
 	        </div> <!-- end of panel -->
 	      

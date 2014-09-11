@@ -5,6 +5,7 @@ import java.util.LinkedHashSet;
 import java.util.Set;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
@@ -29,12 +30,17 @@ public class Student {
 	private String college;	//学院
 	private String profession;	//专业
 	private String mobile;
+	private String introduce;	//自我介绍
 	private Date regTime;	//注册时间
 	
 	private Set<Employer> employers = new LinkedHashSet<Employer>();	//Student与Employer是多对多的关联关系(双向)
 
 	private Set<Salary> salarys = new LinkedHashSet<Salary>();	//一对多的关联关系，Salary是多的一方
 	
+	private Set<Recruit> recruits = new LinkedHashSet<Recruit>();
+	
+	
+
 	@Id
 	@GeneratedValue
 	public Integer getId() {
@@ -56,6 +62,15 @@ public class Student {
 	public Date getRegTime() {
 		return regTime;
 	}
+	@ManyToMany(mappedBy="students", fetch=FetchType.EAGER)
+	public Set<Recruit> getRecruits() {
+		return recruits;
+	}
+
+	public void setRecruits(Set<Recruit> recruits) {
+		this.recruits = recruits;
+	}
+	
 	public void setRegTime(Date regTime) {
 		this.regTime = regTime;
 	}
@@ -112,6 +127,43 @@ public class Student {
 	public void setProfession(String profession) {
 		this.profession = profession;
 	}
+	public String getIntroduce() {
+		return introduce;
+	}
+	public void setIntroduce(String introduce) {
+		this.introduce = introduce;
+	}
+	
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((id == null) ? 0 : id.hashCode());
+		result = prime * result + ((number == null) ? 0 : number.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Student other = (Student) obj;
+		if (id == null) {
+			if (other.id != null)
+				return false;
+		} else if (!id.equals(other.id))
+			return false;
+		if (number == null) {
+			if (other.number != null)
+				return false;
+		} else if (!number.equals(other.number))
+			return false;
+		return true;
+	}
 
 	@Override
 	public String toString() {
@@ -120,8 +172,6 @@ public class Student {
 				+ ", college=" + college + ", profession=" + profession
 				+ ", mobile=" + mobile + ", regTime=" + regTime + "]";
 	}
-
-	
 	
 }
 

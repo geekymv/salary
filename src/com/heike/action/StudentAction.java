@@ -1,5 +1,6 @@
 package com.heike.action;
 
+import java.util.List;
 import java.util.Map;
 
 import org.apache.struts2.interceptor.RequestAware;
@@ -11,6 +12,7 @@ import org.springframework.stereotype.Controller;
 import com.heike.pojo.Recruit;
 import com.heike.pojo.Student;
 import com.heike.service.RecruitService;
+import com.heike.service.StudentService;
 import com.heike.utils.PageUtil;
 import com.opensymphony.xwork2.ActionSupport;
 
@@ -21,6 +23,9 @@ public class StudentAction extends ActionSupport implements SessionAware, Reques
 	
 	@Autowired
 	private RecruitService recruitService;
+	
+	@Autowired
+	private StudentService studentService;
 	
 	private Integer id;	//招聘信息id
 	
@@ -71,11 +76,43 @@ public class StudentAction extends ActionSupport implements SessionAware, Reques
 	
 	
 	/**
+	 * 学生报名工作
+	 * @return
+	 * @throws Exception
+	 */
+	public String applyJob() throws Exception {
+
+		student = (Student) session.get("student");
+		
+		if(null == student) {
+			return ERROR;
+		}
+		
+		recruit = recruitService.get(recruit.getId());
+		
+		//判断该生是否已经申请了该工作
+		boolean find = recruit.getStudents().contains(student);
+		if(find){	//包含该生
+			System.out.println("你已经报过名了！！！");
+			return "applyed";
+		}	
+		
+		studentService.applyJob(student, recruit);
+		return "applyJob";
+	}
+	
+	/**
 	 * 查看该学生报名哪些工作
 	 * @return
 	 * @throws Exception
 	 */
 	public String listJob() throws Exception {
+		student = (Student) session.get("student");
+		
+		List<Recruit> recruits = studentService.listRecruit(student.getId());
+
+		
+		request.put("recruits", recruits);
 		
 		return "listJob";
 	}
@@ -94,11 +131,8 @@ public class StudentAction extends ActionSupport implements SessionAware, Reques
 		if(null == student){
 			return ERROR;
 		}
-		
-		
-		recruit = recruitService.get(id);
 
-		System.out.println(recruit);
+		recruit = recruitService.get(id);
 		
 		request.put("recruit", recruit);
 		

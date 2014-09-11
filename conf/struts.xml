@@ -64,8 +64,12 @@
 			<result name="listRecruit">/WEB-INF/student/main.jsp</result>
 			<result name="details">/WEB-INF/student/details.jsp</result>	
 	
-			<result name="stuInfo">/WEB-INF/student/stu-info.jsp</result>			
+			<result name="stuInfo">/WEB-INF/student/stu-info.jsp</result>	
 			
+			<result name="applyed">/WEB-INF/student/result.jsp</result>
+			<result name="applyJob" type="redirectAction">stu-listRecruit</result>		
+			
+			<result name="listJob">/WEB-INF/student/listJob.jsp</result>
 			<result name="error" type="redirect">/login.jsp</result>
 			
 		</action>

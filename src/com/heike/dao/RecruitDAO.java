@@ -1,5 +1,7 @@
 package com.heike.dao;
 
+import java.util.List;
+
 import com.heike.pojo.Recruit;
 import com.heike.utils.PageUtil;
 
@@ -11,6 +13,7 @@ public interface RecruitDAO {
 	 * @return
 	 */
 	public Recruit save(Recruit recruit);
+	
 	
 	/**
 	 * 通过id查询招聘信息
@@ -25,11 +28,19 @@ public interface RecruitDAO {
 	 */
 	public PageUtil<Recruit> getRecruitsByPage(int page, int pageSize);
 	
+//	/**
+//	 * 查询所有招聘信息
+//	 * @return
+//	 */
+//	public List<Recruit> list();
+	
 	/**
 	 * 获得招聘信息表中的总记录数
 	 * @return
 	 */
 	public int getRowCounts();
+	
+	
 	
 	
 }

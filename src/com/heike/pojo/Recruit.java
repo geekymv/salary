@@ -6,6 +6,7 @@ import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
@@ -37,7 +38,7 @@ public class Recruit {
 	
 	private Employer employer; //用工单位
 	
-	private Set<Student> students = new LinkedHashSet<Student>();	//Recruit与Student是多对多的关联关系(单向)
+	private Set<Student> students = new LinkedHashSet<Student>();	//Recruit与Student是多对多的关联关系(双向)
 	
 
 	@Id
@@ -52,7 +53,7 @@ public class Recruit {
 		return employer;
 	}
 	
-	@ManyToMany
+	@ManyToMany(fetch=FetchType.EAGER)
 	@JoinTable(name="t_recruit_student", joinColumns={@JoinColumn(name="rec_id")},
 			inverseJoinColumns={@JoinColumn(name="stu_id")}	//Recruit维护关联关系
 			)
@@ -108,6 +109,7 @@ public class Recruit {
 	public void setReleaseDate(Date releaseDate) {
 		this.releaseDate = releaseDate;
 	}
+	@Column(columnDefinition="int default 0")
 	public Integer getApplyNum() {
 		return applyNum;
 	}

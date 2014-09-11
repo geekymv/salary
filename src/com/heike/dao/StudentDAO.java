@@ -1,5 +1,8 @@
 package com.heike.dao;
 
+import java.util.List;
+
+import com.heike.pojo.Recruit;
 import com.heike.pojo.Student;
 
 public interface StudentDAO {
@@ -9,7 +12,7 @@ public interface StudentDAO {
 	 * @param student
 	 * @return
 	 */
-	public Student saveOrUpdate(Student student);
+	public Student save(Student student);
 
 	/**
 	 * 根据学号和密码查询学生
@@ -25,5 +28,12 @@ public interface StudentDAO {
 	 * @return
 	 */
 	public Student query(String number);
+	
+	/**
+	 * 根据id查询学生信息
+	 * @param id
+	 * @return
+	 */
+	public Student query(Integer id);
 	
 }

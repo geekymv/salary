@@ -2,6 +2,7 @@ package com.heike.pojo;
 
 import java.util.Date;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -43,6 +44,7 @@ public class Salary {
 	public Integer getMonth() {
 		return month;
 	}
+	@Column(columnDefinition="float default 0")
 	public float getSalary() {
 		return salary;
 	}

@@ -104,7 +104,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			   	<div class="list-group">
 				  <a href="student/stu-stuInfo.do" class="list-group-item">我的资料</a>
 				  <a href="#" class="list-group-item">我的工作</a>
-				  <a href="#" class="list-group-item">报名记录</a>
+				  <a href="student/stu-listJob.do" class="list-group-item">报名记录</a>
 				  <a href="student/stu-listRecruit.do" class="list-group-item">查看招聘</a>
 				</div>
 			</div>
@@ -128,6 +128,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	        	<li>发布单位：${recruit.employer.name }</li>
 	        	<li>岗位名称：${recruit.postName }</li>
 	        	<li>招聘人数：${recruit.postNum } 人</li>
+	        	<li>已报名人数：${recruit.applyNum } 人</li>
 	        	<li>薪资待遇：${recruit.salary }</li>
 	        	<li>
 	        		工作要求：
@@ -146,11 +147,20 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	        	<li>截止时间：${recruit.endDate }</li>
 	        	<li>备注：${recruit.remarks }</li>
 	        </ul>	
-	        
+			
+				
+				<form action="student/stu-applyJob.do" method="post">
+					<input type="hidden" name="recruit.id" value="${recruit.id }"/>					
+					<input type="submit" value="我要报名"/>
+				</form>
+				        
 	        </s:else>
+	        
+	        
 	         
 	        </div> <!-- end of panel -->
-	      
+	      	
+	      	
     	</div>
       
 	</div>

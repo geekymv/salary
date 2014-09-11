@@ -1,11 +1,15 @@
 package com.heike.dao.impl;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.heike.dao.StudentDAO;
+import com.heike.pojo.Recruit;
 import com.heike.pojo.Student;
 
 @Repository("studentDAO")
@@ -20,7 +24,7 @@ public class StudentDAOImpl implements StudentDAO {
 	
 	
 	@Override
-	public Student saveOrUpdate(Student student) {
+	public Student save(Student student) {
 		
 		getSession().saveOrUpdate(student);
 		
@@ -42,4 +46,26 @@ public class StudentDAOImpl implements StudentDAO {
 			setString(0, number).setString(1, password).uniqueResult();
 	}
 
+	@Override
+	public Student query(Integer id) {
+
+		return (Student) getSession().get(Student.class, id);
+	}
+
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

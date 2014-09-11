@@ -1,6 +1,10 @@
 package com.heike.service;
 
+import java.util.List;
+
+import com.heike.pojo.Recruit;
 import com.heike.pojo.Student;
+import com.heike.utils.PageUtil;
 
 public interface StudentService {
 
@@ -18,5 +22,23 @@ public interface StudentService {
 	 * @return
 	 */
 	public Student login(String account, String password);
+	
+	/**
+	 * 学生报名工作
+	 * @param student
+	 * @param recruit
+	 * @return
+	 */
+	public boolean applyJob(Student student, Recruit recruit);
+	
+	/**
+	 * 根据学生学号,查看该学生报名的工作
+	 * @param id
+	 * @return
+	 */
+	public List<Recruit> listRecruit(Integer id);
+	
+	
+	
 	
 }
