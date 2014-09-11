@@ -79,10 +79,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
           </ul>
 		  <ul class="nav navbar-nav navbar-right">
 	          
-	           	<li><a href="login.jsp">用户：${sessionScope.student.name } <span class="glyphicon glyphicon-user"></span></a></li>
+	           	<li><a href="employer/emp-empInfo.do">用户：${employer.name } <span class="glyphicon glyphicon-user"></span></a></li>
 	            
 	           	<li class="divider-vertical"></li>
-	           	<li><a href="login.jsp">退出 <span class="glyphicon glyphicon-log-out"></span></a></li>
+	           	<li><a href="user/user-logout">退出 <span class="glyphicon glyphicon-log-out"></span></a></li>
 	      </ul>
         </div><!-- /.navbar-collapse -->
       </div><!-- /.container-fluid -->
@@ -98,33 +98,25 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
       
     <div class="row">
     
-    	<div class="col-md-3">
-	      	<pre>左边</pre>
-	      	<img src="img/hello.jpg" alt="这是一张图片" title="这是一张图片吗" class="img-thumbnail">
-	
-	        <div class="btn-group">
-			  <button type="button" class="btn btn-success">Action</button>
-			  <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown">
-			    <span class="caret"></span>
-			    <span class="sr-only">Toggle Dropdown</span>
-			  </button>
-			  <ul class="dropdown-menu" role="menu">
-			    <li><a href="#">Action</a></li>
-			    <li><a href="#">Another action</a></li>
-			    <li><a href="#">Something else here</a></li>
-			    <li class="divider"></li>
-			    <li><a href="#">Separated link</a></li>
-			  </ul>
+    	<div class="col-md-2">
+	   	  	<div class="panel panel-primary">
+		        <div class="panel-heading">功能导航</div>
+			   	<div class="list-group">
+				  <a href="employer/emp-empInfo.do" class="list-group-item">我的资料</a>
+				  <a href="#" class="list-group-item">我的工作</a>
+				  <a href="#" class="list-group-item">发放工资</a>
+				  <a href="employer/publish.do" class="list-group-item">发布招聘</a>
+				</div>
 			</div>
       	</div>
     
     
     	
-      	<div class="col-md-9">
+      	<div class="col-md-10">
 	        <div class="panel panel-primary">
 	          <div class="panel-heading">招聘信息</div>
 	          <div class="panel-body">
-	            <p>招聘啦！employer：<a href="emp.action">发布招聘信息</a></p>
+	            <p>招聘啦！employer！！！</p>
 	          </div>
 	        
 	          <!-- Table -->
@@ -137,85 +129,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	                </tr>
 	            </thead>
 	            <tbody>
-	            
             	 	<tr>
                    		<td>招聘信息标题</td> <td>发布单位</td> <td>发布时间</td>
 		  				<td>岗位名称</td><td>截止日期</td>  <td>备注</td>
                  	</tr>
-                 	<tr>
-                   		<td>招聘信息标题</td> <td>发布单位</td> <td>发布时间</td>
-		  				<td>岗位名称</td><td>截止日期</td>  <td>备注</td>
-                 	</tr>
-                 	<tr>
-                   		<td>招聘信息标题</td> <td>发布单位</td> <td>发布时间</td>
-		  				<td>岗位名称</td><td>截止日期</td>  <td>备注</td>
-                 	</tr>
-	            <!-- 
-	            	<s:if test="#request.pageUtil == null || #request.pageUtil.datas.size() == 0">
-	            		没有设备信息！
-	            	</s:if>
-	            	<s:else>
-	            		<s:iterator value="#request.pageUtil.datas">
-					  		<tr>
-					  			<td>${num }</td>
-					  			<td><s:property value="name"/></td>
-					  			<td><s:property value="useYear"/></td>
-					  			
-					  			<td>
-					  				<s:date name="proDate" format="yyyy-MM-dd"/>
-					  			</td>
-					  			<td>
-					  				<s:date name="useDate" format="yyyy-MM-dd"/>
-					  			</td>
-					  			<%--
-					  			<td><s:property value="#m.useDate"/></td>
-					  			 --%>
-					  			<td><s:property value="suppliper"/></td>
-					  			<td><s:property value="type.name"/></td>
-					  			
-					  			<%--设备状态 --%>
-					  			<s:if test="status == false">
-					  				<td>未使用</td>
-					  			</s:if>
-					  			<s:else>
-					  				<td>已使用</td>
-					  			</s:else>
-	
-					  			<td><s:property value="function"/></td>
-					  			
-					  			<td>
-					  				<a href="machine/machine!edit.do?id=${id }">修改</a>|
-					  				<a href="machine/machine!delete.do?id=${id }">删除</a>
-					  			</td>
-					  			
-					  		</tr>
-		  				</s:iterator>
-	            	</s:else>
-	              
-	            </tbody>
-	            -->
+	          	</tbody>
 	          </table>
-	          <!-- 
-	            <div class="panel-footer">
-	          	 <ul class="pager">
-	
-	          	 	<li>当前页 ：<s:property value="pageNO"/>&nbsp;&nbsp;</li>
-	          	 	<li>总页数：<s:property value="#request.pageUtil.totalPage"/></li>
-	          	 	
-	          	 	<s:if test="pageNO-1 > 0">
-	          	 		<li><a href="machine/machine!list.do?pageNO=<s:property value=" pageNO-1 "/>" >上一页</a></li>
-	          	 	</s:if>
-			
-					<s:set var="totalPage" value="#request.pageUtil.totalPage"></s:set>
-					<%-- totalPage: <s:property value="#totalPage"/>--%>
-					<%--
-	          	 	<s:if test="pageNO+1 <= #totalPage">
-				  		<li><a href="machine/machine!list.do?pageNO=<s:property value=" pageNO+1 "/>" >下一页</a></li>
-	          	 	</s:if>
-	          	 	--%>
-				</ul>
-	          </div>
-	         -->
 	         
 	        </div> <!-- end of panel -->
 	      

@@ -10,7 +10,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<head>
 	<base href="<%=basePath%>">
 	<meta charset="utf-8">
-	<title>学生首页</title>
+	<title>首页</title>
 	<link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">	
 	
 	<style type="text/css">
@@ -23,9 +23,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			width: 100%;
 			height: 200px;
 			
-			margin-top: 450px;
+			margin-top: 400px;
 		}
-		
+		.col-md-10 ul li {
+			line-height: 40px;
+		}
 	</style>
 	
 	</head>
@@ -70,7 +72,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 </li>
           </ul>
 		  <ul class="nav navbar-nav navbar-right">
-	           	<li><a href="student/stu-stuInfo.do">用户：${student.name } <span class="glyphicon glyphicon-user"></span></a></li>
+	         	<li>
+	         		<a href="employer/emp-empInfo.do">用户：${employer.name } <span class="glyphicon glyphicon-user"></span>
+	         		</a>
+	         	</li>
 	           	<li class="divider-vertical"></li>
 	           	<li><a href="user/user-logout">退出 <span class="glyphicon glyphicon-log-out"></span></a></li>
 	      </ul>
@@ -85,77 +90,29 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
       
     <div class="row">
     	<div class="col-md-2">
-	    	<div class="panel panel-primary">
+    		<div class="panel panel-primary">
 		        <div class="panel-heading">功能导航</div>
 			   	<div class="list-group">
-				  <a href="student/stu-stuInfo.do" class="list-group-item">我的资料</a>
+				  <a href="employer/emp-empInfo.do" class="list-group-item">我的资料</a>
 				  <a href="#" class="list-group-item">我的工作</a>
-				  <a href="student/stu-listJob.do" class="list-group-item">报名记录</a>
-				  <a href="student/stu-listRecruit.do" class="list-group-item">查看招聘</a>
+				  <a href="#" class="list-group-item">发放工资</a>
+				  <a href="employer/publish.do" class="list-group-item">发布招聘</a>
 				</div>
 			</div>
       	</div>
     
       	<div class="col-md-10">
-	        <div class="panel panel-primary">
-	          <div class="panel-heading">招聘信息</div>
-	          <div class="panel-body">
-	            <p>招聘啦！student</p>
+      		 <div class="panel panel-primary">
+	          <div class="panel-heading">我的资料
 	          </div>
-	        
-		      <s:if test="#request.pageUtil == null || #request.pageUtil.datas.size() == 0">
-	            		没有招聘信息！
-	          </s:if>	
-	        
-	          <s:else>
-	          <!-- Table -->
-	          <table class="table table-bordered table-hover table-condensed">
-	            <thead>
-	                <tr>
-	                   	<th>招聘信息标题</th> <th>岗位名称</th> <th>发布单位</th>
-			  			<th>发布时间</th> <th>截止日期</th>  <th>查看详情</th>
-	                </tr>
-	            </thead>
-	            <tbody>
-            		<s:iterator value="#request.pageUtil.datas">
-            			<tr>
-	            			<td>${title }</td> 
-	            			<td>${postName }</td> 
-	            			<td>${employer.name }</td>
-	            			<td><s:date name="releaseDate" format="yyyy-MM-dd"/></td>
-		  					<td><s:date name="endDate" format="yyyy-MM-dd"/></td>
-		  					<td><a href="student/stu-details.do?id=${id }">查看</a></td>
-            			</tr>
-            		</s:iterator>
-	            	
-	            </tbody>
-	          
-	          </table>
-	          
-	            <div class="panel-footer">
-	          	 <ul class="pager">
-	
-	          	 	<li>当前页 ：<s:property value="page"/>&nbsp;&nbsp;</li>
-	          	 	<li>总页数：<s:property value="#request.pageUtil.totalPage"/></li>
-	          	 	
-	          	 	<s:if test="page-1 > 0">
-	          	 		<li><a href="student/stu-listRecruit.do?page=<s:property value=" page-1 "/>" >上一页</a></li>
-	          	 	</s:if>
-			
-					<s:set var="totalPage" value="#request.pageUtil.totalPage"></s:set>
-					<%-- totalPage: <s:property value="#totalPage"/>--%>
-
-	          	 	<s:if test="page+1 <= #totalPage">
-				  		<li><a href="student/stu-listRecruit.do?page=<s:property value=" page+1 "/>" >下一页</a></li>
-	          	 	</s:if>
-
-				</ul>
-	          </div>
-	         </s:else>
-	         
-	         
-	        </div> <!-- end of panel -->
-	      
+	     	  <ul>
+	        	<li>账号：${employer.account}</li>
+	        	<li>名称：${employer.name }</li>
+	        	<li>电话号码：${employer.mobile }</li>
+	        	<li>总岗位数：${employer.postNum }</li>
+	        	<li>月总金额：${employer.totalMoney }</li>
+	         </ul>	
+		     </div>
     	</div>
       
 	</div>

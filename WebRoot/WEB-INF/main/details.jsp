@@ -176,6 +176,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	        	<li>发布单位：${recruit.employer.name }</li>
 	        	<li>岗位名称：${recruit.postName }</li>
 	        	<li>招聘人数：${recruit.postNum } 人</li>
+	        	<li>已报名人数：${recruit.applyNum } 人</li>
 	        	<li>薪资待遇：${recruit.salary }</li>
 	        	<li>
 	        		工作要求：

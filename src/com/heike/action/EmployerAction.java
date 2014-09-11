@@ -37,18 +37,40 @@ public class EmployerAction extends ActionSupport implements RequestAware, Sessi
 	 */
 	public String publish() throws Exception {
 		
-		recruit.setReleaseDate(new Date());	//发布日期
-		
 		employer = (Employer) session.get("employer");
+
+		if(null == employer) {
+			return ERROR;
+		}
+
+		recruit.setReleaseDate(new Date());	//发布日期
 		recruit.setEmployer(employer);
 		
 		recruitService.publish(recruit);	//保存招聘信息
 		
-//		System.out.println(recruit);
-		
-		return SUCCESS;
+		return "published";
 	}
 
+	
+	/**
+	 * 查看个人信息
+	 * @return
+	 * @throws Exception
+	 */
+	public String empInfo() throws Exception {
+		
+		employer = (Employer) session.get("employer");
+		
+		request.put("employer", employer);
+		
+		return "empInfo";
+	}
+	
+	
+	
+	
+	
+	
 	public Recruit getRecruit() {
 		return recruit;
 	}
@@ -61,7 +83,6 @@ public class EmployerAction extends ActionSupport implements RequestAware, Sessi
 	public void setEmployer(Employer employer) {
 		this.employer = employer;
 	}
-	
 
 	private Map<String, Object> request;
 	private Map<String, Object> session;
@@ -73,6 +94,4 @@ public class EmployerAction extends ActionSupport implements RequestAware, Sessi
 	public void setSession(Map<String, Object> session) {
 		this.session = session;
 	}
-	
-
 }

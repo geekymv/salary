@@ -32,7 +32,7 @@ public class Recruit {
 	private String salary;	//薪资待遇
 	private String context;	//工作要求
 	private Date releaseDate;	//发布时间
-	private Integer applyNum;		//已报名人数
+	private int applyNum;		//已报名人数
 	private Date endDate;	//报名截止时间
 	private String remarks;	//备注
 	
@@ -109,11 +109,11 @@ public class Recruit {
 	public void setReleaseDate(Date releaseDate) {
 		this.releaseDate = releaseDate;
 	}
-	@Column(columnDefinition="int default 0")
-	public Integer getApplyNum() {
+	@Column(columnDefinition="int(11) default 0")
+	public int getApplyNum() {
 		return applyNum;
 	}
-	public void setApplyNum(Integer applyNum) {
+	public void setApplyNum(int applyNum) {
 		this.applyNum = applyNum;
 	}
 	@Temporal(TemporalType.DATE)

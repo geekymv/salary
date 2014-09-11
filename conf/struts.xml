@@ -76,42 +76,26 @@
 	
 	</package>
 	
-
-	<!-- 学生 
-	<package name="student" namespace="/student" extends="struts-default">
-		<action name="loginSuccess"  class="studentAction" method="listRecruit">
-			<result name="listRecruit" type="redirectAction">
-				<param name="actionName">recruit-list</param>
-				<param name="namespace">/recruit</param>
-			</result>
-		</action>
-		
-		<action name="stu-*" class="studentAction" method="{1}">
-			<result>/WEB-INF/student/main.jsp</result>
-		</action>
-	
-	</package>
-	-->
-	
-	
-	<!-- 招聘信息
-	<package name="recruit" namespace="/recruit" extends="struts-default">
-		<action name="recruit-*" class="recruitAction" method="{1}">
-			<result name="student">/WEB-INF/student/main.jsp</result>
-			<result name="details">/WEB-INF/student/details.jsp</result>	
-			<result name="error" type="redirect">/login.jsp</result>
-		</action>
-	</package>
- 	-->
-	
 	<!-- 学院和社团 -->
 	<package name="employer" namespace="/employer" extends="struts-default">
 		<action name="loginSuccess">
 			<result>/WEB-INF/employer/main.jsp</result>
 		</action>
-		<action name="emp-*" class="employerAction" method="{1}">
-			<result>/index.jsp</result>
+		<!-- 跳转到发布信息页面 -->
+		<action name="publish">
+			<result>/WEB-INF/employer/publish.jsp</result>
 		</action>
+		
+		<action name="emp-*" class="employerAction" method="{1}">
+			<result name="published" type="redirect">/index.jsp</result>
+			
+			<result name="empInfo">/WEB-INF/employer/emp-info.jsp</result>
+			
+		</action>
+		
+		
+		
+		
 	</package>
 
 </struts>
