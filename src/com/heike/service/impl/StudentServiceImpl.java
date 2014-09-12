@@ -12,6 +12,7 @@ import com.heike.dao.StudentDAO;
 import com.heike.pojo.Recruit;
 import com.heike.pojo.Student;
 import com.heike.service.StudentService;
+import com.sun.org.apache.bcel.internal.generic.GETSTATIC;
 
 @Service("studentService")
 public class StudentServiceImpl implements StudentService {
@@ -67,6 +68,18 @@ public class StudentServiceImpl implements StudentService {
 		recruits.addAll(rs);
 		
 		return recruits;
+	}
+
+	@Override
+	public boolean validateStuNum(String number) {
+		
+		Student student = studentDAO.query(number);
+		
+		if(null == student) {	//不存在
+			return false;
+		}
+		
+		return true; //存在
 	}
 
 }

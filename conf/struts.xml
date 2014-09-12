@@ -25,14 +25,19 @@
 
 	 <package name="user" namespace="/user" extends="struts-default">
     
+    	<action name="validateUser" class="validateUser" method="validateNum">
+    		 <result type="stream" name="ajax-success">
+		        <param name="contentType">text/html</param>
+		        <param name="inputName">inputStream</param>
+		    </result>
+    	</action>
+    
 		<action name="user-*" class="userAction" method="{1}">
 			<result name="loginSuccess" type="redirectAction">
 				<param name="actionName">login-success</param>
 			</result>
-			
 			<!-- 退出登录 -->
 			<result name="logout" type="redirect">/login.jsp</result>
-
 
 			<result name="registerSuccess" type="redirect">/login.jsp</result>
 			<result name="input">/login.jsp</result>
@@ -92,9 +97,6 @@
 			<result name="empInfo">/WEB-INF/employer/emp-info.jsp</result>
 			
 		</action>
-		
-		
-		
 		
 	</package>
 

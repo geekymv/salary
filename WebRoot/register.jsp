@@ -89,6 +89,45 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 <script type="text/javascript">
 $(function(){
+	
+	/*验证学号是否重复*/
+	$(":input[id=user]").change(function(){
+		
+		var val = $(this).val();
+		val = $.trim(val);
+		
+		var $this = $(this);
+		
+		if(val != ""){
+
+			$this.nextAll("font").remove();
+			
+			var url = "user/validateUser";
+			var args = {"number":val};
+
+			$.post(url, args, function(data){
+				if(data == "success"){	//number可用
+					/*没有消息是最好的消息
+					$this.after("<font color='green'>学号可用</font>");
+					*/
+				}else if(data == "fail"){	//number不可用
+					$this.after("<font color='red'>学号已注册，<a href='login.jsp'>请点击此处登录</a></font>");
+				}else {
+					alert("服务器错误！");
+				}
+			});
+			
+		}else {
+			alert("学号不能为空！");
+			this.focus();
+		}
+		
+	});
+	
+	
+	
+	
+	
 	$("#wizard").scrollable({
 		onSeek: function(event,i){
 			$("#status li").removeClass("active").eq(i).addClass("active");

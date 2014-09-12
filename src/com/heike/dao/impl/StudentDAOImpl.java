@@ -33,7 +33,14 @@ public class StudentDAOImpl implements StudentDAO {
 
 	@Override
 	public Student query(String number) {
-		return null;
+		
+		String hql = "from Student s where s.number = ?";
+		
+		Student student = (Student) getSession().createQuery(hql)
+				.setString(0, number).uniqueResult();
+
+		
+		return student;
 	}
 
 

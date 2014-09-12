@@ -38,7 +38,11 @@ public interface StudentService {
 	 */
 	public List<Recruit> listRecruit(Integer id);
 	
-	
-	
+	/**
+	 * 判断学生的学号是否已经存在
+	 * @param number
+	 * @return
+	 */
+	public boolean validateStuNum(String number);
 	
 }
