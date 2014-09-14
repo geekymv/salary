@@ -1,6 +1,7 @@
-package com.heike.action;
+package com.heike.action.employer;
 
 import java.util.Date;
+import java.util.List;
 import java.util.Map;
 
 import org.apache.struts2.interceptor.RequestAware;
@@ -11,6 +12,7 @@ import org.springframework.stereotype.Controller;
 
 import com.heike.pojo.Employer;
 import com.heike.pojo.Recruit;
+import com.heike.pojo.Student;
 import com.heike.service.EmployerService;
 import com.heike.service.RecruitService;
 import com.opensymphony.xwork2.ActionSupport;
@@ -27,6 +29,7 @@ public class EmployerAction extends ActionSupport implements RequestAware, Sessi
 	private RecruitService recruitService;
 	
 	private Recruit recruit;
+	
 	private Employer employer;
 	
 	
@@ -66,7 +69,19 @@ public class EmployerAction extends ActionSupport implements RequestAware, Sessi
 		return "empInfo";
 	}
 	
-	
+	/**
+	 * 显示所有已招聘的学生助理
+	 * @return
+	 * @throws Exception
+	 */
+	public String stuList() throws Exception {
+		
+		List<Student> students = employerService.listStudent(employer.getId());
+		
+		request.put("students", students);
+		
+		return "stuList";
+	}
 	
 	
 	

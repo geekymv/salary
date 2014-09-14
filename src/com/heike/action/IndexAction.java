@@ -46,7 +46,7 @@ public class IndexAction extends ActionSupport implements RequestAware{
 	 */
 	public String list() throws Exception {
 
-		pageUtil = recruitService.getRecruits(page, 4);
+		pageUtil = recruitService.getRecruits(page, 1);
 		System.out.println(pageUtil.getDatas());
 		
 		request.put("pageUtil", pageUtil);

@@ -3,6 +3,7 @@ package com.heike.dao;
 import java.util.List;
 
 import com.heike.pojo.Employer;
+import com.heike.pojo.Student;
 
 public interface EmployerDAO {
 	/**
@@ -26,7 +27,12 @@ public interface EmployerDAO {
 	 */
 	public List<Employer> queryAll();
 	
-	
+	/**
+	 * 根据Employer编号查询已经招聘的学生
+	 * @param id
+	 * @return
+	 */
+	public List<Student> listStudent(Integer id);
 	
 
 }

@@ -1,4 +1,4 @@
-package com.heike.action;
+package com.heike.action.student;
 
 import java.util.List;
 import java.util.Map;

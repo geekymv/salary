@@ -1,6 +1,8 @@
 package com.heike.dao.impl;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -9,6 +11,7 @@ import org.springframework.stereotype.Repository;
 
 import com.heike.dao.EmployerDAO;
 import com.heike.pojo.Employer;
+import com.heike.pojo.Student;
 
 @Repository("employerDAO")
 public class EmployerDAOImpl implements EmployerDAO {
@@ -45,6 +48,18 @@ public class EmployerDAOImpl implements EmployerDAO {
 		return (Employer) getSession().createQuery(hql).
 			setString(0, number).setString(1, password).uniqueResult();
 		
+	}
+
+
+	@Override
+	public List<Student> listStudent(Integer id) {
+		
+		Employer employer = (Employer) getSession().get(Employer.class, id);
+		
+		List<Student> students = new ArrayList<Student>();
+		students.addAll(employer.getStudents());
+		
+		return students;
 	}
 
 }
