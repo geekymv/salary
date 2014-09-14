@@ -1,6 +1,9 @@
 package com.heike.service;
 
+import java.util.List;
+
 import com.heike.pojo.Recruit;
+import com.heike.pojo.Student;
 import com.heike.utils.PageUtil;
 
 public interface RecruitService {
@@ -28,6 +31,11 @@ public interface RecruitService {
 	 */
 	public PageUtil<Recruit> getRecruits(int page, int pageSize);
 	
-	
+	/**
+	 * 根据Recruit的id获取报名的学生信息
+	 * @param id
+	 * @return
+	 */
+	public List<Student> listStudent(Integer id);
 
 }

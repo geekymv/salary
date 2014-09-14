@@ -3,6 +3,7 @@ package com.heike.dao;
 import java.util.List;
 
 import com.heike.pojo.Recruit;
+import com.heike.pojo.Student;
 import com.heike.utils.PageUtil;
 
 public interface RecruitDAO {
@@ -21,6 +22,14 @@ public interface RecruitDAO {
 	 * @return
 	 */
 	public Recruit query(Integer id);
+	
+	/**
+	 * 根据Recruit的id获取报名的学生信息
+	 * @param id
+	 * @return
+	 */
+	public List<Student> listStudent(Integer id);
+	
 	
 	/**
 	 * 分页查询招聘信息

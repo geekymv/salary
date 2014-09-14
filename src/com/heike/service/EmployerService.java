@@ -3,7 +3,9 @@ package com.heike.service;
 import java.util.List;
 
 import com.heike.pojo.Employer;
+import com.heike.pojo.Recruit;
 import com.heike.pojo.Student;
+import com.heike.utils.PageUtil;
 
 public interface EmployerService {
 	
@@ -21,5 +23,15 @@ public interface EmployerService {
 	 * @return
 	 */
 	public List<Student> listStudent(Integer id);
+	
+	
+	/**
+	 * 根据Employer的id分页查询Employer的招聘信息
+	 * @param id
+	 * @param page
+	 * @param pageSize
+	 * @return
+	 */
+	public PageUtil<Recruit> getRecruitsByPage(Integer id,int page, int pageSize);
 	
 }

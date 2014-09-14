@@ -7,8 +7,10 @@ import org.springframework.stereotype.Service;
 
 import com.heike.dao.EmployerDAO;
 import com.heike.pojo.Employer;
+import com.heike.pojo.Recruit;
 import com.heike.pojo.Student;
 import com.heike.service.EmployerService;
+import com.heike.utils.PageUtil;
 
 @Service("employerService")
 public class EmployerServiceImpl implements EmployerService{
@@ -28,6 +30,13 @@ public class EmployerServiceImpl implements EmployerService{
 	public List<Student> listStudent(Integer id) {
 		
 		return employerDAO.listStudent(id);
+	}
+
+	@Override
+	public PageUtil<Recruit> getRecruitsByPage(Integer id, int page,
+			int pageSize) {
+		
+		return employerDAO.getRecruitsByPage(id, page, pageSize);
 	}
 	
 	

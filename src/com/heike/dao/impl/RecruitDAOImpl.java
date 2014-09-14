@@ -1,5 +1,6 @@
 package com.heike.dao.impl;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.hibernate.Session;
@@ -9,6 +10,7 @@ import org.springframework.stereotype.Repository;
 
 import com.heike.dao.RecruitDAO;
 import com.heike.pojo.Recruit;
+import com.heike.pojo.Student;
 import com.heike.utils.PageUtil;
 
 @Repository("recruitDAO")
@@ -69,6 +71,17 @@ public class RecruitDAOImpl implements RecruitDAO {
 	public Recruit query(Integer id) {
 
 		return (Recruit) getSession().get(Recruit.class, id);
+	}
+
+
+	@Override
+	public List<Student> listStudent(Integer id) {
+		Recruit recruit = (Recruit) getSession().get(Recruit.class, id);
+		
+		List<Student> students = new ArrayList<Student>();
+		students.addAll(recruit.getStudents());
+		
+		return students;
 	}
 
 }

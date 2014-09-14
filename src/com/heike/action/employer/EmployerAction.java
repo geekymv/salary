@@ -15,6 +15,7 @@ import com.heike.pojo.Recruit;
 import com.heike.pojo.Student;
 import com.heike.service.EmployerService;
 import com.heike.service.RecruitService;
+import com.heike.utils.PageUtil;
 import com.opensymphony.xwork2.ActionSupport;
 
 @Controller("employerAction")
@@ -29,8 +30,10 @@ public class EmployerAction extends ActionSupport implements RequestAware, Sessi
 	private RecruitService recruitService;
 	
 	private Recruit recruit;
-	
 	private Employer employer;
+	
+	private int page = 1;
+	private PageUtil<Recruit> pageUtil;
 	
 	
 	/**
@@ -69,6 +72,28 @@ public class EmployerAction extends ActionSupport implements RequestAware, Sessi
 		return "empInfo";
 	}
 	
+	
+	/**
+	 * 显示Employer发布的招聘信息
+	 * @return
+	 * @throws Exception
+	 */
+	public String recruitList() throws Exception {
+		
+		employer = (Employer) session.get("employer");
+		
+		if(null == employer){
+			return ERROR;
+		}
+		
+		pageUtil = employerService.getRecruitsByPage(employer.getId(), page, 1);
+		
+		request.put("pageUtil", pageUtil);
+		
+		return "recruitList";
+		
+	}
+	
 	/**
 	 * 显示所有已招聘的学生助理
 	 * @return
@@ -81,6 +106,21 @@ public class EmployerAction extends ActionSupport implements RequestAware, Sessi
 		request.put("students", students);
 		
 		return "stuList";
+	}
+	
+	/**
+	 * 查看某条招聘信息所有报名的学生
+	 */
+	public String stuApply() throws Exception {
+		
+		List<Student> students = recruitService.listStudent(recruit.getId());
+		
+		request.put("students", students);
+		
+		System.out.println(students);
+		
+		
+		return "stuApply";
 	}
 	
 	

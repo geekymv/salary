@@ -96,6 +96,8 @@
 			
 			<result name="empInfo">/WEB-INF/employer/emp-info.jsp</result>
 			
+			<result name="recruitList">//WEB-INF/employer/list-recruit.jsp</result>
+			
 		</action>
 		
 	</package>

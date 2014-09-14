@@ -11,7 +11,9 @@ import org.springframework.stereotype.Repository;
 
 import com.heike.dao.EmployerDAO;
 import com.heike.pojo.Employer;
+import com.heike.pojo.Recruit;
 import com.heike.pojo.Student;
+import com.heike.utils.PageUtil;
 
 @Repository("employerDAO")
 public class EmployerDAOImpl implements EmployerDAO {
@@ -60,6 +62,40 @@ public class EmployerDAOImpl implements EmployerDAO {
 		students.addAll(employer.getStudents());
 		
 		return students;
+	}
+
+
+	@Override
+	public PageUtil<Recruit> getRecruitsByPage(Integer id, int page,
+			int pageSize) {
+		
+		PageUtil<Recruit> pageUtil = new PageUtil<Recruit>();
+		
+		int rowCounts = getRowCounts(id);
+		
+		pageUtil.getTotalPage(rowCounts, pageSize);	//计算总页数
+		
+		String hql = "from Recruit r where r.employer.id = ?";
+		
+		@SuppressWarnings("unchecked")
+		List<Recruit> recruits = getSession().createQuery(hql)	//
+								.setInteger(0, id)	//
+								.setFirstResult((page-1)*pageSize).setMaxResults(pageSize).list();
+		
+		pageUtil.setDatas(recruits);
+		
+		
+		return pageUtil;
+		
+	}
+
+
+	private int getRowCounts(Integer id) {
+		long rowCounts = (Long) getSession().	//
+				createQuery("select count(*) from Recruit r where r.employer.id = ?")	//
+				.setInteger(0, id).uniqueResult();
+	
+		return Integer.valueOf(String.valueOf(rowCounts));
 	}
 
 }

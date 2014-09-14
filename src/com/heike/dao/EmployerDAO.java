@@ -3,7 +3,9 @@ package com.heike.dao;
 import java.util.List;
 
 import com.heike.pojo.Employer;
+import com.heike.pojo.Recruit;
 import com.heike.pojo.Student;
+import com.heike.utils.PageUtil;
 
 public interface EmployerDAO {
 	/**
@@ -28,11 +30,22 @@ public interface EmployerDAO {
 	public List<Employer> queryAll();
 	
 	/**
+	 * 根据Employer的id分页查询Employer的招聘信息
+	 * @param id
+	 * @param page
+	 * @param pageSize
+	 * @return
+	 */
+	public PageUtil<Recruit> getRecruitsByPage(Integer id,int page, int pageSize);
+	
+	/**
 	 * 根据Employer编号查询已经招聘的学生
 	 * @param id
 	 * @return
 	 */
 	public List<Student> listStudent(Integer id);
+	
+	
 	
 
 }

@@ -1,10 +1,13 @@
 package com.heike.service.impl;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.heike.dao.RecruitDAO;
 import com.heike.pojo.Recruit;
+import com.heike.pojo.Student;
 import com.heike.service.RecruitService;
 import com.heike.utils.PageUtil;
 
@@ -32,6 +35,13 @@ public class RecruitServiceImpl implements RecruitService {
 	public Recruit get(Integer id) {
 		
 		return recruitDAO.query(id);
+	}
+
+
+	@Override
+	public List<Student> listStudent(Integer id) {
+		
+		return recruitDAO.listStudent(id);
 	}
 
 }
