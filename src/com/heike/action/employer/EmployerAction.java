@@ -28,8 +28,10 @@ public class EmployerAction extends ActionSupport implements RequestAware, Sessi
 	
 	@Autowired
 	private RecruitService recruitService;
-	
+
+	private Integer id;	//招聘信息id
 	private Recruit recruit;
+	
 	private Employer employer;
 	
 	private int page = 1;
@@ -95,6 +97,21 @@ public class EmployerAction extends ActionSupport implements RequestAware, Sessi
 	}
 	
 	/**
+	 * 查看招聘信息
+	 * @return
+	 * @throws Exception
+	 */
+	public String details() throws Exception {
+
+		recruit = recruitService.get(id);
+		
+		request.put("recruit", recruit);
+		
+		return "details";
+	}
+	
+	
+	/**
 	 * 显示所有已招聘的学生助理
 	 * @return
 	 * @throws Exception
@@ -108,24 +125,12 @@ public class EmployerAction extends ActionSupport implements RequestAware, Sessi
 		return "stuList";
 	}
 	
-	/**
-	 * 查看某条招聘信息所有报名的学生
-	 */
-	public String stuApply() throws Exception {
-		
-		List<Student> students = recruitService.listStudent(recruit.getId());
-		
-		request.put("students", students);
-		
-		System.out.println(students);
-		
-		
-		return "stuApply";
+	public Integer getId() {
+		return id;
 	}
-	
-	
-	
-	
+	public void setId(Integer id) {
+		this.id = id;
+	}
 	public Recruit getRecruit() {
 		return recruit;
 	}
@@ -138,6 +143,21 @@ public class EmployerAction extends ActionSupport implements RequestAware, Sessi
 	public void setEmployer(Employer employer) {
 		this.employer = employer;
 	}
+
+	public int getPage() {
+		return page;
+	}
+	public void setPage(int page) {
+		this.page = page;
+	}
+	public PageUtil<Recruit> getPageUtil() {
+		return pageUtil;
+	}
+	public void setPageUtil(PageUtil<Recruit> pageUtil) {
+		this.pageUtil = pageUtil;
+	}
+
+
 
 	private Map<String, Object> request;
 	private Map<String, Object> session;

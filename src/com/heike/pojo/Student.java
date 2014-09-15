@@ -14,6 +14,8 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import org.apache.struts2.json.annotations.JSON;
+
 /**
  * 学生类
  * @author Geek_ymv
@@ -49,11 +51,13 @@ public class Student {
 	
 	//由多的一方维护关联关系(只有OneToOne,OneToMany,ManyToMany上才有mappedBy属性)，student是多的一方Salary的属性
 	@OneToMany(mappedBy="student")	
+	@JSON(serialize=false)
 	public Set<Salary> getSalarys() {
 		return salarys;
 	}
 	
 	@ManyToMany(mappedBy="students")	//由Employer维护关联关系
+	@JSON(serialize=false)
 	public Set<Employer> getEmployers() {
 		return employers;
 	}
@@ -63,6 +67,7 @@ public class Student {
 		return regTime;
 	}
 	@ManyToMany(mappedBy="students", fetch=FetchType.EAGER)
+	@JSON(serialize=false)
 	public Set<Recruit> getRecruits() {
 		return recruits;
 	}

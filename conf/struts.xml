@@ -24,7 +24,6 @@
 	</package>
 
 	 <package name="user" namespace="/user" extends="struts-default">
-    
     	<action name="validateUser" class="validateUser" method="validateNum">
     		 <result type="stream" name="ajax-success">
 		        <param name="contentType">text/html</param>
@@ -82,21 +81,30 @@
 	</package>
 	
 	<!-- 学院和社团 -->
-	<package name="employer" namespace="/employer" extends="struts-default">
+	<package name="employer" namespace="/employer" extends="json-default">
 		<action name="loginSuccess">
-			<result>/WEB-INF/employer/main.jsp</result>
+			<result type="redirectAction">emp-recruitList</result>
 		</action>
 		<!-- 跳转到发布信息页面 -->
 		<action name="publish">
 			<result>/WEB-INF/employer/publish.jsp</result>
 		</action>
 		
+		<action name="queryStudents" class="QueryStudentsAction">
+			<result type="json"></result>
+		</action>
+		
+		
 		<action name="emp-*" class="employerAction" method="{1}">
 			<result name="published" type="redirect">/index.jsp</result>
 			
 			<result name="empInfo">/WEB-INF/employer/emp-info.jsp</result>
 			
-			<result name="recruitList">//WEB-INF/employer/list-recruit.jsp</result>
+			<result name="recruitList">//WEB-INF/employer/main.jsp</result>
+			<result name="details">/WEB-INF/employer/details.jsp</result>
+			
+			
+			<result name="error">/login.jsp</result>
 			
 		</action>
 		

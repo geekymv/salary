@@ -48,9 +48,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		        <div class="panel-heading">功能导航</div>
 			   	<div class="list-group">
 				  <a href="employer/emp-empInfo.do" class="list-group-item">我的资料</a>
-				  <a href="#" class="list-group-item">我的工作</a>
-				  <a href="#" class="list-group-item">发放工资</a>
+				  <a href="employer/emp-recruitList.do" class="list-group-item">我的招聘</a>
 				  <a href="employer/publish.do" class="list-group-item">发布招聘</a>
+				  <a href="#" class="list-group-item">发放工资</a>
 				</div>
 			</div>
       	</div>

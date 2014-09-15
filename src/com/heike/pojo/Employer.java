@@ -13,6 +13,8 @@ import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import org.apache.struts2.json.annotations.JSON;
+
 /**
  * 用工单位类(学生处和学院)
  * @author Geek_ymv
@@ -52,6 +54,7 @@ public class Employer {
 			joinColumns={@JoinColumn(name="emp_id")},
 			inverseJoinColumns={@JoinColumn(name="stu_id")}	//Employer维护关联关系
 			)
+	@JSON(serialize=false)
 	public Set<Student> getStudents() {
 		return students;
 	}
