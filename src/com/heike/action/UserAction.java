@@ -13,6 +13,7 @@ import com.heike.pojo.Employer;
 import com.heike.pojo.Student;
 import com.heike.service.EmployerService;
 import com.heike.service.StudentService;
+import com.heike.utils.EncryptUtil;
 import com.opensymphony.xwork2.ActionSupport;
 
 @Controller("userAction")
@@ -45,6 +46,9 @@ public class UserAction extends ActionSupport implements SessionAware{
 	public String login() throws Exception {
 	
 //		System.out.println(rememberMe);
+		
+		//对密码使用md5加密
+		password = EncryptUtil.md5Encrypt(password);
 		
 		employer = employerService.login(account, password);
 		
@@ -99,6 +103,11 @@ public class UserAction extends ActionSupport implements SessionAware{
 	public String register() throws Exception {
 		
 		student.setRegTime(new Date());	//设置注册时间
+		String password = student.getPassword();
+		
+		//对密码使用md5加密
+		password = EncryptUtil.md5Encrypt(password);
+		student.setPassword(password);
 		
 		studentService.register(student);
 		

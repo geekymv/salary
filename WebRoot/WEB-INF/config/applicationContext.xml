@@ -14,8 +14,13 @@
 		http://www.springframework.org/schema/tx/spring-tx-4.0.xsd">
 
 
-	<!-- 配置自动扫描的包-->
+	<!-- 配置自动扫描的包
 	<context:component-scan base-package="com.heike"></context:component-scan>
+	 -->
+	<!-- 可以指定具体要扫描的包 -->
+	<context:component-scan 
+		base-package="com.heike.dao.impl,com.heike.service.impl,com.heike.action"></context:component-scan>
+	
 	 
 	<!-- 导入数据库资源文件 -->
 	<context:property-placeholder location="classpath:db.properties"/>
@@ -35,7 +40,7 @@
 	<bean id="sessionFactory" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
 		<property name="dataSource" ref="dataSource"></property>
 		<property name="configLocation" value="classpath:hibernate.cfg.xml"></property>
-		<!-- 关联.hbm.xml文件 -->
+
 		<property name="annotatedClasses">
 			<list>
 				<value>com.heike.pojo.Student</value>
@@ -47,7 +52,7 @@
 	</bean>
 	
 	<!-- 配置 Spring 的声明式事务 -->
-	<!-- 1. 配置 hibernate 的事务管理器 -->
+	<!-- 1. 配置 hibernate 的事务管理器：在Service层面上实现事务管理 -->
 	<bean id="transactionManager" class="org.springframework.orm.hibernate4.HibernateTransactionManager">
 		<property name="sessionFactory" ref="sessionFactory"></property>
 	</bean>
@@ -55,8 +60,19 @@
 	<!-- 2. 配置事务属性 -->
 	<tx:advice id="txAdvice" transaction-manager="transactionManager">
 		<tx:attributes>
-			<tx:method name="get*" read-only="true"/>
-			<tx:method name="*"/>
+			<!-- 写操作 -->
+			<tx:method name="save*" propagation="REQUIRED" isolation="DEFAULT"/>
+			<tx:method name="update*" propagation="REQUIRED" isolation="DEFAULT"/>
+			<tx:method name="delete*" propagation="REQUIRED" isolation="DEFAULT"/>
+			<tx:method name="batch*" propagation="REQUIRED" isolation="DEFAULT"/>
+			
+			<!-- 读操作 -->
+			<tx:method name="load*" propagation="REQUIRED" isolation="DEFAULT" read-only="true"/>
+			<tx:method name="get*" propagation="REQUIRED" isolation="DEFAULT" read-only="true"/>
+			<tx:method name="find*" propagation="REQUIRED" isolation="DEFAULT" read-only="true"/>
+			
+								<!-- 传播行为 -->			<!-- 隔离级别 -->
+			<tx:method name="*" propagation="REQUIRED" isolation="DEFAULT"/>
 		</tx:attributes>
 	</tx:advice>
 	

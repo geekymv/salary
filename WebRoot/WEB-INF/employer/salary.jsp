@@ -127,19 +127,22 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	                </tr>
 	            </thead>
 	            <tbody>
-	            	
 	            	<s:if test="#request.students == null || #request.students.size() == 0">
 	            		没有学生信息！
 	            	</s:if>
 	            	<s:else>
-	            		
-	            		<form action="" method="post">
+            		<form action="" method="post">
 	            		<s:iterator value="#request.students">
 	            			<tr>
 	            				<td>
 	            					<input type="checkbox" name="check"/>
 	            				</td>
-		            			<td>${number }</td> 
+		            			<td>
+		            				${number }
+		            				<input type="hidden" name="stuId" value="${id }" />
+		            				<input type="hidden" name="empId" value="${sessionScope.employer.id }" />
+		            				
+		            			</td> 
 		            			<td>${name }</td> 
 		            			<td>
 		            				<input type="text" name="salary.salary"/>
@@ -155,12 +158,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 											<%	
 											}
 										 %>
-										
 		            				</select>
 		            			</td>
 	            			</tr>
 	            		</s:iterator>
-	            		</form>
+            		
+            			<input type="submit" value="提交"/>
+            		
+            		</form>
 	            	</s:else>
 	            </tbody>
 	          </table>
