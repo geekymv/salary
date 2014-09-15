@@ -2,8 +2,8 @@ package com.heike.dao;
 
 import java.util.List;
 
+import com.heike.dto.RecruitStudent;
 import com.heike.pojo.Recruit;
-import com.heike.pojo.Student;
 import com.heike.utils.PageUtil;
 
 public interface RecruitDAO {
@@ -24,12 +24,11 @@ public interface RecruitDAO {
 	public Recruit query(Integer id);
 	
 	/**
-	 * 根据Recruit的id获取报名的学生信息
+	 * 根据Recruit的id获取报名信息
 	 * @param id
 	 * @return
 	 */
-	public List<Student> listStudent(Integer id);
-	
+	public List<RecruitStudent> listRecruitStudent(Integer id);
 	
 	/**
 	 * 分页查询招聘信息
@@ -37,18 +36,38 @@ public interface RecruitDAO {
 	 */
 	public PageUtil<Recruit> getRecruitsByPage(int page, int pageSize);
 	
-//	/**
-//	 * 查询所有招聘信息
-//	 * @return
-//	 */
-//	public List<Recruit> list();
-	
 	/**
 	 * 获得招聘信息表中的总记录数
 	 * @return
 	 */
 	public int getRowCounts();
 	
+	/**
+	 * 学生报名招聘
+	 * @param rs
+	 */
+	public void applyJobt(RecruitStudent rs);
+	
+	/**
+	 * 查看该学生是否报名了该招聘
+	 * @param recId
+	 * @param stuId
+	 * @return true已报名, false未报名
+	 */
+	public boolean isApply(Integer stuId, Integer recId);
+	
+	/**
+	 * 更新学生报名
+	 */
+	public void update(RecruitStudent rs); 
+	
+	/**
+	 * 查询
+	 * @param stuId
+	 * @param recId
+	 * @return
+	 */
+	public RecruitStudent queryRecruitStudent(Integer stuId, Integer recId);
 	
 	
 	

@@ -4,7 +4,6 @@ import java.util.List;
 
 import com.heike.pojo.Recruit;
 import com.heike.pojo.Student;
-import com.heike.utils.PageUtil;
 
 public interface StudentService {
 

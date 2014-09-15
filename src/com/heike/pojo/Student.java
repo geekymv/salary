@@ -4,9 +4,11 @@ import java.util.Date;
 import java.util.LinkedHashSet;
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
@@ -15,6 +17,8 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 import org.apache.struts2.json.annotations.JSON;
+
+import com.heike.dto.RecruitStudent;
 
 /**
  * 学生类
@@ -39,12 +43,12 @@ public class Student {
 
 	private Set<Salary> salarys = new LinkedHashSet<Salary>();	//一对多的关联关系，Salary是多的一方
 	
-	private Set<Recruit> recruits = new LinkedHashSet<Recruit>();
+	private Set<RecruitStudent> recruitStudents = new LinkedHashSet<RecruitStudent>();
 	
 	
 
 	@Id
-	@GeneratedValue
+	@GeneratedValue(strategy=GenerationType.TABLE)
 	public Integer getId() {
 		return id;
 	}
@@ -56,7 +60,7 @@ public class Student {
 		return salarys;
 	}
 	
-	@ManyToMany(mappedBy="students")	//由Employer维护关联关系
+	@ManyToMany(mappedBy="students", cascade=CascadeType.ALL)	//由Employer维护关联关系
 	@JSON(serialize=false)
 	public Set<Employer> getEmployers() {
 		return employers;
@@ -66,16 +70,15 @@ public class Student {
 	public Date getRegTime() {
 		return regTime;
 	}
-	@ManyToMany(mappedBy="students", fetch=FetchType.EAGER)
+	@OneToMany(mappedBy="student")	//fetch=FetchType.EAGER
 	@JSON(serialize=false)
-	public Set<Recruit> getRecruits() {
-		return recruits;
+	public Set<RecruitStudent> getRecruitStudents() {
+		return recruitStudents;
+	}
+	public void setRecruitStudents(Set<RecruitStudent> recruitStudents) {
+		this.recruitStudents = recruitStudents;
 	}
 
-	public void setRecruits(Set<Recruit> recruits) {
-		this.recruits = recruits;
-	}
-	
 	public void setRegTime(Date regTime) {
 		this.regTime = regTime;
 	}

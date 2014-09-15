@@ -47,7 +47,7 @@ public class StudentAction extends ActionSupport implements SessionAware, Reques
 			return ERROR;
 		}
 	
-		pageUtil = recruitService.getRecruits(page, 4);
+		pageUtil = recruitService.getRecruits(page, 1);
 		System.out.println(pageUtil.getDatas());
 		
 		request.put("pageUtil", pageUtil);
@@ -101,10 +101,13 @@ public class StudentAction extends ActionSupport implements SessionAware, Reques
 		}
 		
 		recruit = recruitService.get(recruit.getId());
+	
+		
+	
+		boolean isApply = recruitService.isApply(student.getId(), recruit.getId());
 		
 		//判断该生是否已经申请了该工作
-		boolean find = recruit.getStudents().contains(student);
-		if(find){	//包含该生
+		if(isApply){
 			System.out.println("你已经报过名了！！！");
 			return "applyed";
 		}	
@@ -135,8 +138,7 @@ public class StudentAction extends ActionSupport implements SessionAware, Reques
 	 * @return
 	 */
 	public String approveJob() throws Exception {
-		
-		
+
 		
 		
 		return "approve";

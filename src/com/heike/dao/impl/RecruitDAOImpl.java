@@ -1,7 +1,9 @@
 package com.heike.dao.impl;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Set;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -9,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.heike.dao.RecruitDAO;
+import com.heike.dto.RecruitStudent;
 import com.heike.pojo.Recruit;
 import com.heike.pojo.Student;
 import com.heike.utils.PageUtil;
@@ -57,9 +60,6 @@ public class RecruitDAOImpl implements RecruitDAO {
 
 	@Override
 	public int getRowCounts() {
-		
-//		int rowCounts = getSession().createQuery("from Recruit").list().size();
-		
 		long rowCounts = (Long) getSession().	//
 					createQuery("select count(*) from Recruit").uniqueResult();
 		
@@ -69,19 +69,67 @@ public class RecruitDAOImpl implements RecruitDAO {
 
 	@Override
 	public Recruit query(Integer id) {
-
 		return (Recruit) getSession().get(Recruit.class, id);
 	}
 
 
 	@Override
-	public List<Student> listStudent(Integer id) {
+	public List<RecruitStudent> listRecruitStudent(Integer id) {
+		
 		Recruit recruit = (Recruit) getSession().get(Recruit.class, id);
 		
-		List<Student> students = new ArrayList<Student>();
-		students.addAll(recruit.getStudents());
+		List<RecruitStudent> students = new ArrayList<RecruitStudent>();
 		
+		Set<RecruitStudent> recruitStudents = recruit.getRecruitStudents();
+		
+		students.addAll(recruitStudents);
+
 		return students;
 	}
 
+
+	@Override
+	public boolean isApply(Integer stuId, Integer recId) {
+		
+		RecruitStudent rs = this.queryRecruitStudent(stuId, recId);
+
+		if(null != rs){
+			return true;
+		}
+		
+		return false;
+	}
+
+
+	@Override
+	public void applyJobt(RecruitStudent rs) {
+		
+		getSession().saveOrUpdate(rs);
+		
+	}
+
+
+	@Override
+	public void update(RecruitStudent rs) {
+		getSession().update(rs);
+	}
+
+
+	@Override
+	public RecruitStudent queryRecruitStudent(Integer stuId, Integer recId) {
+
+		String hql = "from RecruitStudent rs where rs.student.id=? and rs.recruit.id=?";
+		
+		RecruitStudent rs = (RecruitStudent) getSession().createQuery(hql)	//
+				.setInteger(0, stuId).setInteger(1, recId)	//
+				.uniqueResult();
+		
+		return rs;
+	}
+
+
 }
+
+
+
+

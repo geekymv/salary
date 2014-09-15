@@ -19,10 +19,9 @@ public class EmployerServiceImpl implements EmployerService{
 	private EmployerDAO employerDAO;
 	
 	
-	
 	@Override
 	public Employer login(String account, String password) {
-		
+
 		return employerDAO.query(account, password);
 	}
 
@@ -38,8 +37,5 @@ public class EmployerServiceImpl implements EmployerService{
 		
 		return employerDAO.getRecruitsByPage(id, page, pageSize);
 	}
-	
-	
-	
 
 }

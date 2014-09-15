@@ -1,6 +1,7 @@
 package com.heike.service.impl;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
 
@@ -9,10 +10,10 @@ import org.springframework.stereotype.Service;
 
 import com.heike.dao.RecruitDAO;
 import com.heike.dao.StudentDAO;
+import com.heike.dto.RecruitStudent;
 import com.heike.pojo.Recruit;
 import com.heike.pojo.Student;
 import com.heike.service.StudentService;
-import com.sun.org.apache.bcel.internal.generic.GETSTATIC;
 
 @Service("studentService")
 public class StudentServiceImpl implements StudentService {
@@ -42,8 +43,14 @@ public class StudentServiceImpl implements StudentService {
 		boolean flag = true;
 		
 		try {
-			recruit.getStudents().add(student);
-			student.getRecruits().add(recruit);
+
+			RecruitStudent rs = new RecruitStudent();
+			rs.setStatus(0);	//等待审核
+			
+			rs.setStudent(student);
+			rs.setRecruit(recruit);
+			
+			recruitDAO.applyJobt(rs);
 			
 			recruit.setApplyNum(recruit.getApplyNum()+1);
 			
@@ -63,9 +70,12 @@ public class StudentServiceImpl implements StudentService {
 		
 		List<Recruit> recruits = new ArrayList<Recruit>();
 		
-		Set<Recruit> rs = studentDAO.query(id).getRecruits();
+		Set<RecruitStudent> rStudents = studentDAO.query(id).getRecruitStudents();
 		
-		recruits.addAll(rs);
+		for(Iterator<RecruitStudent> iter = rStudents.iterator(); iter.hasNext(); ){
+			RecruitStudent rs = iter.next();
+			recruits.add(rs.getRecruit());
+		}
 		
 		return recruits;
 	}

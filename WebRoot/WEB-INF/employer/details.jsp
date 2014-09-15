@@ -199,14 +199,28 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		var html = "<table class='table table-bordered table-hover table-condensed'>"
 			 + "<caption>学生信息</caption>"
 			 + "<tr>"
-			 + "<th>学号</th> <th>姓名</th> <th>专业</th>"
+			 + "<th>学号</th> <th>姓名</th> <th>专业</th> <th>操作</th>"
 			 + "</tr>";
-			 
+			
+			var flag = "";
+			var btn = ""; 
 			for(var i = 0; i < data.students.length; i++){
 				var student = data.students[i];
+				var status = data.status[i];
+				
+				if(status == 0){	//等待处理
+					flag = "等待处理";
+				}else if(status == 1) {	//已通过
+					flag = "已通过";
+				}else {	//未通过
+					flag = "未通过";
+				}				
+				
 				html += "<tr>"
 					 + "<td align='center'>"+student.number+"</td>"+ "<td>"+student.name+"</td>"
 					 + "<td>"+student.profession+"</td>" 
+					 + "<td><button id='pass' onclick='pass(1);'>考核通过</button><button id='notPass'>考核未通过</button><span style='color:red'>"+flag+"</span></td>"
+					 
 					 + "</tr>";
 			}
 				html += "</table>";
@@ -215,6 +229,17 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			
 		});
 	});
+	
+	function pass(num){
+		alert("world" + num);
+		
+		$.post("<%=request.getContextPath()%>/employer/examineStudent.do", 
+				{"id": $("#rId").val(), "examine":num,"stuId":1}, 
+				function(data){
+			
+		});
+	}
+	
 
 </script>
 

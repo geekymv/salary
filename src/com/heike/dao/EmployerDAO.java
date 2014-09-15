@@ -24,6 +24,15 @@ public interface EmployerDAO {
 	public Employer query(String number, String password);
 	
 	/**
+	 * 根据id查询Employer
+	 * @param number
+	 * @param password
+	 * @return
+	 */
+	public Employer query(Integer empId);
+	
+	
+	/**
 	 * 查询所有
 	 * @return
 	 */

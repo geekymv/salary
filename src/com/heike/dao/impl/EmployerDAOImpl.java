@@ -2,7 +2,6 @@ package com.heike.dao.impl;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -52,6 +51,13 @@ public class EmployerDAOImpl implements EmployerDAO {
 		
 	}
 
+	@Override
+	public Employer query(Integer empId) {
+	
+		Employer employer = (Employer) getSession().get(Employer.class, empId);
+		
+		return employer;
+	}
 
 	@Override
 	public List<Student> listStudent(Integer id) {
@@ -59,6 +65,7 @@ public class EmployerDAOImpl implements EmployerDAO {
 		Employer employer = (Employer) getSession().get(Employer.class, id);
 		
 		List<Student> students = new ArrayList<Student>();
+		
 		students.addAll(employer.getStudents());
 		
 		return students;
@@ -97,5 +104,8 @@ public class EmployerDAOImpl implements EmployerDAO {
 	
 		return Integer.valueOf(String.valueOf(rowCounts));
 	}
+
+
+	
 
 }

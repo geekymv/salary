@@ -37,6 +37,7 @@ public class EmployerAction extends ActionSupport implements RequestAware, Sessi
 	private int page = 1;
 	private PageUtil<Recruit> pageUtil;
 	
+	
 	/**
 	 * 查看个人信息
 	 * @return
@@ -112,6 +113,7 @@ public class EmployerAction extends ActionSupport implements RequestAware, Sessi
 		
 		return "details";
 	}
+	
 	
 	
 	/**

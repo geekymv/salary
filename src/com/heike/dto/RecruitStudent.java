@@ -20,7 +20,7 @@ import com.heike.pojo.Student;
 public class RecruitStudent {
 	
 	
-	private Long id;
+	private Integer id;
 	private Integer status;	//0表示在审核，1表示审核通过，-1表示审核未通过
 
 	private Recruit recruit;
@@ -29,10 +29,10 @@ public class RecruitStudent {
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.TABLE)
-	public Long getId() {
+	public Integer getId() {
 		return id;
 	}
-	public void setId(Long id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 

@@ -4,18 +4,23 @@ import java.util.Date;
 import java.util.LinkedHashSet;
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+
+import com.heike.dto.RecruitStudent;
 
 /**
  * 招聘信息类
@@ -38,11 +43,11 @@ public class Recruit {
 	
 	private Employer employer; //用工单位
 	
-	private Set<Student> students = new LinkedHashSet<Student>();	//Recruit与Student是多对多的关联关系(双向)
+	private Set<RecruitStudent> recruitStudents = new LinkedHashSet<RecruitStudent>();	//Recruit与Student是多对多的关联关系(双向)
 	
 
 	@Id
-	@GeneratedValue
+	@GeneratedValue(strategy=GenerationType.TABLE)
 	public Integer getId() {
 		return id;
 	}
@@ -53,13 +58,22 @@ public class Recruit {
 		return employer;
 	}
 	
-	@ManyToMany(fetch=FetchType.EAGER)
-	@JoinTable(name="t_recruit_student", joinColumns={@JoinColumn(name="rec_id")},
-			inverseJoinColumns={@JoinColumn(name="stu_id")}	//Recruit维护关联关系
-			)
-	public Set<Student> getStudents() {
-		return students;
+	@OneToMany(mappedBy="recruit", cascade=CascadeType.ALL)
+	public Set<RecruitStudent> getRecruitStudents() {
+		return recruitStudents;
 	}
+
+	public void setRecruitStudents(Set<RecruitStudent> recruitStudents) {
+		this.recruitStudents = recruitStudents;
+	}
+
+	//	@ManyToMany(fetch=FetchType.EAGER)
+//	@JoinTable(name="t_recruit_student", joinColumns={@JoinColumn(name="rec_id")},
+//			inverseJoinColumns={@JoinColumn(name="stu_id")}	//Recruit维护关联关系
+//			)
+//	public Set<Student> getStudents() {
+//		return students;
+//	}
 	@Column(columnDefinition="TEXT")
 	public String getContext() {
 		return context;
@@ -74,9 +88,9 @@ public class Recruit {
 	public void setEmployer(Employer employer) {
 		this.employer = employer;
 	}
-	public void setStudents(Set<Student> students) {
-		this.students = students;
-	}
+//	public void setStudents(Set<Student> students) {
+//		this.students = students;
+//	}
 	public String getTitle() {
 		return title;
 	}

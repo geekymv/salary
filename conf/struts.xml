@@ -90,11 +90,14 @@
 			<result>/WEB-INF/employer/publish.jsp</result>
 		</action>
 		
-		<action name="queryStudents" class="QueryStudentsAction">
+		<action name="queryStudents" class="queryStudentsAction">
+			<result type="json"></result>
+		</action>
+		<action name="examineStudent" class="queryStudentsAction" method="exexamineStudent">
 			<result type="json"></result>
 		</action>
 		
-		
+
 		<action name="emp-*" class="employerAction" method="{1}">
 			<result name="published" type="redirect">/index.jsp</result>
 			
