@@ -1,5 +1,6 @@
 package com.heike.action.student;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -9,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
+import com.heike.dto.RecruitStudent;
 import com.heike.pojo.Recruit;
 import com.heike.pojo.Student;
 import com.heike.service.RecruitService;
@@ -33,7 +35,6 @@ public class StudentAction extends ActionSupport implements SessionAware, Reques
 	private PageUtil<Recruit> pageUtil;
 	
 	private Recruit recruit;
-	
 	private Student student;
 	
 	/**
@@ -47,7 +48,7 @@ public class StudentAction extends ActionSupport implements SessionAware, Reques
 			return ERROR;
 		}
 	
-		pageUtil = recruitService.getRecruits(page, 1);
+		pageUtil = recruitService.getRecruits(page, 8);
 		System.out.println(pageUtil.getDatas());
 		
 		request.put("pageUtil", pageUtil);
@@ -102,8 +103,6 @@ public class StudentAction extends ActionSupport implements SessionAware, Reques
 		
 		recruit = recruitService.get(recruit.getId());
 	
-		
-	
 		boolean isApply = recruitService.isApply(student.getId(), recruit.getId());
 		
 		//判断该生是否已经申请了该工作
@@ -111,7 +110,23 @@ public class StudentAction extends ActionSupport implements SessionAware, Reques
 			System.out.println("你已经报过名了！！！");
 			return "applyed";
 		}	
+
+		//同一个学生在同一个单位只能应聘一个岗位
+//		List<Recruit> recruits = studentService.listRecruit(student.getId());
 		
+		List<RecruitStudent> recruitStudents = studentService.listRecruitStudent(student.getId());
+		
+		List<Recruit> recruits = new ArrayList<Recruit>();
+		for(RecruitStudent rs : recruitStudents) {
+			recruits.add(rs.getRecruit());
+		}
+		
+		for(Recruit r : recruits){
+			if(recruit.getEmployer().getId() == r.getEmployer().getId()){
+				return "only";
+			}
+		}
+
 		studentService.applyJob(student, recruit);
 		return "applyJob";
 	}
@@ -127,8 +142,13 @@ public class StudentAction extends ActionSupport implements SessionAware, Reques
 			return ERROR;
 		}
 		
-		List<Recruit> recruits = studentService.listRecruit(student.getId());
-		request.put("recruits", recruits);
+//		List<Recruit> recruits = studentService.listRecruit(student.getId());
+//		request.put("recruits", recruits);
+//		
+		//报名的招聘信息集合
+		List<RecruitStudent> recruitStudents = studentService.listRecruitStudent(student.getId());
+		
+		request.put("recruitStudents", recruitStudents);
 		
 		return "listJob";
 	}

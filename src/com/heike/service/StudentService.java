@@ -2,6 +2,7 @@ package com.heike.service;
 
 import java.util.List;
 
+import com.heike.dto.RecruitStudent;
 import com.heike.pojo.Recruit;
 import com.heike.pojo.Student;
 
@@ -30,12 +31,19 @@ public interface StudentService {
 	 */
 	public boolean applyJob(Student student, Recruit recruit);
 	
+//	/**
+//	 * 根据学生学号,查看该学生报名的工作
+//	 * @param id
+//	 * @return
+//	 */
+//	public List<Recruit> listRecruit(Integer id);
+	
 	/**
-	 * 根据学生学号,查看该学生报名的工作
+	 * 根据Student的id获取报名信息
 	 * @param id
 	 * @return
 	 */
-	public List<Recruit> listRecruit(Integer id);
+	public List<RecruitStudent> listRecruitStudent(Integer id);
 	
 	/**
 	 * 判断学生的学号是否已经存在

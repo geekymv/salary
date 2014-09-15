@@ -28,7 +28,7 @@ public class RecruitStudent {
 	private Student student;
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.TABLE)
+	@GeneratedValue
 	public Integer getId() {
 		return id;
 	}

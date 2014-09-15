@@ -10,7 +10,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<head>
 	<base href="<%=basePath%>">
 	<meta charset="utf-8">
-	<title>学生首页</title>
+	<title>报名记录</title>
 	<link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">	
 	
 	<style type="text/css">
@@ -100,7 +100,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	        <div class="panel panel-primary">
 	          <div class="panel-heading">我的报名记录</div>
 	        
-		      <s:if test="#request.recruits == null || #request.recruits.size() == 0">
+		      <s:if test="#request.recruitStudents == null || #request.recruitStudents.size() == 0">
 	            		没有报名信息！
 	          </s:if>	
 	        
@@ -114,15 +114,24 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	                </tr>
 	            </thead>
 	            <tbody>
-            		<s:iterator value="#request.recruits">
+            		<s:iterator value="#request.recruitStudents">
             			<tr>
-	            			<td><a href="student/stu-details.do?id=${id }">${title }</a></td> 
-	            			<td>${postName }</td> 
-	            			<td>${employer.name }</td>
-	            			<td><s:date name="releaseDate" format="yyyy-MM-dd"/></td>
-		  					<td><s:date name="endDate" format="yyyy-MM-dd"/></td>
+	            			<td><a href="student/stu-details.do?id=${id }">${recruit.title }</a></td> 
+	            			<td>${recruit.postName }</td> 
+	            			<td>${recruit.employer.name }</td>
+	            			<td><s:date name="recruit.releaseDate" format="yyyy-MM-dd"/></td>
+		  					<td><s:date name="recruit.endDate" format="yyyy-MM-dd"/></td>
 		  					<td>
-		  						 待审核
+		  						<s:if test="status == 0">
+		  							待审核
+		  						</s:if>
+		  						<s:elseif test="status == 1">
+		  							已通过
+		  						</s:elseif>
+		  						<s:else>
+		  							未通过
+		  						</s:else>
+		  						
 		  					</td>
             			</tr>
             		</s:iterator>

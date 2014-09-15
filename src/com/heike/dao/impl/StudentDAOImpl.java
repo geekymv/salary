@@ -2,6 +2,7 @@ package com.heike.dao.impl;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -9,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.heike.dao.StudentDAO;
+import com.heike.dto.RecruitStudent;
 import com.heike.pojo.Recruit;
 import com.heike.pojo.Student;
 
@@ -57,6 +59,20 @@ public class StudentDAOImpl implements StudentDAO {
 	public Student query(Integer id) {
 
 		return (Student) getSession().get(Student.class, id);
+	}
+
+
+	@Override
+	public List<RecruitStudent> listRecruitStudent(Integer id) {
+		Student student = (Student) getSession().get(Student.class, id);
+
+		List<RecruitStudent> students = new ArrayList<RecruitStudent>();
+		
+		Set<RecruitStudent> recruitStudents = student.getRecruitStudents();
+		
+		students.addAll(recruitStudents);
+
+		return students;
 	}
 
 }

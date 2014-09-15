@@ -56,6 +56,9 @@ public class LoginSuccessAction extends ActionSupport implements SessionAware{
 				return "admin";
 			
 			}else if (ConstantUtils.EMPLOYER == authority){	//学院或社团
+				
+				System.out.println("111");
+				
 				return "employer";
 			}
 		}

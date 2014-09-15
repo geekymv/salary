@@ -23,9 +23,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			height: 200px;
 			margin-top: 450px;
 		}
-		
 		ul li {
 			line-height: 40px;
+		}
+		span {
+			font-weight: bold;
 		}
 	</style>
 	</head>
@@ -92,9 +94,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
               		用户：${user.name }
                    <span class="caret"></span>
                  </a>
-                
                  <ul class="dropdown-menu" role="menu">
-                   <li><a href="#">进入个人主页</a></li>
+                   <li><a href="user/login-success.do">进入个人主页</a></li>
                    <%-->
                    <li><a href="#">Another action</a></li>
                    <li><a href="#">Something else here</a></li>
@@ -157,9 +158,68 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			  </ul>
 			</div>
       	</div>
-    
-    
     	
+    	<div class="col-md-10">
+	        <div class="panel panel-primary">
+	          <div class="panel-heading">招聘信息详情</div>
+	          <div class="panel-body">
+	            <p>招聘啦！main</p>
+	          </div>
+	        
+	        <s:if test="#request.recruit == null">
+	            	没有招聘信息！
+	        </s:if>
+	        <s:else>
+	         	<input type="hidden" id="rId" value="${recruit.id}"/>
+	         	
+	         	<table class="table table-bordered table-hover table-condensed">
+	         		<caption>招聘信息</caption>
+	         		<tr>
+	         			<td><span>招聘信息标题：</span>${recruit.title }</td>
+	         			<td><span>发布单位：</span>${recruit.employer.name }</td>
+	         		</tr>
+	         		<tr>
+	         			<td><span>岗位名称：</span>${recruit.postName }</td>
+	         			<td><span>薪资待遇：</span>${recruit.salary }</td>
+	         		</tr>
+	         		<tr>
+	         			<td><span>招聘人数：</span>${recruit.postNum }</td>
+	         			<td><span>已报名人数：</span>${recruit.applyNum }</td>
+	         		</tr>
+	         		<tr>
+	         			<td colspan="2">
+		         			<span>工作要求：</span>
+			        		<s:if test="recruit.context  == null">
+			        			暂无
+			        		</s:if>
+			        		<s:else>
+			        			${recruit.context }
+			        		</s:else>
+	         			</td>
+	         		</tr>
+					
+					<tr>
+						<td><span>发布时间：</span><s:date name="recruit.releaseDate" format="yyyy-MM-dd"/></td>
+						<td><span>截止时间：</span>${recruit.endDate }</td>
+					</tr>
+					
+					<tr>
+						<td><span>备注：</span>${recruit.remarks }</td>
+					</tr>
+	         	</table>
+				<button id="showStudents">查看已报名学生</button>
+
+	        </s:else>
+	        
+	        
+	        <div id="students"></div>
+	         
+	        </div> <!-- end of panel -->
+	      
+    	</div>
+    
+    
+    	<%-- 
       	<div class="col-md-10">
 	        <div class="panel panel-primary">
 	          <div class="panel-heading">招聘信息详情</div>
@@ -188,79 +248,17 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	        		</s:else>
 	        		
 	        	</li>
-	        				<%--${recruit.releaseDate} --%>
 	        	<li>
 	        		发布时间：<s:date name="recruit.releaseDate" format="yyyy-MM-dd"/>
 	        	</li>
 	        	<li>截止时间：${recruit.endDate }</li>
 	        	<li>备注：${recruit.remarks }</li>
 	        </ul>	
-	        
-	        
-	        
-	        
 	        </s:else>
-	       
-	        
-	        
-	          <!-- Table
-	          <table class="table table-bordered table-hover table-condensed">
-	            <thead>
-	                <tr>
-	                	<td>已报名人数</td>
-	                	
-	                   	<th>招聘信息标题</th> <th>岗位名称</th> <th>发布单位</th>
-			  			<th>发布时间</th> <th>截止日期</th>  <th>查看详情</th>
-	                </tr>
-	            </thead>
-	            <tbody>
-	            	
-	            	<s:if test="#request.recruit == null">
-	            		没有招聘信息！
-	            	</s:if>
-	            	<s:else>
-	            		
-            			<tr>
-	            			<td>${recruit.title }</td> 
-	            			<td>${postName }</td> 
-	            			<td>${employer.name }</td>
-	            			<td><s:date name="releaseDate" format="yyyy-MM-dd"/></td>
-		  					<td><s:date name="endDate" format="yyyy-MM-dd"/></td>
-		  					<td><a href="recruit/recruit-details.do?id=${id }">查看</a></td>
-            			</tr>
-	            	
-	            	</s:else>
-	            </tbody>
-	          
-	          </table>
-	             -->
-	            <!--
-	            <div class="panel-footer">
-	          	 <ul class="pager">
-	
-	          	 	<li>当前页 ：<s:property value="page"/>&nbsp;&nbsp;</li>
-	          	 	<li>总页数：<s:property value="#request.pageUtil.totalPage"/></li>
-	          	 	
-	          	 	<s:if test="page-1 > 0">
-	          	 		<li><a href="recruit/recruit-list.do?page=<s:property value=" page-1 "/>" >上一页</a></li>
-	          	 	</s:if>
-			
-					<s:set var="totalPage" value="#request.pageUtil.totalPage"></s:set>
-					<%-- totalPage: <s:property value="#totalPage"/>--%>
-
-	          	 	<s:if test="page+1 <= #totalPage">
-				  		<li><a href="recruit/recruit-list.do?page=<s:property value=" page+1 "/>" >下一页</a></li>
-	          	 	</s:if>
-
-				</ul>
-	          </div>
-	          
-	          -->
-	         
 	        </div> <!-- end of panel -->
 	      
     	</div>
-      
+      	--%>
 	</div>
     
    </div><!-- /.container -->
@@ -273,6 +271,52 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 <script type="text/javascript" src="js/jquery-1.11.1.js"></script>
 <script src="bootstrap/js/bootstrap.min.js"></script>
+
+<script type="text/javascript">
+	$("#showStudents").button().on("click", function() {
+		$.post("<%=request.getContextPath()%>/employer/queryStudents.do", {"id": $("#rId").val()}, function(data){
+		
+		$("#students").empty();
+		if(data.students == null || data.students.length == 0){
+			alert("还没有学生报名！");
+			return;
+		}
+		
+		var html = "<table class='table table-bordered table-hover table-condensed'>"
+			 + "<caption>学生信息</caption>"
+			 + "<tr>"
+			 + "<th>学号</th> <th>姓名</th> <th>专业</th> <th>操作</th>"
+			 + "</tr>";
+			
+			var flag = "";
+			for(var i = 0; i < data.students.length; i++){
+				var student = data.students[i];
+				var status = data.status[i];
+				
+				if(status == 0){	//等待处理
+					flag = "等待处理";
+				}else if(status == 1) {	//已通过
+					flag = "已通过";
+				}else {	//未通过
+					flag = "未通过";
+				}				
+				
+				html += "<tr>"
+					 + "<td align='center'>"+student.number+"</td>"+ "<td>"+student.name+"</td>"
+					 + "<td>"+student.profession+"</td>" 
+					 + "<td><span style='color:red'>"+flag+"</span></td>"
+					 
+					 + "</tr>";
+			}
+				html += "</table>";
+
+			$("#students").append(html);
+			
+		});
+	});
+	
+
+</script>
 
 </body>
 </html>

@@ -88,7 +88,7 @@ public class EmployerAction extends ActionSupport implements RequestAware, Sessi
 			return ERROR;
 		}
 		
-		pageUtil = employerService.getRecruitsByPage(employer.getId(), page, 1);
+		pageUtil = employerService.getRecruitsByPage(employer.getId(), page, 8);
 		
 		request.put("pageUtil", pageUtil);
 		

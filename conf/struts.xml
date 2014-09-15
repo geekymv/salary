@@ -36,7 +36,7 @@
 				<param name="actionName">login-success</param>
 			</result>
 			<!-- 退出登录 -->
-			<result name="logout" type="redirect">/login.jsp</result>
+			<result name="logout" type="redirect">/index.jsp</result>
 
 			<result name="registerSuccess" type="redirect">/login.jsp</result>
 			<result name="input">/login.jsp</result>
@@ -71,6 +71,8 @@
 			<result name="stuInfo">/WEB-INF/student/stu-info.jsp</result>	
 			
 			<result name="applyed">/WEB-INF/student/result.jsp</result>
+			<result name="only">/WEB-INF/student/only.jsp</result>
+			
 			<result name="applyJob" type="redirectAction">stu-listRecruit</result>		
 			
 			<result name="listJob">/WEB-INF/student/listJob.jsp</result>

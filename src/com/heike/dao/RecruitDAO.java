@@ -24,13 +24,6 @@ public interface RecruitDAO {
 	public Recruit query(Integer id);
 	
 	/**
-	 * 根据Recruit的id获取报名信息
-	 * @param id
-	 * @return
-	 */
-	public List<RecruitStudent> listRecruitStudent(Integer id);
-	
-	/**
 	 * 分页查询招聘信息
 	 * @return
 	 */
@@ -70,5 +63,10 @@ public interface RecruitDAO {
 	public RecruitStudent queryRecruitStudent(Integer stuId, Integer recId);
 	
 	
-	
+	/**
+	 * 根据Recruit的id获取报名信息
+	 * @param id
+	 * @return
+	 */
+	public List<RecruitStudent> listRecruitStudent(Integer id);
 }

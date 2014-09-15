@@ -47,7 +47,7 @@ public class Recruit {
 	
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.TABLE)
+	@GeneratedValue
 	public Integer getId() {
 		return id;
 	}

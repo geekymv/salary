@@ -2,6 +2,7 @@ package com.heike.dao;
 
 import java.util.List;
 
+import com.heike.dto.RecruitStudent;
 import com.heike.pojo.Recruit;
 import com.heike.pojo.Student;
 
@@ -35,5 +36,12 @@ public interface StudentDAO {
 	 * @return
 	 */
 	public Student query(Integer id);
+	
+	/**
+	 * 根据Student的id获取报名信息
+	 * @param id
+	 * @return
+	 */
+	public List<RecruitStudent> listRecruitStudent(Integer id);
 	
 }

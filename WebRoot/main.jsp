@@ -138,6 +138,26 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     
     
     <div class="row">
+    	<div class="col-md-2">
+      		<pre>右边</pre>
+      		<img src="img/hello.jpg" alt="这是一张图片" title="这是一张图片吗" class="img-thumbnail">
+
+         	<div class="btn-group">
+			  <button type="button" class="btn btn-success">Action</button>
+			  <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown">
+			    <span class="caret"></span>
+			    <span class="sr-only">Toggle Dropdown</span>
+			  </button>
+			  <ul class="dropdown-menu" role="menu">
+			    <li><a href="#">Action</a></li>
+			    <li><a href="#">Another action</a></li>
+			    <li><a href="#">Something else here</a></li>
+			    <li class="divider"></li>
+			    <li><a href="#">Separated link</a></li>
+			  </ul>
+			</div>
+      </div>
+    
       <div class="col-md-10">
         <div class="panel panel-primary">
 	          <div class="panel-heading">招聘信息</div>
@@ -197,25 +217,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	        </div> <!-- end of panel -->
       </div>
       
-      <div class="col-md-2">
-      	<pre>右边</pre>
-      	<img src="img/hello.jpg" alt="这是一张图片" title="这是一张图片吗" class="img-thumbnail">
-
-        <div class="btn-group">
-		  <button type="button" class="btn btn-success">Action</button>
-		  <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown">
-		    <span class="caret"></span>
-		    <span class="sr-only">Toggle Dropdown</span>
-		  </button>
-		  <ul class="dropdown-menu" role="menu">
-		    <li><a href="#">Action</a></li>
-		    <li><a href="#">Another action</a></li>
-		    <li><a href="#">Something else here</a></li>
-		    <li class="divider"></li>
-		    <li><a href="#">Separated link</a></li>
-		  </ul>
-		</div>
-      </div>
+    
       
 	</div>
     
