@@ -23,8 +23,8 @@ public class Salary {
 	private Integer month;	//月份
 	private float salary;
 
+	private Employer employer;
 	private Student student;	//多对一的关联关系，Student是一的一方
-
 	
 	@Id
 	@GeneratedValue
@@ -37,7 +37,16 @@ public class Salary {
 	public Student getStudent() {
 		return student;
 	}
-	
+	@ManyToOne
+	@JoinColumn(name="emp_id")
+	public Employer getEmployer() {
+		return employer;
+	}
+
+	public void setEmployer(Employer employer) {
+		this.employer = employer;
+	}
+
 	public Date getDate() {
 		return date;
 	}

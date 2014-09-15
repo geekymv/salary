@@ -116,59 +116,55 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	        <div class="panel panel-primary">
 	          <div class="panel-heading">招聘信息</div>
 	          <div class="panel-body">
-	            <p>招聘啦！employer！！！</p>
+	            <p>发工资啦！</p>
 	          </div>
 	        
 	           <!-- Table -->
 	          <table class="table table-bordered table-hover table-condensed">
 	            <thead>
 	                <tr>
-	                   	<th>招聘信息标题</th> <th>岗位名称</th> <th>发布单位</th>
-			  			<th>发布时间</th> <th>截止日期</th>  <th>查看详情</th>
+	                   	<th>选择</th> <th>学号</th> <th>姓名</th> <th>工资</th> <th>月份</th>
 	                </tr>
 	            </thead>
 	            <tbody>
 	            	
-	            	<s:if test="#request.pageUtil == null || #request.pageUtil.datas.size() == 0">
-	            		没有招聘信息！
+	            	<s:if test="#request.students == null || #request.students.size() == 0">
+	            		没有学生信息！
 	            	</s:if>
 	            	<s:else>
-	            		<s:iterator value="#request.pageUtil.datas">
+	            		
+	            		<form action="" method="post">
+	            		<s:iterator value="#request.students">
 	            			<tr>
-		            			<td>${title }</td> 
-		            			<td>${postName }</td> 
-		            			<td>${employer.name }</td>
-		            			<td><s:date name="releaseDate" format="yyyy-MM-dd"/></td>
-			  					<td><s:date name="endDate" format="yyyy-MM-dd"/></td>
-			  					<td><a href="employer/emp-details.do?id=${id }">查看</a></td>
+	            				<td>
+	            					<input type="checkbox" name="check"/>
+	            				</td>
+		            			<td>${number }</td> 
+		            			<td>${name }</td> 
+		            			<td>
+		            				<input type="text" name="salary.salary"/>
+		            			</td>
+		            			<td>
+		            				<select name="salary.month">
+										<%
+											for(int i = 1; i <= 12; i++){
+											%>
+											<option value="<%=i %>">
+												<%=i %>
+											</option>			
+											<%	
+											}
+										 %>
+										
+		            				</select>
+		            			</td>
 	            			</tr>
 	            		</s:iterator>
-	            	
+	            		</form>
 	            	</s:else>
 	            </tbody>
-	          
 	          </table>
-	            <div class="panel-footer">
-	          	 <ul class="pager">
-	
-	          	 	<li>当前页 ：<s:property value="page"/>&nbsp;&nbsp;</li>
-	          	 	<li>总页数：<s:property value="#request.pageUtil.totalPage"/></li>
-	          	 	
-	          	 	<s:if test="page-1 > 0">
-	          	 		<li><a href="employer/emp-recruitList.do?page=<s:property value=" page-1 "/>" >上一页</a></li>
-	          	 	</s:if>
-			
-					<s:set var="totalPage" value="#request.pageUtil.totalPage"></s:set>
-					<%-- totalPage: <s:property value="#totalPage"/>--%>
 
-	          	 	<s:if test="page+1 <= #totalPage">
-				  		<li><a href="employer/emp-recruitList.do?page=<s:property value=" page+1 "/>" >下一页</a></li>
-	          	 	</s:if>
-
-				</ul>
-	          </div>
-	         
-	         
 	        </div> <!-- end of panel -->
 	      
     	</div>

@@ -50,7 +50,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				  <a href="employer/emp-empInfo.do" class="list-group-item">我的资料</a>
 				  <a href="employer/emp-recruitList.do" class="list-group-item">我的招聘</a>
 				  <a href="employer/publish.do" class="list-group-item">发布招聘</a>
-				  <a href="#" class="list-group-item">发放工资</a>
+				  <a href="employer/emp-stuList.do" class="list-group-item">发放工资</a>
 				</div>
 			</div>
       	</div>

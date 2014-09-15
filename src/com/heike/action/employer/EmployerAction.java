@@ -118,6 +118,11 @@ public class EmployerAction extends ActionSupport implements RequestAware, Sessi
 	 */
 	public String stuList() throws Exception {
 		
+		employer = (Employer) session.get("employer");
+		if(null == employer){
+			return ERROR;
+		}
+		
 		List<Student> students = employerService.listStudent(employer.getId());
 		
 		request.put("students", students);
