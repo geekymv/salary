@@ -42,9 +42,7 @@ public class StudentAction extends ActionSupport implements SessionAware, Reques
 	 * @throws Exception
 	 */
 	public String listRecruit() throws Exception {
-
 		student = (Student) session.get("student");
-		
 		if(null == student){
 			return ERROR;
 		}
@@ -63,17 +61,33 @@ public class StudentAction extends ActionSupport implements SessionAware, Reques
 	 * @throws Exception
 	 */
 	public String stuInfo() throws Exception {
-
 		student = (Student) session.get("student");
-		
-		System.out.println(student);
+		if(null == student){
+			return ERROR;
+		}
 		
 		request.put("student", student);
 
 		return "stuInfo";
 		
 	}
-	
+
+	/**
+	 * 查看招聘信息
+	 * @return
+	 * @throws Exception
+	 */
+	public String details() throws Exception {
+		student = (Student) session.get("student");
+		if(null == student){
+			return ERROR;
+		}
+
+		recruit = recruitService.get(id);
+		request.put("recruit", recruit);
+		
+		return "details";
+	}
 	
 	/**
 	 * 学生报名工作
@@ -81,9 +95,7 @@ public class StudentAction extends ActionSupport implements SessionAware, Reques
 	 * @throws Exception
 	 */
 	public String applyJob() throws Exception {
-
 		student = (Student) session.get("student");
-		
 		if(null == student) {
 			return ERROR;
 		}
@@ -108,36 +120,27 @@ public class StudentAction extends ActionSupport implements SessionAware, Reques
 	 */
 	public String listJob() throws Exception {
 		student = (Student) session.get("student");
+		if(null == student) {
+			return ERROR;
+		}
 		
 		List<Recruit> recruits = studentService.listRecruit(student.getId());
-
-		
 		request.put("recruits", recruits);
 		
 		return "listJob";
 	}
-	
-	
-	
+
 	/**
-	 * 查看招聘信息
+	 * 查看审核通过的工作
 	 * @return
-	 * @throws Exception
 	 */
-	public String details() throws Exception {
-
-		student = (Student) session.get("student");
+	public String approveJob() throws Exception {
 		
-		if(null == student){
-			return ERROR;
-		}
-
-		recruit = recruitService.get(id);
 		
-		request.put("recruit", recruit);
 		
-		return "details";
-	}
+		
+		return "approve";
+	} 
 	
 	
 	

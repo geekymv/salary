@@ -47,6 +47,7 @@
 				<value>com.heike.pojo.Salary</value>
 				<value>com.heike.pojo.Employer</value>
 				<value>com.heike.pojo.Recruit</value>
+				<value>com.heike.dto.RecruitStudent</value>
 			</list>
 		</property>
 	</bean>

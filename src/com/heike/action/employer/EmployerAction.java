@@ -37,6 +37,23 @@ public class EmployerAction extends ActionSupport implements RequestAware, Sessi
 	private int page = 1;
 	private PageUtil<Recruit> pageUtil;
 	
+	/**
+	 * 查看个人信息
+	 * @return
+	 * @throws Exception
+	 */
+	public String empInfo() throws Exception {
+		
+		employer = (Employer) session.get("employer");
+		
+		if(null == employer) {
+			return ERROR;
+		}
+		
+		request.put("employer", employer);
+		
+		return "empInfo";
+	}
 	
 	/**
 	 * 发布招聘信息
@@ -59,31 +76,13 @@ public class EmployerAction extends ActionSupport implements RequestAware, Sessi
 		return "published";
 	}
 
-	
-	/**
-	 * 查看个人信息
-	 * @return
-	 * @throws Exception
-	 */
-	public String empInfo() throws Exception {
-		
-		employer = (Employer) session.get("employer");
-		
-		request.put("employer", employer);
-		
-		return "empInfo";
-	}
-	
-	
 	/**
 	 * 显示Employer发布的招聘信息
 	 * @return
 	 * @throws Exception
 	 */
 	public String recruitList() throws Exception {
-		
 		employer = (Employer) session.get("employer");
-		
 		if(null == employer){
 			return ERROR;
 		}
@@ -102,7 +101,11 @@ public class EmployerAction extends ActionSupport implements RequestAware, Sessi
 	 * @throws Exception
 	 */
 	public String details() throws Exception {
-
+		employer = (Employer) session.get("employer");
+		if(null == employer){
+			return ERROR;
+		}
+		
 		recruit = recruitService.get(id);
 		
 		request.put("recruit", recruit);
@@ -117,7 +120,6 @@ public class EmployerAction extends ActionSupport implements RequestAware, Sessi
 	 * @throws Exception
 	 */
 	public String stuList() throws Exception {
-		
 		employer = (Employer) session.get("employer");
 		if(null == employer){
 			return ERROR;
