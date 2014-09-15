@@ -64,15 +64,24 @@ public class StudentDAOImpl implements StudentDAO {
 
 	@Override
 	public List<RecruitStudent> listRecruitStudent(Integer id) {
-		Student student = (Student) getSession().get(Student.class, id);
-
 		List<RecruitStudent> students = new ArrayList<RecruitStudent>();
 		
+		Student student = (Student) getSession().get(Student.class, id);
 		Set<RecruitStudent> recruitStudents = student.getRecruitStudents();
 		
 		students.addAll(recruitStudents);
 
 		return students;
+	}
+
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<RecruitStudent> listApproveJob(Integer id) {
+	
+		String hql = "from RecruitStudent rs where rs.student.id=? and rs.status=1";
+		
+		return (List<RecruitStudent>)getSession().createQuery(hql).setInteger(0, id).list();
 	}
 
 }

@@ -27,9 +27,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		ul li {
 			line-height: 40px;
 		}
-		span {
-			font-weight: bold;
-		}
+		
 	</style>
 	
 	</head>
@@ -162,14 +160,56 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						<td><span>备注：</span>${recruit.remarks }</td>
 					</tr>
 	         	</table>
-				<button id="showStudents">查看已报名学生</button>
-
 	        </s:else>
-	        
-	        
-	        <div id="students"></div>
-	         
 	        </div> <!-- end of panel -->
+	      
+	      <!-- 报名学生-->
+	      <div class="panel panel-primary">
+	          <div class="panel-heading">报名情况</div>
+	        
+	        <s:if test="#request.recruitStudents == null || #request.recruitStudents.size() == 0">
+	            	暂无学生报名！
+	        </s:if>
+	        <s:else>
+	         	<input type="hidden" id="rId" value="${recruit.id}"/>
+	         	
+	         	<table class="table table-bordered table-hover table-condensed">
+	         		<caption>学生信息</caption>
+	         		<tr>
+						<td>学号</td> <td>姓名</td> <td>专业</td> <td>操作</td>
+	         		</tr>
+	         		
+	         		<s:iterator value="#request.recruitStudents">
+	         		<tr>
+						<td>${student.number }</td>	         		
+						<td>${student.name }</td>	         		
+	         			<td>${student.profession }</td>
+	         			<td>
+	         				<s:if test="status == 0">
+	         					<span style="color:red">等待处理</span>
+	         						<input type="hidden" id="stuId" name="stuId" value="${student.id }">
+	         						<input type="hidden" name="recId" value="${recruit.id }">
+	         						<button id="pass" onclick="pass(1)">通过</button>
+	         						<button id="notpass" onclick="notpass(-1)">不通过</button>
+	         				</s:if>
+	         				<s:elseif test="status == 1">
+	         					<span style="color:red">已通过</span>
+	         				</s:elseif>
+	         				<s:else>
+	         					<span style="color:red">未通过</span>
+	         				</s:else>
+	         			</td>	         		
+	         		</tr>
+	         		</s:iterator>
+					
+					
+	         	</table>
+	         		
+	        </s:else>
+	        </div> <!-- end of panel -->
+	      
+	      
+	      
 	      
     	</div>
       
@@ -187,6 +227,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <script src="bootstrap/js/bootstrap.min.js"></script>
 
 <script type="text/javascript">
+	/*
 	$("#showStudents").button().on("click", function() {
 		$.post("<%=request.getContextPath()%>/employer/queryStudents.do", {"id": $("#rId").val()}, function(data){
 		
@@ -217,9 +258,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				}				
 				
 				html += "<tr>"
-					 + "<td align='center'>"+student.number+"</td>"+ "<td>"+student.name+"</td>"
+					 + "<td>"+student.number+"</td>"+ "<td>"+student.name+"</td>"
 					 + "<td>"+student.profession+"</td>" 
-					 + "<td><button id='pass' onclick='pass(1);'>考核通过</button><button id='notPass'>考核未通过</button><span style='color:red'>"+flag+"</span></td>"
+					 + "<td><button id='pass' onclick='pass(1);'>考核通过</button><button id='notPass' onclick()>考核未通过</button><span style='color:red'>"+flag+"</span></td>"
 					 
 					 + "</tr>";
 			}
@@ -229,15 +270,21 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			
 		});
 	});
+	*/
+	
 	
 	function pass(num){
 		alert("world" + num);
 		
 		$.post("<%=request.getContextPath()%>/employer/examineStudent.do", 
-				{"id": $("#rId").val(), "examine":num,"stuId":1}, 
+				{"id": $("#rId").val(), "examine":num,"stuId":$("#stuId").val()}, 
 				function(data){
 			
 		});
+	}
+	
+	function notpass(){
+		
 	}
 	
 

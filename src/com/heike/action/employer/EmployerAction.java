@@ -1,6 +1,8 @@
 package com.heike.action.employer;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
@@ -10,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
+import com.heike.dto.RecruitStudent;
 import com.heike.pojo.Employer;
 import com.heike.pojo.Recruit;
 import com.heike.pojo.Student;
@@ -110,6 +113,10 @@ public class EmployerAction extends ActionSupport implements RequestAware, Sessi
 		recruit = recruitService.get(id);
 		
 		request.put("recruit", recruit);
+		
+		//报名学生的信息
+		List<RecruitStudent> recruitStudents = recruitService.listRecruitStudent(id);
+		request.put("recruitStudents", recruitStudents);
 		
 		return "details";
 	}

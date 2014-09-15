@@ -66,12 +66,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	            </thead>
 	            <tbody>
             		<s:iterator value="#request.recruitStudents">
-            			<tr>
+           				<tr>
 	            			<td>${recruit.postName }</td> 
 	            			<td>${recruit.employer.name }</td>
 	            			<td><s:date name="applyDate" format="yyyy-MM-dd"/></td>
-	            			<td>...</td>
-            			</tr>
+            				<td>1000</td>
+           				</tr>
             		</s:iterator>
 	            	
 	            </tbody>

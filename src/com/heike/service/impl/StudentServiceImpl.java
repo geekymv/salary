@@ -1,9 +1,7 @@
 package com.heike.service.impl;
 
-import java.util.ArrayList;
-import java.util.Iterator;
+import java.util.Date;
 import java.util.List;
-import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -46,6 +44,7 @@ public class StudentServiceImpl implements StudentService {
 
 			RecruitStudent rs = new RecruitStudent();
 			rs.setStatus(0);	//等待审核
+			rs.setApplyDate(new Date());
 			
 			rs.setStudent(student);
 			rs.setRecruit(recruit);
@@ -96,6 +95,12 @@ public class StudentServiceImpl implements StudentService {
 	public List<RecruitStudent> listRecruitStudent(Integer id) {
 		
 		return studentDAO.listRecruitStudent(id);
+	}
+
+	@Override
+	public List<RecruitStudent> listApproveJob(Integer id) {
+		
+		return studentDAO.listApproveJob(id);
 	}
 
 }

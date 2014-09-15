@@ -1,7 +1,6 @@
 package com.heike.action.student;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
@@ -158,13 +157,13 @@ public class StudentAction extends ActionSupport implements SessionAware, Reques
 		if(null == student) {
 			return ERROR;
 		}
-		List<RecruitStudent> recruitStudents = studentService.listRecruitStudent(student.getId());
+		List<RecruitStudent> recruitStudents = studentService.listApproveJob(student.getId());
 	
-		for(RecruitStudent rs : recruitStudents) {
-			if(rs.getStatus() != 1) {	//审核通过
-				recruitStudents.remove(rs);
-			}
-		}
+//		for(RecruitStudent rs : recruitStudents) {
+//			if(rs.getStatus() != 1) {	//审核通过
+//				recruitStudents.remove(rs);
+//			}
+//		}
 		
 		request.put("recruitStudents", recruitStudents);
 		

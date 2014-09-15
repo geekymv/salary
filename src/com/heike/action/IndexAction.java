@@ -15,7 +15,6 @@ import com.opensymphony.xwork2.ActionSupport;
 /**
  * 处理首页的Action
  * @author Geek_ymv
- *
  */
 @Controller("indexAction")
 @Scope("prototype")

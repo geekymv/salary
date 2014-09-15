@@ -68,7 +68,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	            <tbody>
             		<s:iterator value="#request.recruitStudents">
             			<tr>
-	            			<td><a href="student/stu-details.do?id=${id }">${recruit.title }</a></td> 
+	            			<td><a href="student/stu-details.do?id=${recruit.id }">${recruit.title }</a></td> 
 	            			<td>${recruit.postName }</td> 
 	            			<td>${recruit.employer.name }</td>
 	            			<td><s:date name="recruit.releaseDate" format="yyyy-MM-dd"/></td>

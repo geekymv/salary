@@ -51,5 +51,15 @@ public interface StudentService {
 	 * @return
 	 */
 	public boolean validateStuNum(String number);
+
+	/**
+	 * 根据学生id查看学生通过的工作
+	 * @param id
+	 * @return
+	 */
+	public List<RecruitStudent> listApproveJob(Integer id);
 	
 }
+
+
+

@@ -10,7 +10,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<head>
 	<base href="<%=basePath%>">
 	<meta charset="utf-8">
-	<title>XXX系统</title>
+	<title>招聘详情</title>
 	<link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">	
 	
 	<style type="text/css">
@@ -210,59 +210,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<button id="showStudents">查看已报名学生</button>
 
 	        </s:else>
-	        
-	        
 	        <div id="students"></div>
-	         
 	        </div> <!-- end of panel -->
-	      
     	</div>
     
-    
-    	<%-- 
-      	<div class="col-md-10">
-	        <div class="panel panel-primary">
-	          <div class="panel-heading">招聘信息详情</div>
-	          <div class="panel-body">
-	            <p>招聘啦！main</p>
-	          </div>
-	        
-	        <s:if test="#request.recruit == null">
-	            	没有招聘信息！
-	        </s:if>
-	        <s:else>
-	         <ul>
-	        	<li>招聘信息标题：${recruit.title }</li>
-	        	<li>发布单位：${recruit.employer.name }</li>
-	        	<li>岗位名称：${recruit.postName }</li>
-	        	<li>招聘人数：${recruit.postNum } 人</li>
-	        	<li>已报名人数：${recruit.applyNum } 人</li>
-	        	<li>薪资待遇：${recruit.salary }</li>
-	        	<li>
-	        		工作要求：
-	        		<s:if test="recruit.context  == null">
-	        			暂无
-	        		</s:if>
-	        		<s:else>
-	        			${recruit.context }
-	        		</s:else>
-	        		
-	        	</li>
-	        	<li>
-	        		发布时间：<s:date name="recruit.releaseDate" format="yyyy-MM-dd"/>
-	        	</li>
-	        	<li>截止时间：${recruit.endDate }</li>
-	        	<li>备注：${recruit.remarks }</li>
-	        </ul>	
-	        </s:else>
-	        </div> <!-- end of panel -->
-	      
-    	</div>
-      	--%>
 	</div>
-    
    </div><!-- /.container -->
-   
    
    <div class="footer">
    
@@ -285,7 +238,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		var html = "<table class='table table-bordered table-hover table-condensed'>"
 			 + "<caption>学生信息</caption>"
 			 + "<tr>"
-			 + "<th>学号</th> <th>姓名</th> <th>专业</th> <th>操作</th>"
+			 + "<th>学号</th> <th>姓名</th> <th>专业</th> <th>招聘结果</th>"
 			 + "</tr>";
 			
 			var flag = "";
