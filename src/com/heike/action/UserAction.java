@@ -61,9 +61,6 @@ public class UserAction extends ActionSupport implements SessionAware{
 		student = studentService.login(account, password);
 		
 		if(null != student){
-			
-			System.out.println("stu...");
-			
 			session.put("user", student);
 			
 			return "loginSuccess";

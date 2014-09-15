@@ -10,7 +10,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<head>
 	<base href="<%=basePath%>">
 	<meta charset="utf-8">
-	<title>XXX系统</title>
+	<title>招聘详情</title>
 	<link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">	
 	
 	<style type="text/css">
@@ -103,7 +103,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		        <div class="panel-heading">功能导航</div>
 			   	<div class="list-group">
 				  <a href="student/stu-stuInfo.do" class="list-group-item">我的资料</a>
-				  <a href="#" class="list-group-item">我的工作</a>
+				  <a href="student/stu-approveJob.do" class="list-group-item">我的工作</a>
 				  <a href="student/stu-listJob.do" class="list-group-item">报名记录</a>
 				  <a href="student/stu-listRecruit.do" class="list-group-item">查看招聘</a>
 				</div>

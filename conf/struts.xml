@@ -75,7 +75,10 @@
 			
 			<result name="applyJob" type="redirectAction">stu-listRecruit</result>		
 			
-			<result name="listJob">/WEB-INF/student/listJob.jsp</result>
+			<result name="listJob">/WEB-INF/student/listjob.jsp</result>
+			
+			<result name="approve">/WEB-INF/student/myjob.jsp</result>
+			
 			<result name="error" type="redirect">/login.jsp</result>
 			
 		</action>

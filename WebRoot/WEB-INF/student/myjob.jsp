@@ -10,7 +10,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<head>
 	<base href="<%=basePath%>">
 	<meta charset="utf-8">
-	<title>我的资料</title>
+	<title>我的工作</title>
 	<link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">	
 	
 	<style type="text/css">
@@ -25,21 +25,19 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			
 			margin-top: 450px;
 		}
-		ul li {
-			line-height: 40px;
-		}
+		
 	</style>
 	
 	</head>
 
 <body>
 	<div class="container">
-		
-	<jsp:include page="nav.jsp"></jsp:include>	
+	
+	<jsp:include page="nav.jsp"></jsp:include>
       
     <div class="row">
     	<div class="col-md-2">
-    		<div class="panel panel-primary">
+	    	<div class="panel panel-primary">
 		        <div class="panel-heading">功能导航</div>
 			   	<div class="list-group">
 				  <a href="student/stu-stuInfo.do" class="list-group-item">我的资料</a>
@@ -51,26 +49,40 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
       	</div>
     
       	<div class="col-md-10">
-      		 <div class="panel panel-primary">
-	          <div class="panel-heading">${student.name }的资料</div>
-		     	 <ul>
-		        	<li>学号：${student.number}</li>
-		        	<li>姓名：${student.name }</li>
-		        	<li>性别：${student.gender }</li>
-		        	<li>学院：${student.college }</li>
-		        	<li>专业：${student.profession }</li>
-		        	<li>手机号码：${student.mobile }</li>
-		        	<li>自我介绍：
-		        		<s:if test="student.introduce == null">
-		        			无！
-		        		</s:if>
-		        		<s:else>
-				        	${student.introduce }
-		        		</s:else>
-		        	</li>	
-		        	<li>注册时间：<s:date name="student.regTime" format="yyyy-MM-dd hh:mm:ss" /></li>
-		        </ul>	
-		     </div>
+	        <div class="panel panel-primary">
+	          <div class="panel-heading">我的工作</div>
+	        
+		      <s:if test="#request.recruitStudents == null || #request.recruitStudents.size() == 0">
+	            		暂无工作！快去报名吧...
+	          </s:if>	
+	        
+	          <s:else>
+	          <!-- Table -->
+	          <table class="table table-bordered table-hover table-condensed">
+	            <thead>
+	                <tr>
+	                   	<th>岗位名称</th> <th>所在单位</th> <th>报名时间</th> <td>月薪</td>
+	                </tr>
+	            </thead>
+	            <tbody>
+            		<s:iterator value="#request.recruitStudents">
+            			<tr>
+	            			<td>${recruit.postName }</td> 
+	            			<td>${recruit.employer.name }</td>
+	            			<td><s:date name="applyDate" format="yyyy-MM-dd"/></td>
+	            			<td>...</td>
+            			</tr>
+            		</s:iterator>
+	            	
+	            </tbody>
+	          
+	          </table>
+
+	         </s:else>
+	         
+	         
+	        </div> <!-- end of panel -->
+	      
     	</div>
       
 	</div>

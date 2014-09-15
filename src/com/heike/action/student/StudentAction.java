@@ -1,6 +1,7 @@
 package com.heike.action.student;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
@@ -112,8 +113,6 @@ public class StudentAction extends ActionSupport implements SessionAware, Reques
 		}	
 
 		//同一个学生在同一个单位只能应聘一个岗位
-//		List<Recruit> recruits = studentService.listRecruit(student.getId());
-		
 		List<RecruitStudent> recruitStudents = studentService.listRecruitStudent(student.getId());
 		
 		List<Recruit> recruits = new ArrayList<Recruit>();
@@ -142,9 +141,6 @@ public class StudentAction extends ActionSupport implements SessionAware, Reques
 			return ERROR;
 		}
 		
-//		List<Recruit> recruits = studentService.listRecruit(student.getId());
-//		request.put("recruits", recruits);
-//		
 		//报名的招聘信息集合
 		List<RecruitStudent> recruitStudents = studentService.listRecruitStudent(student.getId());
 		
@@ -158,8 +154,19 @@ public class StudentAction extends ActionSupport implements SessionAware, Reques
 	 * @return
 	 */
 	public String approveJob() throws Exception {
-
+		student = (Student) session.get("student");
+		if(null == student) {
+			return ERROR;
+		}
+		List<RecruitStudent> recruitStudents = studentService.listRecruitStudent(student.getId());
+	
+		for(RecruitStudent rs : recruitStudents) {
+			if(rs.getStatus() != 1) {	//审核通过
+				recruitStudents.remove(rs);
+			}
+		}
 		
+		request.put("recruitStudents", recruitStudents);
 		
 		return "approve";
 	} 
