@@ -112,7 +112,7 @@ public class StudentAction extends ActionSupport implements SessionAware, Reques
 		}	
 
 		//同一个学生在同一个单位只能应聘一个岗位
-		List<RecruitStudent> recruitStudents = studentService.listRecruitStudent(student.getId());
+		List<RecruitStudent> recruitStudents = studentService.listApproveJob(student.getId());
 		
 		List<Recruit> recruits = new ArrayList<Recruit>();
 		for(RecruitStudent rs : recruitStudents) {

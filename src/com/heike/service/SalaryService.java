@@ -11,6 +11,10 @@ public interface SalaryService {
 	 */
 	public Salary query(Integer stuId);
 	
-	
+	/**
+	 * 发工资
+	 * @param salary
+	 */
+	public void add(Salary salary);
 
 }

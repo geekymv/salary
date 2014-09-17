@@ -20,4 +20,11 @@ public class SalaryServiceImpl implements SalaryService {
 		return salaryDAO.query(stuId);
 	}
 
+
+	@Override
+	public void add(Salary salary) {
+		
+		salaryDAO.save(salary);
+	}
+
 }

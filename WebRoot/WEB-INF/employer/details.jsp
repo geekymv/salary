@@ -176,7 +176,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	         	<table class="table table-bordered table-hover table-condensed">
 	         		<caption>学生信息</caption>
 	         		<tr>
-						<td>学号</td> <td>姓名</td> <td>专业</td> <td>操作</td>
+						<td>学号</td> <td>姓名</td> <td>专业</td> <td>手机号码</td> <td>操作</td>
 	         		</tr>
 	         		
 	         		<s:iterator value="#request.recruitStudents">
@@ -184,6 +184,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						<td>${student.number }</td>	         		
 						<td>${student.name }</td>	         		
 	         			<td>${student.profession }</td>
+	         			<td>${student.mobile }</td>
 	         			<td>
 	         				<s:if test="status == 0">
 	         					<span style="color:red">等待处理</span>
@@ -208,9 +209,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	        </s:else>
 	        </div> <!-- end of panel -->
 	      
-	      
-	      
-	      
     	</div>
       
 	</div>
@@ -227,55 +225,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <script src="bootstrap/js/bootstrap.min.js"></script>
 
 <script type="text/javascript">
-	/*
-	$("#showStudents").button().on("click", function() {
-		$.post("<%=request.getContextPath()%>/employer/queryStudents.do", {"id": $("#rId").val()}, function(data){
-		
-		$("#students").empty();
-		if(data.students == null || data.students.length == 0){
-			alert("还没有学生报名！");
-			return;
-		}
-		
-		var html = "<table class='table table-bordered table-hover table-condensed'>"
-			 + "<caption>学生信息</caption>"
-			 + "<tr>"
-			 + "<th>学号</th> <th>姓名</th> <th>专业</th> <th>操作</th>"
-			 + "</tr>";
-			
-			var flag = "";
-			var btn = ""; 
-			for(var i = 0; i < data.students.length; i++){
-				var student = data.students[i];
-				var status = data.status[i];
-				
-				if(status == 0){	//等待处理
-					flag = "等待处理";
-				}else if(status == 1) {	//已通过
-					flag = "已通过";
-				}else {	//未通过
-					flag = "未通过";
-				}				
-				
-				html += "<tr>"
-					 + "<td>"+student.number+"</td>"+ "<td>"+student.name+"</td>"
-					 + "<td>"+student.profession+"</td>" 
-					 + "<td><button id='pass' onclick='pass(1);'>考核通过</button><button id='notPass' onclick()>考核未通过</button><span style='color:red'>"+flag+"</span></td>"
-					 
-					 + "</tr>";
-			}
-				html += "</table>";
-
-			$("#students").append(html);
-			
-		});
-	});
-	*/
-	
-	
 	function pass(num){
-		alert("world" + num);
-		
+		alert("审核通过");
 		$.post("<%=request.getContextPath()%>/employer/examineStudent.do", 
 				{"id": $("#rId").val(), "examine":num,"stuId":$("#stuId").val()}, 
 				function(data){
@@ -283,10 +234,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		});
 	}
 	
-	function notpass(){
-		
+	function notpass(num){
+		$.post("<%=request.getContextPath()%>/employer/examineStudent.do", 
+				{"id": $("#rId").val(), "examine":num,"stuId":$("#stuId").val()}, 
+				function(data){
+		});
 	}
-	
 
 </script>
 

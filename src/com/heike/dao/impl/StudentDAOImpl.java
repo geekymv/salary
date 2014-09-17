@@ -62,16 +62,20 @@ public class StudentDAOImpl implements StudentDAO {
 	}
 
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public List<RecruitStudent> listRecruitStudent(Integer id) {
-		List<RecruitStudent> students = new ArrayList<RecruitStudent>();
+//		List<RecruitStudent> students = new ArrayList<RecruitStudent>();
 		
-		Student student = (Student) getSession().get(Student.class, id);
-		Set<RecruitStudent> recruitStudents = student.getRecruitStudents();
+//		Student student = (Student) getSession().get(Student.class, id);
+//		Set<RecruitStudent> recruitStudents = student.getRecruitStudents();
 		
-		students.addAll(recruitStudents);
-
-		return students;
+//		students.addAll(recruitStudents);
+		
+		String hql = "from RecruitStudent rs " +
+				"where rs.student.id=? order by rs.applyDate";
+		
+		return (List<RecruitStudent>)getSession().createQuery(hql).setInteger(0, id).list();
 	}
 
 
@@ -79,7 +83,8 @@ public class StudentDAOImpl implements StudentDAO {
 	@Override
 	public List<RecruitStudent> listApproveJob(Integer id) {
 	
-		String hql = "from RecruitStudent rs where rs.student.id=? and rs.status=1";
+		String hql = "from RecruitStudent rs " +
+					"where rs.student.id=? and rs.status=1 order by rs.applyDate";
 		
 		return (List<RecruitStudent>)getSession().createQuery(hql).setInteger(0, id).list();
 	}

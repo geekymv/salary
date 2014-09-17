@@ -101,6 +101,11 @@
 			<result type="json"></result>
 		</action>
 		
+		<!-- 发工资 -->
+		<action name="payoff" class="payoffAction" method="payoff">
+			<result name="payoff" type="redirect">/index.jsp</result>
+		</action>
+		
 
 		<action name="emp-*" class="employerAction" method="{1}">
 			<result name="published" type="redirect">/index.jsp</result>

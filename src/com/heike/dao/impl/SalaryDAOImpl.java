@@ -14,7 +14,6 @@ public class SalaryDAOImpl implements SalaryDAO {
 	
 	@Autowired
 	private SessionFactory sessionFactory;
-	
 	public Session getSession(){
 		return sessionFactory.getCurrentSession();
 	}
@@ -25,6 +24,12 @@ public class SalaryDAOImpl implements SalaryDAO {
 		Query query = getSession().createQuery("from Salary s where s.student.id = ?");
 		
 		return (Salary) query.setInteger(0, stuId).uniqueResult();
+	}
+
+	@Override
+	public void save(Salary salary) {
+		
+		getSession().saveOrUpdate(salary);
 	}
 
 }

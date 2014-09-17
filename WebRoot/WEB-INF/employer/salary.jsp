@@ -123,7 +123,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	          <table class="table table-bordered table-hover table-condensed">
 	            <thead>
 	                <tr>
-	                   	<th>选择</th> <th>学号</th> <th>姓名</th> <th>工资</th> <th>月份</th>
+	                   	<th>选择</th> <th>学号</th> <th>姓名</th> <th>工资</th>
 	                </tr>
 	            </thead>
 	            <tbody>
@@ -131,38 +131,33 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	            		没有学生信息！
 	            	</s:if>
 	            	<s:else>
-            		<form action="" method="post">
+            		<form action="employer/payoff.do" method="post">
 	            		<s:iterator value="#request.students">
 	            			<tr>
 	            				<td>
-	            					<input type="checkbox" name="check"/>
+	            					<input type="checkbox" name="data" 
+	            						value="${id }&&${sessionScope.employer.id } "/>
 	            				</td>
 		            			<td>
 		            				${number }
-		            				<input type="hidden" name="stuId" value="${id }" />
-		            				<input type="hidden" name="empId" value="${sessionScope.employer.id }" />
-		            				
 		            			</td> 
 		            			<td>${name }</td> 
 		            			<td>
-		            				<input type="text" name="salary.salary"/>
-		            			</td>
-		            			<td>
-		            				<select name="salary.month">
-										<%
-											for(int i = 1; i <= 12; i++){
-											%>
-											<option value="<%=i %>">
-												<%=i %>
-											</option>			
-											<%	
-											}
-										 %>
-		            				</select>
+		            				<input type="text" name="salary"/>
 		            			</td>
 	            			</tr>
 	            		</s:iterator>
-            		
+            			月份：<select name="month">
+								<%
+									for(int i = 1; i <= 12; i++){
+									%>
+									<option value="<%=i %>">
+										<%=i %>
+									</option>			
+									<%	
+									}
+								 %>
+            				</select>
             			<input type="submit" value="提交"/>
             		
             		</form>
