@@ -135,7 +135,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	            		<s:iterator value="#request.students">
 	            			<tr>
 	            				<td>
-	            					<input type="checkbox" name="data" 
+	            					<input type="checkbox" name="ids" 
 	            						value="${id }&&${sessionScope.employer.id } "/>
 	            				</td>
 		            			<td>
@@ -143,7 +143,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		            			</td> 
 		            			<td>${name }</td> 
 		            			<td>
-		            				<input type="text" name="salary"/>
+		            				<input type="text" name="salarys"/>
 		            			</td>
 	            			</tr>
 	            		</s:iterator>

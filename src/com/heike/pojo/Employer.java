@@ -3,14 +3,13 @@ package com.heike.pojo;
 import java.util.LinkedHashSet;
 import java.util.Set;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import org.apache.struts2.json.annotations.JSON;
@@ -95,6 +94,7 @@ public class Employer {
 	public void setMobile(String mobile) {
 		this.mobile = mobile;
 	}
+	@Column(columnDefinition="float default 0")
 	public float getTotalMoney() {
 		return totalMoney;
 	}

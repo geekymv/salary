@@ -1,5 +1,7 @@
 package com.heike.service;
 
+import java.util.List;
+
 import com.heike.pojo.Salary;
 
 public interface SalaryService {	
@@ -15,6 +17,6 @@ public interface SalaryService {
 	 * 发工资
 	 * @param salary
 	 */
-	public void add(Salary salary);
+	public void add(List<String> ids, List<Float> salarys, Integer month);
 
 }

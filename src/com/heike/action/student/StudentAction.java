@@ -158,19 +158,11 @@ public class StudentAction extends ActionSupport implements SessionAware, Reques
 			return ERROR;
 		}
 		List<RecruitStudent> recruitStudents = studentService.listApproveJob(student.getId());
-	
-//		for(RecruitStudent rs : recruitStudents) {
-//			if(rs.getStatus() != 1) {	//审核通过
-//				recruitStudents.remove(rs);
-//			}
-//		}
-		
+
 		request.put("recruitStudents", recruitStudents);
 		
 		return "approve";
 	} 
-	
-	
 	
 	private Map<String, Object> session;
 	private Map<String, Object> request;

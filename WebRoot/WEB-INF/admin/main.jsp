@@ -79,10 +79,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
           </ul>
 		  <ul class="nav navbar-nav navbar-right">
 	          
-	           	<li><a href="login.jsp">用户：${sessionScope.student.name } <span class="glyphicon glyphicon-user"></span></a></li>
+	           	<li><a href="#">用户：${employer.name } <span class="glyphicon glyphicon-user"></span></a></li>
 	            
 	           	<li class="divider-vertical"></li>
-	           	<li><a href="login.jsp">退出 <span class="glyphicon glyphicon-log-out"></span></a></li>
+	           	<li><a href="user/user-logout">退出 <span class="glyphicon glyphicon-log-out"></span></a></li>
 	      </ul>
         </div><!-- /.navbar-collapse -->
       </div><!-- /.container-fluid -->

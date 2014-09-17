@@ -43,7 +43,7 @@ public class RecruitDAOImpl implements RecruitDAO {
 		
 		pageUtil.getTotalPage(rowCounts, pageSize);	//计算总页数
 		
-		String hql = "from Recruit";
+		String hql = "from Recruit r order by r.endDate desc";
 		
 		@SuppressWarnings("unchecked")
 		List<Recruit> recruits = getSession().createQuery(hql)	//

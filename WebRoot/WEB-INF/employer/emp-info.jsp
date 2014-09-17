@@ -111,6 +111,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	        	<li>电话号码：${employer.mobile }</li>
 	        	<li>总岗位数：${employer.postNum }</li>
 	        	<li>月总金额：${employer.totalMoney }</li>
+	        	<li>备注：${employer.remarks }</li>
 	         </ul>	
 		     </div>
     	</div>
