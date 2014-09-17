@@ -69,6 +69,7 @@ public class RecruitServiceImpl implements RecruitService {
 			Student student = studentDAO.query(stuId);
 			
 			employer.getStudents().add(student);
+			
 			student.getEmployers().add(employer);
 			
 			employerDAO.saveOrUpdate(employer);

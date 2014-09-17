@@ -45,9 +45,7 @@ public class EmployerAction extends ActionSupport implements RequestAware, Sessi
 	 * @throws Exception
 	 */
 	public String empInfo() throws Exception {
-		
 		employer = (Employer) session.get("employer");
-		
 		if(null == employer) {
 			return ERROR;
 		}
@@ -63,9 +61,7 @@ public class EmployerAction extends ActionSupport implements RequestAware, Sessi
 	 * @throws Exception
 	 */
 	public String publish() throws Exception {
-		
 		employer = (Employer) session.get("employer");
-
 		if(null == employer) {
 			return ERROR;
 		}

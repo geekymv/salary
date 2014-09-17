@@ -72,6 +72,8 @@
 			
 			<result name="applyed">/WEB-INF/student/result.jsp</result>
 			<result name="only">/WEB-INF/student/only.jsp</result>
+			<result name="examining">/WEB-INF/student/examining.jsp</result>
+			
 			
 			<result name="applyJob" type="redirectAction">stu-listRecruit</result>		
 			

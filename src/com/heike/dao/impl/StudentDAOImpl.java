@@ -35,20 +35,16 @@ public class StudentDAOImpl implements StudentDAO {
 
 	@Override
 	public Student query(String number) {
-		
 		String hql = "from Student s where s.number = ?";
 		
 		Student student = (Student) getSession().createQuery(hql)
 				.setString(0, number).uniqueResult();
-
 		
 		return student;
 	}
 
-
 	@Override
 	public Student query(String number, String password) {
-		
 		String hql = "from Student s where s.number = ? and s.password = ? ";
 		
 		return (Student) getSession().createQuery(hql).
@@ -65,13 +61,6 @@ public class StudentDAOImpl implements StudentDAO {
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<RecruitStudent> listRecruitStudent(Integer id) {
-//		List<RecruitStudent> students = new ArrayList<RecruitStudent>();
-		
-//		Student student = (Student) getSession().get(Student.class, id);
-//		Set<RecruitStudent> recruitStudents = student.getRecruitStudents();
-		
-//		students.addAll(recruitStudents);
-		
 		String hql = "from RecruitStudent rs " +
 				"where rs.student.id=? order by rs.applyDate";
 		

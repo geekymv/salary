@@ -226,11 +226,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 <script type="text/javascript">
 	function pass(num){
-		alert("审核通过");
 		$.post("<%=request.getContextPath()%>/employer/examineStudent.do", 
 				{"id": $("#rId").val(), "examine":num,"stuId":$("#stuId").val()}, 
 				function(data){
 			
+			window.location.reload();	//刷新当前页面
 		});
 	}
 	
@@ -238,6 +238,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		$.post("<%=request.getContextPath()%>/employer/examineStudent.do", 
 				{"id": $("#rId").val(), "examine":num,"stuId":$("#stuId").val()}, 
 				function(data){
+			
+			window.location.reload();	//刷新当前页面
 		});
 	}
 

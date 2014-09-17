@@ -64,26 +64,9 @@ public class StudentServiceImpl implements StudentService {
 		return flag;
 	}
 
-//	@Override
-//	public List<Recruit> listRecruit(Integer id) {
-//		
-//		List<Recruit> recruits = new ArrayList<Recruit>();
-//		
-//		Set<RecruitStudent> rStudents = studentDAO.query(id).getRecruitStudents();
-//		
-//		for(Iterator<RecruitStudent> iter = rStudents.iterator(); iter.hasNext(); ){
-//			RecruitStudent rs = iter.next();
-//			recruits.add(rs.getRecruit());
-//		}
-//		
-//		return recruits;
-//	}
-
 	@Override
 	public boolean validateStuNum(String number) {
-		
 		Student student = studentDAO.query(number);
-		
 		if(null == student) {	//不存在
 			return false;
 		}

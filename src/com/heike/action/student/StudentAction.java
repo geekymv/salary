@@ -70,7 +70,6 @@ public class StudentAction extends ActionSupport implements SessionAware, Reques
 		request.put("student", student);
 
 		return "stuInfo";
-		
 	}
 
 	/**
@@ -112,20 +111,26 @@ public class StudentAction extends ActionSupport implements SessionAware, Reques
 		}	
 
 		//同一个学生在同一个单位只能应聘一个岗位
-		List<RecruitStudent> recruitStudents = studentService.listApproveJob(student.getId());
+		List<RecruitStudent> recruitStudents = studentService.listRecruitStudent(student.getId());
+		
 		
 		List<Recruit> recruits = new ArrayList<Recruit>();
 		for(RecruitStudent rs : recruitStudents) {
-			recruits.add(rs.getRecruit());
-		}
+			Recruit r = rs.getRecruit();
+			
+			boolean flag = recruit.getEmployer().getId() == r.getEmployer().getId();
 		
-		for(Recruit r : recruits){
-			if(recruit.getEmployer().getId() == r.getEmployer().getId()){
+			if(flag && rs.getStatus() == 1){	//在该单位通过招聘
 				return "only";
+			}
+			//在该单位申请的招聘还在审核中
+			else if(flag && rs.getStatus() == 0){	//审核中
+				return "examining";	
 			}
 		}
 
 		studentService.applyJob(student, recruit);
+
 		return "applyJob";
 	}
 	
@@ -203,7 +208,6 @@ public class StudentAction extends ActionSupport implements SessionAware, Reques
 	public void setRecruit(Recruit recruit) {
 		this.recruit = recruit;
 	}
-
 	public Student getStudent() {
 		return student;
 	}
