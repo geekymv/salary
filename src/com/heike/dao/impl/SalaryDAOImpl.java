@@ -1,6 +1,7 @@
 package com.heike.dao.impl;
 
-import org.hibernate.Query;
+import java.util.List;
+
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,19 +18,18 @@ public class SalaryDAOImpl implements SalaryDAO {
 	public Session getSession(){
 		return sessionFactory.getCurrentSession();
 	}
-	
-	@Override
-	public Salary query(Integer stuId) {
-		
-		Query query = getSession().createQuery("from Salary s where s.student.id = ?");
-		
-		return (Salary) query.setInteger(0, stuId).uniqueResult();
-	}
 
 	@Override
 	public void save(Salary salary) {
+		getSession().save(salary);
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<Salary> list(Integer empId) {
 		
-		getSession().saveOrUpdate(salary);
+		return (List<Salary>)getSession().createQuery("from Salary s where s.employer.id=?")	//
+				.setInteger(0, empId).list();
 	}
 
 }

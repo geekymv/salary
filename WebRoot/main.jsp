@@ -139,6 +139,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     
     <div class="row">
     	<div class="col-md-2">
+    	
       		<pre>右边</pre>
       		<img src="img/hello.jpg" alt="这是一张图片" title="这是一张图片吗" class="img-thumbnail">
 

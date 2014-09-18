@@ -109,6 +109,10 @@
 			<result name="payoff" type="redirect">/index.jsp</result>
 		</action>
 		
+		<!-- 学生工资管理 -->
+		<action name="salary-*" class="salaryAction" method="{1}">
+			<result name="listSalary">/WEB-INF/employer/listSalary.jsp</result>
+		</action>
 
 		<action name="emp-*" class="employerAction" method="{1}">
 			<result name="published" type="redirect">/index.jsp</result>

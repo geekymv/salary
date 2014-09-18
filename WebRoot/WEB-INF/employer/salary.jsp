@@ -28,6 +28,18 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		
 	</style>
 	
+	<link rel="stylesheet" type="text/css" href="jquery-ui/jquery-ui.css">
+	<link rel="stylesheet" type="text/css" href="jquery-ui/jquery-ui.theme.css">
+	<style>
+		.ui-menu {
+			width: 162px;
+		}
+		
+		#menu li {
+			line-height: 35px;
+		}
+	</style>
+	
 	</head>
 
 <body>
@@ -99,6 +111,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <div class="row">
     
     	<div class="col-md-2">
+    		<%--
 	   	  	<div class="panel panel-primary">
 		        <div class="panel-heading">功能导航</div>
 			   	<div class="list-group">
@@ -108,6 +121,60 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				  <a href="employer/emp-stuList.do" class="list-group-item">发放工资</a>
 				</div>
 			</div>
+			 --%>
+		<div class="panel panel-primary">	 
+		<div class="panel-heading">功能导航</div>
+		<ul id="menu">
+			<!-- 
+			<li class="ui-state-disabled">不能使用</li>
+			 -->
+			<li><a href="employer/emp-empInfo.do">个人资料</a></li>
+			<li>招聘管理
+				<ul>
+					<li><a href="employer/emp-recruitList.do">查看招聘</a></li>
+					<li><a href="employer/publish.do">发布招聘</a></li>
+				</ul>
+			</li>
+			<li>学生管理
+				<ul>
+					<li>添加学生</li>
+					<li>删除学生</li>
+				</ul>
+			</li>
+			<li>工资管理
+				<ul>
+					<!-- 
+					<li class="ui-state-disabled">不能使用</li>
+					 -->
+					<li><a href="employer/emp-stuList.do">发放工资</a></li>
+					<li><a href="employer/salary-list.do">修改工资</a></li>
+				</ul>
+			</li>
+			<%--
+			<li>Saarland</li>
+			<li>Salzburg
+				<ul>
+					<li>Delphi
+						<ul>
+							<li>Ada</li>
+							<li>Saarland</li>
+							<li>Salzburg</li>
+						</ul>
+					</li>
+					<li>Delphi
+						<ul>
+							<li>Ada</li>
+							<li>Saarland</li>
+							<li>Salzburg</li>
+						</ul>
+					</li>
+					<li>Perch</li>
+				</ul>
+			</li>
+			 --%>
+		</ul>
+		</div>	
+			
       	</div>
     
     
@@ -181,6 +248,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 <script type="text/javascript" src="js/jquery-1.11.1.js"></script>
 <script src="bootstrap/js/bootstrap.min.js"></script>
-
+<script src="jquery-ui/external/jquery/jquery.js"></script>
+<script src="jquery-ui/jquery-ui.js"></script>
+<script>
+	$(function() {
+		$("#menu").menu();
+	});
+</script>
 </body>
 </html>

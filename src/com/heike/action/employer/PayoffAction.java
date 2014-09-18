@@ -12,6 +12,9 @@ import com.heike.pojo.Employer;
 import com.heike.service.SalaryService;
 import com.opensymphony.xwork2.ActionSupport;
 
+/**
+ * 批量给学生发薪水
+ */
 @Controller("payoffAction")
 @Scope("prototype")
 public class PayoffAction extends ActionSupport implements SessionAware {

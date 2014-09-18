@@ -10,7 +10,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<head>
 	<base href="<%=basePath%>">
 	<meta charset="utf-8">
-	<title>我的资料</title>
+	<title>我的招聘</title>
 	<link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">	
 	
 	<style type="text/css">
@@ -23,11 +23,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			width: 100%;
 			height: 200px;
 			
-			margin-top: 400px;
+			margin-top: 450px;
 		}
-		.col-md-10 ul li {
-			line-height: 40px;
-		}
+		
 	</style>
 	
 	<link rel="stylesheet" type="text/css" href="jquery-ui/jquery-ui.css">
@@ -47,10 +45,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <body>
 	<div class="container">
 	<jsp:include page="nav.jsp"></jsp:include>
-      
+	
     <div class="row">
+    
     	<div class="col-md-2">
-    		
 			<div class="panel panel-primary">	 
 			<div class="panel-heading">功能导航</div>
 			<ul id="menu">
@@ -82,22 +80,46 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			</ul>
 			</div>	
 			
-			
       	</div>
     
+    
+    	
       	<div class="col-md-10">
-      		 <div class="panel panel-primary">
-	          <div class="panel-heading">我的资料
+	        <div class="panel panel-primary">
+	          <div class="panel-heading">工资信息</div>
+	          <div class="panel-body">
+	            <p>工资修改</p>
 	          </div>
-	     	  <ul>
-	        	<li>账号：${employer.account}</li>
-	        	<li>名称：${employer.name }</li>
-	        	<li>电话号码：${employer.mobile }</li>
-	        	<li>总岗位数：${employer.postNum }</li>
-	        	<li>月总金额：${employer.totalMoney }</li>
-	        	<li>备注：${employer.remarks }</li>
-	         </ul>	
-		     </div>
+	        
+	           <!-- Table -->
+	          <table class="table table-bordered table-hover table-condensed">
+	            <thead>
+	                <tr>
+	                   	<th>学号</th> <th>姓名</th> <th>工资</th> <th>月份</th> <th>选择操作</th> 
+	                </tr>
+	            </thead>
+	            <tbody>
+	            	<s:if test="#request.salarys == null || #request.salarys.size() == 0">
+	            		还没有发过薪水！
+	            	</s:if>
+	            	<s:else>
+	            		<s:iterator value="#request.salarys">
+	            			<tr>
+	            				<td>${student.number }</td>
+		            			<td>${student.name }</td> 
+		            			<td>${salary }</td> 
+		            			<td>${month }</td>
+		            			
+		            			<td><a href="#">修改</a></td>
+	            			</tr>
+	            		</s:iterator>
+
+	            	</s:else>
+	            </tbody>
+	          </table>
+
+	        </div> <!-- end of panel -->
+	      
     	</div>
       
 	</div>
@@ -119,5 +141,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		$("#menu").menu();
 	});
 </script>
+
 </body>
 </html>

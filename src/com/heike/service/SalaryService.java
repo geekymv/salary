@@ -7,11 +7,12 @@ import com.heike.pojo.Salary;
 public interface SalaryService {	
 	
 	/**
-	 * 根据学生学号查询该学生的薪水
-	 * @param stuId
+	 * 根据部门id列出该部门学生的薪水
+	 * @param empId
 	 * @return
 	 */
-	public Salary query(Integer stuId);
+	public List<Salary> list(Integer empId);
+	
 	
 	/**
 	 * 发工资
