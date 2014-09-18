@@ -13,6 +13,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<title>发布招聘信息</title>
 	<link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">	
 	
+	<link rel="stylesheet" href="jquery-ui/jquery-ui.css">
+	
 	<style type="text/css">
 		.custom{
 			height:51px;
@@ -35,6 +37,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			margin-top: 10px;
 		}
 	</style>
+	
+	
+	
 	
 	</head>
 
@@ -65,7 +70,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			   		招聘人数:<input type="text" name="recruit.postNum"/> <br />
 			   		薪资待遇:<input type="text" name="recruit.salary"/> <br />
 			   		工作要求：<br/><textarea rows="5" cols="40" name="recruit.context"></textarea><br/>
-			   		截止日期:<input type="text" name="recruit.endDate"/> <br />
+			   		截止日期:<input type="text" id="datepicker" name="recruit.endDate"/> <br />
 			   		备注:<input type="text" name="recruit.remarks"/> <br />
 			   		
 			   		<input type="submit" value="发布">
@@ -87,6 +92,17 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 <script type="text/javascript" src="js/jquery-1.11.1.js"></script>
 <script src="bootstrap/js/bootstrap.min.js"></script>
+
+<script type="text/javascript" src="jquery-ui/jquery-ui.min.js"></script>
+	
+	<script type="text/javascript">
+		$(function() {
+			$( "#datepicker" ).datepicker({
+				dateFormat:"yy-mm-dd",		
+			});
+		});
+		
+	</script>
 
 </body>
 </html>

@@ -70,7 +70,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	            			<td>${recruit.postName }</td> 
 	            			<td>${recruit.employer.name }</td>
 	            			<td><s:date name="applyDate" format="yyyy-MM-dd"/></td>
-            				<td>1000</td>
+            				<td>${recruit.salary }</td>
            				</tr>
             		</s:iterator>
 	            	

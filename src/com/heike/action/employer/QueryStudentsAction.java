@@ -38,11 +38,6 @@ public class QueryStudentsAction extends ActionSupport implements SessionAware{
 	 */
 	@Override
 	public String execute() throws Exception {
-		Employer employer = (Employer) session.get("employer");
-		if(null == employer){
-			return ERROR;
-		}
-		
 		students = new ArrayList<Student>();
 		status = new ArrayList<Integer>();
 		

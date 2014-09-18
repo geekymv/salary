@@ -68,7 +68,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				        	${student.introduce }
 		        		</s:else>
 		        	</li>	
-		        	<li>注册时间：<s:date name="student.regTime" format="yyyy-MM-dd hh:mm:ss" /></li>
+		        	<li>注册时间：<s:date name="student.regTime" format="yyyy-MM-dd" /></li>
 		        </ul>	
 		     </div>
     	</div>

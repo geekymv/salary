@@ -96,6 +96,7 @@
 		<action name="publish">
 			<result>/WEB-INF/employer/publish.jsp</result>
 		</action>
+		
 		<action name="queryStudents" class="queryStudentsAction">
 			<result type="json"></result>
 		</action>
