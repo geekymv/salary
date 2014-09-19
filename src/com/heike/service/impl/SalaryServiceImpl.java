@@ -68,6 +68,12 @@ public class SalaryServiceImpl implements SalaryService {
 		return salaryDAO.list(empId);
 	}
 
+	@Override
+	public List<Salary> listAll(Integer month) {
+		
+		return salaryDAO.listAll(month);
+	}
+
 	
 
 }

@@ -12,6 +12,7 @@ import com.heike.dao.StudentDAO;
 import com.heike.dto.RecruitStudent;
 import com.heike.pojo.Employer;
 import com.heike.pojo.Recruit;
+import com.heike.pojo.Salary;
 import com.heike.pojo.Student;
 import com.heike.service.RecruitService;
 import com.heike.utils.PageUtil;
@@ -64,12 +65,11 @@ public class RecruitServiceImpl implements RecruitService {
 	@Override
 	public void examineRecruit(Integer stuId, Integer recId, Integer status, Integer empId) {
 		
+		Employer employer = employerDAO.query(empId);
+		Student student = studentDAO.query(stuId);
+		
 		if(1 == status){	//审核通过
-			Employer employer = employerDAO.query(empId);
-			Student student = studentDAO.query(stuId);
-			
 			employer.getStudents().add(student);
-			
 			student.getEmployers().add(employer);
 			
 			employerDAO.saveOrUpdate(employer);
@@ -79,9 +79,26 @@ public class RecruitServiceImpl implements RecruitService {
 		RecruitStudent rs = recruitDAO.queryRecruitStudent(stuId, recId);
 		
 		rs.setStatus(status);
+		rs.setEmployer(employer);
 		
 		recruitDAO.update(rs);
 	}
+
+
+	@Override
+	public RecruitStudent queryRecruitStudent(Integer stuId, Integer recId) {
+
+		return recruitDAO.queryRecruitStudent(stuId, recId);
+	}
+
+
+	@Override
+	public RecruitStudent queryRecruitStudent2(Integer stuId, Integer empId) {
+		
+		return recruitDAO.queryRecruitStudent2(stuId, empId);
+	}
+	
+	
 
 }
 

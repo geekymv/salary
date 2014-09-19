@@ -21,10 +21,14 @@ public class Salary {
 	private Integer id;
 	private Date date;
 	private Integer month;	//月份
-	private float salary;
+	private float salary;	//基本工资
+	private float bonus;	//奖金
+	private float toolFee;	//工具费
 
 	private Employer employer;
 	private Student student;	//多对一的关联关系，Student是一的一方
+	
+	private String remarks;		//备注
 	
 	@Id
 	@GeneratedValue
@@ -42,11 +46,9 @@ public class Salary {
 	public Employer getEmployer() {
 		return employer;
 	}
-
 	public void setEmployer(Employer employer) {
 		this.employer = employer;
 	}
-
 	public Date getDate() {
 		return date;
 	}
@@ -72,7 +74,28 @@ public class Salary {
 	public void setStudent(Student student) {
 		this.student = student;
 	}
-	
+	@Column(columnDefinition="float default 0")
+	public float getBonus() {
+		return bonus;
+	}
+	public void setBonus(float bonus) {
+		this.bonus = bonus;
+	}
+	@Column(columnDefinition="float default 0")
+	public float getToolFee() {
+		return toolFee;
+	}
+	public void setToolFee(float toolFee) {
+		this.toolFee = toolFee;
+	}
+
+	public String getRemarks() {
+		return remarks;
+	}
+	public void setRemarks(String remarks) {
+		this.remarks = remarks;
+	}
+
 	@Override
 	public String toString() {
 		return "Salary [id=" + id + ", salary="

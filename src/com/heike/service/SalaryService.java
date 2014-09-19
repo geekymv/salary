@@ -19,5 +19,13 @@ public interface SalaryService {
 	 * @param salary
 	 */
 	public void add(List<String> ids, List<Float> salarys, Integer month);
+	
+	
+	/**
+	 * 根据月份得到所有学生的工资表
+	 * @param month
+	 * @return
+	 */
+	public List<Salary> listAll(Integer month);
 
 }

@@ -19,4 +19,12 @@ public interface SalaryDAO {
 	 */
 	public List<Salary> list(Integer empId);
 	
+	
+	/**
+	 * 根据月份得到所有学生的工资表
+	 * @param month
+	 * @return
+	 */
+	public List<Salary> listAll(Integer month);
+	
 }

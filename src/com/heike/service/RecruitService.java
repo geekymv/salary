@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.heike.dto.RecruitStudent;
 import com.heike.pojo.Recruit;
+import com.heike.pojo.Salary;
 import com.heike.pojo.Student;
 import com.heike.utils.PageUtil;
 
@@ -46,10 +47,28 @@ public interface RecruitService {
 	 */
 	public boolean isApply(Integer stuId, Integer recId);
 	
+	
+	/**
+	 * 查询
+	 * @param stuId
+	 * @param recId
+	 * @return
+	 */
+	public RecruitStudent queryRecruitStudent(Integer stuId, Integer recId);
+	
+	/**
+	 * 查询
+	 * @param stuId 学生号
+	 * @param empId 部门号
+	 * @return
+	 */
+	public RecruitStudent queryRecruitStudent2(Integer stuId, Integer empId);
+	
 	/**
 	 * 审核学生招聘是否通过
 	 * @param rs
 	 */
 	public void examineRecruit(Integer stuId, Integer recId, Integer status, Integer empId);
+	
 
 }

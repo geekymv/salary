@@ -56,11 +56,21 @@ public interface RecruitDAO {
 	
 	/**
 	 * 查询
-	 * @param stuId
-	 * @param recId
+	 * @param stuId 学生号
+	 * @param recId 招聘信息号
 	 * @return
 	 */
 	public RecruitStudent queryRecruitStudent(Integer stuId, Integer recId);
+	
+	/**
+	 * 查询
+	 * @param stuId 学生号
+	 * @param empId 部门号
+	 * @return
+	 */
+	public RecruitStudent queryRecruitStudent2(Integer stuId, Integer empId);
+	
+	
 	
 	
 	/**

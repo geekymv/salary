@@ -66,7 +66,7 @@ public class QueryStudentsAction extends ActionSupport implements SessionAware{
 		if(null == employer){
 			return ERROR;
 		}
-		
+									//学生id	//招聘信息id		//用工单位id
 		recruitService.examineRecruit(stuId, id, examine, employer.getId());
 		
 		return SUCCESS;

@@ -53,8 +53,5 @@ public interface EmployerDAO {
 	 * @return
 	 */
 	public List<Student> listStudent(Integer id);
-	
-	
-	
 
 }

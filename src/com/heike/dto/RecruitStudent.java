@@ -11,6 +11,7 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import com.heike.pojo.Employer;
 import com.heike.pojo.Recruit;
 import com.heike.pojo.Student;
 
@@ -24,12 +25,13 @@ public class RecruitStudent {
 	
 	
 	private Integer id;
-	private Integer status;	//0表示在审核，1表示审核通过，-1表示审核未通过
+	private Integer status;	//0表示在审核，1表示审核通过，-1表示审核未通过，2表示该学生已经对应的部门辞职
 	private Date applyDate;	//报名时间
 	
 	private Recruit recruit;
-
 	private Student student;
+	
+	private Employer employer;
 
 	@Id
 	@GeneratedValue
@@ -71,6 +73,17 @@ public class RecruitStudent {
 	public void setStudent(Student student) {
 		this.student = student;
 	}
+	@ManyToOne
+	@JoinColumn(name="emp_id", nullable=true)
+	public Employer getEmployer() {
+		return employer;
+	}
+	public void setEmployer(Employer employer) {
+		this.employer = employer;
+	}
+	
+	
+	
 }
 
 

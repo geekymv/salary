@@ -32,4 +32,13 @@ public class SalaryDAOImpl implements SalaryDAO {
 				.setInteger(0, empId).list();
 	}
 
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<Salary> listAll(Integer month) {
+		
+		String hql = "from Salary s where s.month=?";
+		
+		return (List<Salary>)getSession().createQuery(hql).setInteger(0, month).list();
+	}
+
 }

@@ -126,6 +126,17 @@ public class RecruitDAOImpl implements RecruitDAO {
 	}
 
 
+	@Override
+	public RecruitStudent queryRecruitStudent2(Integer stuId, Integer empId) {
+		
+		String hql = "from RecruitStudent rs where rs.student.id=? and rs.employer.id=? and rs.status=1";
+
+		RecruitStudent rs = (RecruitStudent) getSession().createQuery(hql)	//
+				.setInteger(0, stuId).setInteger(1, empId)	//
+				.uniqueResult();
+		
+		return rs;
+	}
 }
 
 
