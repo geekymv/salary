@@ -64,6 +64,15 @@
 			<result name="listRecruit">/WEB-INF/student/main.jsp</result>
 		</action>
 		
+		<!-- 跳转至更新基本信息页面 -->
+		<action name="preupdate" class="updateStudentInfoAction" method="updateStuInfo">
+			<result name="preupdate">/WEB-INF/student/update-stu-info.jsp</result>
+		</action>
+		<action name="update" class="updateStudentInfoAction" method="update">
+			<result name="save" type="redirectAction">stu-stuInfo</result>
+		</action>
+		
+		
 		<action name="stu-*" class="studentAction" method="{1}">
 			<result name="listRecruit">/WEB-INF/student/main.jsp</result>
 			<result name="details">/WEB-INF/student/details.jsp</result>	
@@ -82,9 +91,8 @@
 			<result name="approve">/WEB-INF/student/myjob.jsp</result>
 			
 			<result name="error" type="redirect">/login.jsp</result>
-			
 		</action>
-	
+		
 	</package>
 	
 	<!-- 学院和社团 -->

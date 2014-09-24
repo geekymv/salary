@@ -71,7 +71,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		        	<li>注册时间：<s:date name="student.regTime" format="yyyy-MM-dd" /></li>
 		        </ul>	
 		        
-		        <a href="">修改基本资料</a>	
+		        <a href="student/preupdate.do">修改基本资料</a>	
 		     </div>
     	</div>
       

@@ -37,7 +37,7 @@ public class UpdateStudentInfoAction extends ActionSupport implements SessionAwa
 		}
 		request.put("student", student);
 		
-		return "updateStuInfo";
+		return "preupdate";
 	}
 
 	/**

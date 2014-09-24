@@ -66,6 +66,9 @@ public class StudentAction extends ActionSupport implements SessionAware, Reques
 			return ERROR;
 		}
 		
+		student = studentService.query(student.getId());
+		session.put("student", student);	//更新session
+		
 		request.put("student", student);
 
 		return "stuInfo";

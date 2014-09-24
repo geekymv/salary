@@ -57,7 +57,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
       	<div class="col-md-10">
       		 <div class="panel panel-primary">
 	          	 <div class="panel-heading">${student.name }的资料</div>
-				 <form action="" method="post">
+				 <form action="student/update.do" method="post">
 		     	 <ul>
 		        	<li>
 		        		学号：${student.number }
@@ -107,7 +107,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		        			</textarea>
 		        		</s:else>
 		        	</li>	
-		        	<li>注册时间：<s:date name="student.regTime" format="yyyy-MM-dd" /></li>
+		        	<li>
+		        		注册时间：
+		        		<s:date name="student.regTime" format="yyyy-MM-dd" />
+		        		<input type="hidden" name="student.regTime" value="${student.regTime }">
+		        		</li>
 		        </ul>
 		        
 		        	<input type="submit" value="保存"/>
