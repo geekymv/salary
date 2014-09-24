@@ -25,7 +25,6 @@ public class StudentAction extends ActionSupport implements SessionAware, Reques
 	
 	@Autowired
 	private RecruitService recruitService;
-	
 	@Autowired
 	private StudentService studentService;
 	

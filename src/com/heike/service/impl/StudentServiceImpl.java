@@ -24,7 +24,7 @@ public class StudentServiceImpl implements StudentService {
 	
 	
 	@Override
-	public Student register(Student student) {
+	public Student save(Student student) {
 
 		return studentDAO.save(student);
 	}
@@ -85,6 +85,12 @@ public class StudentServiceImpl implements StudentService {
 		
 		return studentDAO.listApproveJob(id);
 	}
+
+	@Override
+	public Student query(Integer id) {
+		
+		return studentDAO.query(id);
+	}	
 
 }
 

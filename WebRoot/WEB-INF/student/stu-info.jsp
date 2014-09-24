@@ -10,7 +10,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<head>
 	<base href="<%=basePath%>">
 	<meta charset="utf-8">
-	<title>我的资料</title>
+	<title>修改基本资料</title>
 	<link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">	
 	
 	<style type="text/css">
@@ -70,6 +70,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		        	</li>	
 		        	<li>注册时间：<s:date name="student.regTime" format="yyyy-MM-dd" /></li>
 		        </ul>	
+		        
+		        <a href="">修改基本资料</a>	
 		     </div>
     	</div>
       

@@ -1,8 +1,6 @@
 package com.heike.dao.impl;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -11,7 +9,6 @@ import org.springframework.stereotype.Repository;
 
 import com.heike.dao.StudentDAO;
 import com.heike.dto.RecruitStudent;
-import com.heike.pojo.Recruit;
 import com.heike.pojo.Student;
 
 @Repository("studentDAO")

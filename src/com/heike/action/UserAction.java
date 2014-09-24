@@ -79,8 +79,6 @@ public class UserAction extends ActionSupport implements SessionAware{
 		
 		if(session instanceof SessionMap){
 
-			System.out.println("退出...");
-			
 			SessionMap<String, Object> sessionMap = (SessionMap<String, Object>)session;
 			
 			sessionMap.invalidate();
@@ -106,7 +104,7 @@ public class UserAction extends ActionSupport implements SessionAware{
 		password = EncryptUtil.md5Encrypt(password);
 		student.setPassword(password);
 		
-		studentService.register(student);
+		studentService.save(student);
 		
 		return "registerSuccess";
 	}

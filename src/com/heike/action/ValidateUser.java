@@ -13,7 +13,8 @@ import com.opensymphony.xwork2.ActionSupport;
 @Controller("validateUser")
 @Scope("prototype")
 public class ValidateUser extends ActionSupport {
-	
+	private static final long serialVersionUID = -5431974610995039218L;
+
 	@Autowired
 	private StudentService studentService;
 	

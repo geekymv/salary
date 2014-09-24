@@ -9,11 +9,18 @@ import com.heike.pojo.Student;
 public interface StudentService {
 
 	/**
-	 * 注册用户
+	 * 保存用户
 	 * @param student
 	 * @return
 	 */
-	public Student register(Student student);
+	public Student save(Student student);
+	
+	/**
+	 * 根据学生编号查询学生
+	 * @param id
+	 * @return
+	 */
+	public Student query(Integer id);
 	
 	/**
 	 * 根据账号和密码，验证用户的合法性
