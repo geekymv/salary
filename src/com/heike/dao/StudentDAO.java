@@ -50,5 +50,12 @@ public interface StudentDAO {
 	 * @return
 	 */
 	public List<RecruitStudent> listApproveJob(Integer id);
+
+	/**
+	 * 更新密码
+	 * @param newpassword
+	 * @param id
+	 */
+	public void updatePassword(String newpassword, Integer id);
 	
 }

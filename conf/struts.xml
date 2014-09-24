@@ -72,7 +72,16 @@
 			<result name="save" type="redirectAction">stu-stuInfo</result>
 		</action>
 		
-		
+		<!-- 跳转更新密码页面 -->
+		<action name="preUpdatePassword" class="updatePassword" method="preUpdatePassword">
+			<result name="preUpdatePassword">/WEB-INF/student/update-pwd.jsp</result>		
+		</action>
+		<action name="updatePassword" class="updatePassword" method="updatePassword">
+			<result name="updatePassword" type="redirectAction">stu-stuInfo</result>
+			<result name="input">/WEB-INF/student/update-pwd.jsp</result>
+		</action>
+
+
 		<action name="stu-*" class="studentAction" method="{1}">
 			<result name="listRecruit">/WEB-INF/student/main.jsp</result>
 			<result name="details">/WEB-INF/student/details.jsp</result>	

@@ -46,12 +46,11 @@ public class UpdateStudentInfoAction extends ActionSupport implements SessionAwa
 	 * @throws Exception
 	 */
 	public String update() throws Exception {
-		
 		studentService.save(student);
-		
 		return "save";
 	}
 
+	
 	private Map<String, Object> session;
 	@Override
 	public void setSession(Map<String, Object> session) {

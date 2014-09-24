@@ -75,6 +75,14 @@ public class StudentDAOImpl implements StudentDAO {
 		return (List<RecruitStudent>)getSession().createQuery(hql).setInteger(0, id).list();
 	}
 
+
+	@Override
+	public void updatePassword(String newpassword, Integer id) {
+		
+		getSession().createQuery("update Student student set password=? where student.id=?")
+			.setString(0, newpassword).setInteger(1, id).executeUpdate();
+	}
+
 }
 
 
