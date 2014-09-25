@@ -26,7 +26,7 @@ public class EmployerDAOImpl implements EmployerDAO {
 	
 	
 	@Override
-	public Employer saveOrUpdate(Employer employer) {
+	public Employer save(Employer employer) {
 		getSession().saveOrUpdate(employer);
 		return employer;
 	}

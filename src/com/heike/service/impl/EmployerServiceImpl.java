@@ -18,24 +18,26 @@ public class EmployerServiceImpl implements EmployerService{
 	@Autowired
 	private EmployerDAO employerDAO;
 	
-	
 	@Override
 	public Employer login(String account, String password) {
-
 		return employerDAO.query(account, password);
 	}
 
 	@Override
 	public List<Student> listStudent(Integer id) {
-		
 		return employerDAO.listStudent(id);
 	}
 
 	@Override
 	public PageUtil<Recruit> getRecruitsByPage(Integer id, int page,
 			int pageSize) {
-		
 		return employerDAO.getRecruitsByPage(id, page, pageSize);
+	}
+
+	@Override
+	public void saveEmployer(Employer employer) {
+		
+		employerDAO.save(employer);
 	}
 
 }

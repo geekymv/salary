@@ -34,4 +34,10 @@ public interface EmployerService {
 	 */
 	public PageUtil<Recruit> getRecruitsByPage(Integer id,int page, int pageSize);
 	
+	/**
+	 * 保存二级用户
+	 * @param employer
+	 */
+	public void saveEmployer(Employer employer);
+	
 }

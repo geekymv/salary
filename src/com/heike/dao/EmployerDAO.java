@@ -13,7 +13,7 @@ public interface EmployerDAO {
 	 * @param employer
 	 * @return
 	 */
-	public Employer saveOrUpdate(Employer employer);
+	public Employer save(Employer employer);
 	
 	/**
 	 * 根据学号和密码查询Employer

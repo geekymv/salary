@@ -72,7 +72,7 @@ public class RecruitServiceImpl implements RecruitService {
 			employer.getStudents().add(student);
 			student.getEmployers().add(employer);
 			
-			employerDAO.saveOrUpdate(employer);
+			employerDAO.save(employer);
 			studentDAO.save(student);
 		}
 		
