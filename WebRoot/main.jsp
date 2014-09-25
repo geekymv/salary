@@ -11,8 +11,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<base href="<%=basePath%>">
 	<meta charset="utf-8">
 	<title>首页</title>
-	<link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">	
 	
+	<link rel="stylesheet" href="css/style.css">
+
+	<link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">	
 	<style type="text/css">
 		.custom{
 			height:51px;
@@ -27,7 +29,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		}
 		
 	</style>
-	
 	</head>
 
 <body>
@@ -77,13 +78,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 </li>
                 
           </ul>
+          <%--
           <form action="#" class="navbar-form navbar-left" role="search">
             <div class="form-group">
               <input type="text" class="form-control" placeholder="Search">
             </div>
             <button type="submit" class="btn btn-default">搜索</button>
           </form>
-
+ 		--%>
+ 		
           <ul class="nav navbar-nav navbar-right">
            	<s:if test="#session.user != null">
            	<li role="presentation" class="dropdown">
@@ -224,14 +227,45 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     
    </div><!-- /.container -->
    
-   
+   <!-- 
    <div class="footer">
-   
    </div>
+ 	-->
+ 
+	<div class="bottom_box">
+	    <div class="bottom">
+	        <p>感谢您访问站长素材网站！<br>站长素材是一家大型综合设计类素材网站。</p>
+	        <a href="register.jsp" target="_blank" class="register">
+				<img src="img/btn_register.png" width="112" height="39" />
+			</a>
+	        <a href="#" class="ask">
+				<img src="img/btn_ask.png" width="112" height="39" />
+			</a>
+	    </div>
+	    <div class="close"></div>  
+	</div>
 
+	<img class="mini" src="img/mini.png" width="65" height="37" />
 
 <script type="text/javascript" src="js/jquery-1.11.1.js"></script>
 <script src="bootstrap/js/bootstrap.min.js"></script>
+
+<script type="text/javascript">
+$(function(){
+	setTimeout(function(){
+	  $(".bottom_box").slideDown("slow");
+	},2000);
+
+	$(".close").click(function(){
+		$(".bottom_box").hide();	
+		$(".mini").show(200);	
+	})
+	$(".mini").click(function(){
+		$(this).hide();	
+		$(".bottom_box").show();	
+	})
+});
+</script>
 
 </body>
 </html>
