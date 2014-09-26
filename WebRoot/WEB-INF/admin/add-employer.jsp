@@ -62,7 +62,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			          <li >
 			            <h4 >用户管理</h4>
 			            <div class="list-item none">
-			              <p ><a href="http://sc.chinaz.com/" target="_self">添加二级用户</a></p>
+			               <p ><a href="admin/admin-listEmployer.do" target="_self">用工单位列表</a></p>
+			               <p ><a href="admin/pre-addemployer.do" target="_self">添加用单位</a></p>
 			            </div>
 			          </li>
 			          <li >
@@ -95,22 +96,17 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	            <p>添加二级用户！admin</p>
 	          </div>
 	          <div class="form">
-	          <form action="admin/machine-save" method="post">
-			  	<%--
-			  	设备编号：<input type="text" name="machine.num" /> <br/>
-			  	设备名称：<input type="text" name="machine.name" /> <br/>
-			  	使用年限：<input type="text" name="machine.useYear" /> <br/>
-			  	生产日期：<input type="text" name="machine.proDate" /> <br/>
-			  	供应商：<input type="text" name="machine.suppliper" /> <br/>
-			  	功能简介：<input type="text" name="machine.function" /> <br/>
+	          <form action="admin/admin-addEmployer.do" method="post">
 			  	
-			  	设备类型：<s:select list="#request.machineTypes"
-					name="machine.type.id"
-					listKey="id" listValue="name">
-					
-					</s:select>	
-			  	<br />
-			  	  --%>
+			  	登录账号：<input type="text" name="employer.account" /> <br/>
+			  	登录密码：<input type="password" name="employer.password" /> <br/>
+			  	单位名称：<input type="text" name="employer.name" /> <br/>
+			  	电话号码：<input type="text" name="employer.mobile" /> <br/>
+			  	负责老师：<input type="text" name="employer.teacher" /> <br/>
+			  	岗位数：<input type="text" name="employer.postNum" /> <br/>
+			  	月总金额：<input type="text" name="employer.totalMoney" /> <br/>
+			  	备注信息：<input type="text" name="employer.remarks" /> <br/>
+			  
 			    <input type="submit" id="add" value="添加"/>	
 	    	</form>
 	        </div> <!-- end of panel -->

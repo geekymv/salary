@@ -25,7 +25,8 @@ public class Employer {
 	private Integer id;
 	private String account;	//账号
 	private String password;
-	private String name;
+	private String name;	//用工单位名称
+	private String teacher;	//负责老师
 	private String mobile;
 	private float totalMoney;	//申请月总金额
 	private Integer postNum;	//申请的岗位数
@@ -34,10 +35,6 @@ public class Employer {
 	private boolean examine;	//审核是否通过
 	
 	private Set<Student> students = new LinkedHashSet<Student>();
-	
-	//Employer与Recruit是一对多的关联关系，设置成单向的关联关系
-//	private Set<Recruit> recruits = new LinkedHashSet<Recruit>();	
-	
 	
 	@Id
 	@GeneratedValue
@@ -57,14 +54,6 @@ public class Employer {
 	public Set<Student> getStudents() {
 		return students;
 	}
-	
-//	@OneToMany(mappedBy="employer")
-//	public Set<Recruit> getRecruits() {
-//		return recruits;
-//	}
-//	public void setRecruits(Set<Recruit> recruits) {
-//		this.recruits = recruits;
-//	}
 
 	public void setStudents(Set<Student> students) {
 		this.students = students;
@@ -125,15 +114,12 @@ public class Employer {
 	public void setExamine(boolean examine) {
 		this.examine = examine;
 	}
-	@Override
-	public String toString() {
-		return "Employer [id=" + id + ", account=" + account + ", password="
-				+ password + ", name=" + name + ", mobile=" + mobile
-				+ ", totalMoney=" + totalMoney + ", postNum=" + postNum
-				+ ", authority=" + authority + ", remarks=" + remarks
-				+ ", examine=" + examine +"]";
+	public String getTeacher() {
+		return teacher;
 	}
-	
+	public void setTeacher(String teacher) {
+		this.teacher = teacher;
+	}
 	
 }
 

@@ -1,16 +1,23 @@
 package com.heike.action.admin;
 
+import java.util.List;
+import java.util.Map;
+
+import org.apache.struts2.interceptor.RequestAware;
+import org.apache.struts2.interceptor.SessionAware;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
 import com.heike.pojo.Employer;
 import com.heike.service.EmployerService;
+import com.heike.utils.ConstantUtils;
+import com.heike.utils.EncryptUtil;
 import com.opensymphony.xwork2.ActionSupport;
 
 @Controller("adminAction")
 @Scope("prototype")
-public class AdminAction extends ActionSupport {
+public class AdminAction extends ActionSupport implements RequestAware, SessionAware {
 	private static final long serialVersionUID = -5240557669011012186L;
 
 	@Autowired
@@ -24,8 +31,21 @@ public class AdminAction extends ActionSupport {
 	 * @throws Exception
 	 */
 	public String addEmployer() throws Exception {
+		Employer admin = (Employer) session.get("employer");
+		if(null == admin || admin.getAuthority() != ConstantUtils.ADMIN) {
+			return ERROR;
+		}
+		
+		if(null == employer.getId()) {	//添加
+			employer.setAuthority(2);	//设置二级用户权限
+			employer.setExamine(true);
+			
+			String password = EncryptUtil.md5Encrypt(employer.getPassword());
+			employer.setPassword(password);
+		}
 		
 		employerService.saveEmployer(employer);
+		
 		return "addEmployer";
 	}
 	public String preAddEmployer() throws Exception {
@@ -33,6 +53,24 @@ public class AdminAction extends ActionSupport {
 	}
 	
 	
+	/**
+	 * 管理员列举所有的二级用户
+	 * @return
+	 * @throws Exception
+	 */
+	public String listEmployer() throws Exception {
+		
+		employer = (Employer) session.get("employer");
+		if(null == employer || employer.getAuthority() != ConstantUtils.ADMIN) {
+			return ERROR;
+		}
+		
+		List<Employer> employers = employerService.listEmployer(employer.getId());
+		
+		request.put("employers", employers);
+		
+		return "listEmployer";
+	}
 	
 	
 	public Employer getEmployer() {
@@ -40,6 +78,18 @@ public class AdminAction extends ActionSupport {
 	}
 	public void setEmployer(Employer employer) {
 		this.employer = employer;
+	}
+	
+	private Map<String, Object> session;
+	@Override
+	public void setSession(Map<String, Object> session) {
+		this.session = session;
+	}
+	
+	private Map<String, Object> request;
+	@Override
+	public void setRequest(Map<String, Object> request) {
+		this.request = request;
 	}
 	
 }

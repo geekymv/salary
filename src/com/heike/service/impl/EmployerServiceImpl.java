@@ -40,4 +40,10 @@ public class EmployerServiceImpl implements EmployerService{
 		employerDAO.save(employer);
 	}
 
+	@Override
+	public List<Employer> listEmployer(Integer id) {
+		
+		return employerDAO.listEmployer(id);
+	}
+
 }

@@ -39,5 +39,11 @@ public interface EmployerService {
 	 * @param employer
 	 */
 	public void saveEmployer(Employer employer);
+
+	/**
+	 * 管理员列举所有的二级用户
+	 * @param id
+	 */
+	public List<Employer> listEmployer(Integer id);
 	
 }

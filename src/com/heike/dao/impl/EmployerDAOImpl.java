@@ -106,6 +106,19 @@ public class EmployerDAOImpl implements EmployerDAO {
 	}
 
 
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<Employer> listEmployer(Integer id) {
+
+		List<Employer> employers = getSession()
+				.createQuery("from Employer emp where emp.authority=2 and emp.id!=?")
+				.setInteger(0, id).list();
+		
+		
+		return employers;
+	}
+
+
 	
 
 }
