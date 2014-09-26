@@ -62,7 +62,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			          <li >
 			            <h4 >用户管理</h4>
 			            <div class="list-item none">
-			              <p ><a href="admin/pre-addemployer.do" target="_self">添加二级用户</a></p>
+			              <p ><a href="http://sc.chinaz.com/" target="_self">添加二级用户</a></p>
 			            </div>
 			          </li>
 			          <li >
@@ -92,30 +92,31 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	        <div class="panel panel-primary">
 	          <div class="panel-heading">招聘信息</div>
 	          <div class="panel-body">
-	            <p>招聘啦！admin</p>
+	            <p>添加二级用户！admin</p>
 	          </div>
-	        
-	          <!-- Table -->
-	          <table class="table table-bordered table-hover table-condensed">
-	            <thead>
-	            	
-	                <tr>
-	                   	<th>招聘信息标题</th> <th>发布单位</th> <th>发布时间</th>
-			  			<th>岗位名称</th><th>截止日期</th>  <th>查看</th>
-	                </tr>
-	            </thead>
-	            <tbody>
-                 	<tr>
-                   		<td>招聘信息标题</td> <td>发布单位</td> <td>发布时间</td>
-		  				<td>岗位名称</td><td>截止日期</td>  <td>备注</td>
-                 	</tr>
-	          </table>
+	          <div class="form">
+	          <form action="admin/machine-save" method="post">
+			  	<%--
+			  	设备编号：<input type="text" name="machine.num" /> <br/>
+			  	设备名称：<input type="text" name="machine.name" /> <br/>
+			  	使用年限：<input type="text" name="machine.useYear" /> <br/>
+			  	生产日期：<input type="text" name="machine.proDate" /> <br/>
+			  	供应商：<input type="text" name="machine.suppliper" /> <br/>
+			  	功能简介：<input type="text" name="machine.function" /> <br/>
+			  	
+			  	设备类型：<s:select list="#request.machineTypes"
+					name="machine.type.id"
+					listKey="id" listValue="name">
+					
+					</s:select>	
+			  	<br />
+			  	  --%>
+			    <input type="submit" id="add" value="添加"/>	
+	    	</form>
 	        </div> <!-- end of panel -->
-	      
     	</div>
-      
 	</div>
-    
+   </div>
    </div><!-- /.container -->
    
    

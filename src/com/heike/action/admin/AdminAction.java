@@ -28,7 +28,13 @@ public class AdminAction extends ActionSupport {
 		employerService.saveEmployer(employer);
 		return "addEmployer";
 	}
-
+	public String preAddEmployer() throws Exception {
+		return "preAddEmployer";
+	}
+	
+	
+	
+	
 	public Employer getEmployer() {
 		return employer;
 	}
