@@ -39,7 +39,14 @@ public interface EmployerService {
 	 * @param employer
 	 */
 	public void saveEmployer(Employer employer);
-
+	
+	/**
+	 * 根据二级用户的id查询
+	 * @param id
+	 * @return
+	 */
+	public Employer queryEmployer(Integer id);
+	
 	/**
 	 * 管理员列举所有的二级用户
 	 * @param id

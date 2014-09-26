@@ -25,6 +25,8 @@ public class AdminAction extends ActionSupport implements RequestAware, SessionA
 	
 	private Employer employer;
 	
+	private Integer empId;
+	
 	/**
 	 * 添加二级用户
 	 * @return
@@ -39,10 +41,15 @@ public class AdminAction extends ActionSupport implements RequestAware, SessionA
 		if(null == employer.getId()) {	//添加
 			employer.setAuthority(2);	//设置二级用户权限
 			employer.setExamine(true);
-			
-			String password = EncryptUtil.md5Encrypt(employer.getPassword());
-			employer.setPassword(password);
+
+			String remarks = employer.getRemarks();	//备注信息
+			if(remarks == null || remarks.trim().equals("")){
+				employer.setRemarks("无");
+			}
 		}
+		
+		String password = EncryptUtil.md5Encrypt(employer.getPassword());
+		employer.setPassword(password);
 		
 		employerService.saveEmployer(employer);
 		
@@ -50,6 +57,20 @@ public class AdminAction extends ActionSupport implements RequestAware, SessionA
 	}
 	public String preAddEmployer() throws Exception {
 		return "preAddEmployer";
+	}
+	
+	/**
+	 * 管理员修改二级用户的信息
+	 * @return
+	 * @throws Exception
+	 */
+	public String updateEmployer() throws Exception {
+		
+		employer = employerService.queryEmployer(empId);
+		
+		request.put("employer", employer);
+		
+		return "updateEmployer";
 	}
 	
 	
@@ -60,12 +81,12 @@ public class AdminAction extends ActionSupport implements RequestAware, SessionA
 	 */
 	public String listEmployer() throws Exception {
 		
-		employer = (Employer) session.get("employer");
-		if(null == employer || employer.getAuthority() != ConstantUtils.ADMIN) {
+		Employer admin = (Employer) session.get("employer");
+		if(null == admin || admin.getAuthority() != ConstantUtils.ADMIN) {
 			return ERROR;
 		}
 		
-		List<Employer> employers = employerService.listEmployer(employer.getId());
+		List<Employer> employers = employerService.listEmployer(admin.getId());
 		
 		request.put("employers", employers);
 		
@@ -85,11 +106,17 @@ public class AdminAction extends ActionSupport implements RequestAware, SessionA
 	public void setSession(Map<String, Object> session) {
 		this.session = session;
 	}
-	
 	private Map<String, Object> request;
 	@Override
 	public void setRequest(Map<String, Object> request) {
 		this.request = request;
+	}
+
+	public Integer getEmpId() {
+		return empId;
+	}
+	public void setEmpId(Integer empId) {
+		this.empId = empId;
 	}
 	
 }

@@ -46,4 +46,10 @@ public class EmployerServiceImpl implements EmployerService{
 		return employerDAO.listEmployer(id);
 	}
 
+	@Override
+	public Employer queryEmployer(Integer id) {
+		
+		return employerDAO.query(id);
+	}
+
 }
