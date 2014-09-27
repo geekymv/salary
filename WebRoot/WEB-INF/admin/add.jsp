@@ -110,6 +110,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	
 	
    <div class="footer">
+   <jsp:include page="../main/footer.jsp"></jsp:include>
    </div>
 
     <script src="jquery/jquery-1.11.1.js"></script>

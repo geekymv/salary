@@ -21,7 +21,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			background-color:  #333;
 			width: 100%;
 			height: 165px;
-			margin-top: 450px;
+			margin-top: 190px;
 		}
 		ul li {
 			line-height: 40px;
@@ -58,8 +58,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     	<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
            <ul class="nav navbar-nav">
                 <li><a href="#">系统简介</a></li>
-                <li><a href="#">关于我们</a></li>
+                <li><a href="gyhk.htm" target="_blank">开发团队</a></li>
               
+              <%--
                 <li role="presentation" class="dropdown">
                   <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                		 开发人员
@@ -75,18 +76,18 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                     <li class="divider"></li>
                     <li><a href="#">One more separated link</a></li>
                   </ul>
-                    
                 </li>
-                
+              --%>
           </ul>
           
+          <%--
           <form action="#" class="navbar-form navbar-left" role="search">
             <div class="form-group">
               <input type="text" class="form-control" placeholder="Search">
             </div>
             <button type="submit" class="btn btn-default">搜索</button>
           </form>
-          
+           --%>
                 <ul class="nav navbar-nav navbar-right">
            	<s:if test="#session.user != null">
            	<li role="presentation" class="dropdown">
@@ -132,7 +133,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     
     <!--空白处-->
     <div class="custom">
-    
     </div>
     
      
@@ -218,7 +218,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
    </div><!-- /.container -->
    
    <div class="footer">
-   
+   <jsp:include page="footer.jsp"></jsp:include>
    </div>
 
 

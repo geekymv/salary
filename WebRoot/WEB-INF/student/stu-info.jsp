@@ -22,8 +22,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			background-color:  #333;
 			width: 100%;
 			height: 165px;
-			
-			margin-top: 450px;
+			margin-top: 140px;
 		}
 		ul li {
 			line-height: 40px;
@@ -82,7 +81,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
    
    
    <div class="footer">
-   
+   	<jsp:include page="../main/footer.jsp"></jsp:include>
    </div>
 
 
