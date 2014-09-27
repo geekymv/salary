@@ -94,51 +94,24 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     
       	<div class="col-md-10">
 	        <div class="panel panel-primary">
-	          <div class="panel-heading">用工单位列表</div>
-	        
-		      <s:if test="#request.employers == null || #request.employers.size() == 0">
-	            	没有用工单位！
-	          </s:if>	
-	        
-	          <s:else>
-	          <!-- Table -->
-	          <table class="table table-bordered table-hover table-condensed">
-	            <thead>
-	                <tr>
-	                   	<th>登录账号</th> <th>单位名称</th> <th>电话号码</th> <th>负责老师</th>
-			  			 <th>岗位数</th> <th>月总金额</th> <th>备注信息</th> <th>操作</th> 
-	                </tr>
-	            </thead>
-	            <tbody>
-            		<s:iterator value="#request.employers">
-            			<tr>
-	            			<td>${account }</a></td> 
-	            			<td>${name }</td> 
-	            			<td>${mobile }</td>
-	            			<td>${teacher }</td>
-	            			<td>${postNum }</td>
-		  					<td>${totalMoney }</td>
-		  					<td>
-		  						<s:if test="remarks == null">
-		  							无
-		  						</s:if>
-		  						<s:else>
-		  							${remarks }
-		  						</s:else>
-		  					</td>
-		  					
-		  					<td><a href="">修改</a></td>
-		  					
-            			</tr>
-            		</s:iterator>
-	            	
-	            </tbody>
-	          
-	          </table>
+	          <div class="panel-heading">下载工资表</div>
+	         
+	         	<form action="admin/download.do" method="post">
+	         	选择月份：<select name="month">
+						<%
+							for(int i = 1; i <= 12; i++){
+							%>
+							<option value="<%=i %>">
+								<%=i %>
+							</option>			
+							<%	
+							}
+						 %>
+            			</select>
+            			&nbsp;&nbsp;&nbsp;
 
-	         </s:else>
-	         
-	         
+					<input type="submit" value="下载"/>
+	           </form>
 	        </div> <!-- end of panel -->
 	      
     	</div>

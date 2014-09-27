@@ -108,7 +108,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			  	单位名称：<input type="text" name="employer.name" value="${employer.name }"/> <br/>
 			  	电话号码：<input type="text" name="employer.mobile" value="${employer.mobile }"/> <br/>
 			  	负责老师：<input type="text" name="employer.teacher" value="${employer.teacher }" /> <br/>
-			  	岗位数：<input type="text" name="employer.postNum" value="${employer.postNum } "/> <br/>
+			  	岗位数：<input type="text" name="employer.postNum" value="${employer.postNum }"/> <br/>
 			  	月总金额：<input type="text" name="employer.totalMoney" value="${employer.totalMoney }"/> <br/>
 			  	备注信息：<input type="text" name="employer.remarks" value="${employer.remarks}"/> <br/>
 			  

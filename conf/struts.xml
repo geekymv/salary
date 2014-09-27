@@ -155,6 +155,9 @@
 			<result name="addEmployer" type="redirectAction">admin-listEmployer</result>
 			<result name="updateEmployer">/WEB-INF/admin/update-employer.jsp</result>
 			<result name="listEmployer">/WEB-INF/admin/list-employer.jsp</result>	
+			
+			<result name="preLoadSalary">/WEB-INF/admin/load-salary.jsp</result>
+			
 			<result name="error" type="redirect">/login.jsp</result>
 		</action>
 		

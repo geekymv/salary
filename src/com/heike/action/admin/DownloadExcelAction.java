@@ -37,6 +37,8 @@ public class DownloadExcelAction extends ActionSupport{
 	
 	private String filename;
 	
+	private Integer month;	//月份
+	
 	public String loadSalary() throws Exception {
 		String[] titles = {"序号", "姓名", "学号", "年级专业", "岗位", "工作时间/h", "基本工资", "工具费", "奖金", "实发工资", "学院", "备注"};
 
@@ -45,8 +47,10 @@ public class DownloadExcelAction extends ActionSupport{
 		filename = "学生勤工助学工资表" + date + ".xls";
 		filename = new String(filename.getBytes("gbk"), "iso-8859-1");
 
+		System.out.println("month = " + month);
+		
 		//数据
-		List<Salary> salarys = salaryService.listAll(9);
+		List<Salary> salarys = salaryService.listAll(month);
 		List<Recruit> recruits = new ArrayList<Recruit>();
 		for(Salary s : salarys){
 			//根据stuId和empId得到RecruitStudent
@@ -65,8 +69,6 @@ public class DownloadExcelAction extends ActionSupport{
 	}
 	
 	
-	
-	
 	public InputStream getExcelStream() {
 		return excelStream;
 	}
@@ -79,6 +81,13 @@ public class DownloadExcelAction extends ActionSupport{
 	}
 	public void setFilename(String filename) {
 		this.filename = filename;
+	}
+
+	public Integer getMonth() {
+		return month;
+	}
+	public void setMonth(Integer month) {
+		this.month = month;
 	}    
 	
 }

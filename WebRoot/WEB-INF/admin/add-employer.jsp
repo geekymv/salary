@@ -4,8 +4,7 @@
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 %>
-
-<!doctype html>
+<!DOCTYPE html>
 <html lang="zh-CN">
 	<head>
 	<base href="<%=basePath%>">
@@ -98,12 +97,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	          <div class="form">
 	          <form action="admin/admin-addEmployer.do" method="post">
 			  	
-			  	登录账号：<input type="text" name="employer.account" /> <br/>
+			  	登录账号：<input type="text" id="account" name="employer.account" /> <br/>
 			  	登录密码：<input type="password" name="employer.password" /> <br/>
 			  	单位名称：<input type="text" name="employer.name" /> <br/>
-			  	电话号码：<input type="text" name="employer.mobile" /> <br/>
+			  	电话号码：<input type="tel" name="employer.mobile" /> <br/>
 			  	负责老师：<input type="text" name="employer.teacher" /> <br/>
-			  	岗位数：<input type="text" name="employer.postNum" /> <br/>
+			  	岗位数：<input type="number" name="employer.postNum" /> <br/>
 			  	月总金额：<input type="text" name="employer.totalMoney" /> <br/>
 			  	备注信息：<input type="text" name="employer.remarks" /> <br/>
 			  

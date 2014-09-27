@@ -10,7 +10,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<head>
 	<base href="<%=basePath%>">
 	<meta charset="utf-8">
-	<title>XXX系统</title>
+	<title>管理员</title>
 	<link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">	
 	
 	<style type="text/css">
@@ -69,7 +69,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			          <li >
 			            <h4 >工资管理</h4>
 			            <div class="list-item none">
-			              <p ><a href="http://sc.chinaz.com/" target="_self">下载工资表</a></p>
+			              <p ><a href="admin/admin-preLoadSalary" target="_self">下载工资表</a></p>
 			              <!-- 
 			              <p ><a href="http://sc.chinaz.com/" target="_self">下载。。。</a></p>
 			            -->

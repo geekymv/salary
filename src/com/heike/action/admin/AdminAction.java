@@ -41,15 +41,16 @@ public class AdminAction extends ActionSupport implements RequestAware, SessionA
 		if(null == employer.getId()) {	//添加
 			employer.setAuthority(2);	//设置二级用户权限
 			employer.setExamine(true);
-
+			
+			String password = EncryptUtil.md5Encrypt(employer.getPassword());
+			employer.setPassword(password);
+			
 			String remarks = employer.getRemarks();	//备注信息
+			
 			if(remarks == null || remarks.trim().equals("")){
 				employer.setRemarks("无");
 			}
 		}
-		
-		String password = EncryptUtil.md5Encrypt(employer.getPassword());
-		employer.setPassword(password);
 		
 		employerService.saveEmployer(employer);
 		
@@ -91,6 +92,16 @@ public class AdminAction extends ActionSupport implements RequestAware, SessionA
 		request.put("employers", employers);
 		
 		return "listEmployer";
+	}
+	
+	/**
+	 * 跳转到工资下载页面
+	 * @return
+	 * @throws Exception
+	 */
+	public String preLoadSalary() throws Exception {
+		
+		return "preLoadSalary";
 	}
 	
 	
