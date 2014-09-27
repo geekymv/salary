@@ -46,7 +46,10 @@ public class UpdateStudentInfoAction extends ActionSupport implements SessionAwa
 	 * @throws Exception
 	 */
 	public String update() throws Exception {
+		
+		student.setIntroduce(student.getIntroduce().trim());
 		studentService.save(student);
+
 		return "save";
 	}
 

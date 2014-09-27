@@ -20,7 +20,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		.footer {
 			background-color:  #333;
 			width: 100%;
-			height: 200px;
+			height: 165px;
 			margin-top: 450px;
 		}
 		ul li {
@@ -257,7 +257,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				html += "<tr>"
 					 + "<td align='center'>"+student.number+"</td>"+ "<td>"+student.name+"</td>"
 					 + "<td>"+student.profession+"</td>" 
-					 + "<td><span style='color:red'>"+flag+"</span></td>"
+					 + "<td><span style='color:#00CC33'>"+flag+"</span></td>"
 					 
 					 + "</tr>";
 			}
