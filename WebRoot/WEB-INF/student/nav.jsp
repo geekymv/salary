@@ -13,21 +13,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<title>学生首页</title>
 	<link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">	
 	
-	<style type="text/css">
-		.custom{
-			height:51px;
-		}
-		
-		.footer {
-			background-color:  #333;
-			width: 100%;
-			height: 200px;
-			
-			margin-top: 450px;
-		}
-		
-	</style>
-	
 	</head>
 
 <body>
