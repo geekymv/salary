@@ -65,8 +65,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			</li>
 			<li>学生管理
 				<ul>
-					<li>添加学生</li>
 					<li>删除学生</li>
+					<li class="ui-state-disabled">添加学生</li>
 				</ul>
 			</li>
 			<li>工资管理
@@ -75,7 +75,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					<li class="ui-state-disabled">不能使用</li>
 					 -->
 					<li><a href="employer/emp-stuList.do">发放工资</a></li>
-					<li><a href="employer/salary-list.do">修改工资</a></li>
+					<li><a href="employer/salary-list.do">工资列表</a></li>
+					<li><a href="employer/salary-list.do">下载工资表</a></li>
 				</ul>
 			</li>
 		</ul>

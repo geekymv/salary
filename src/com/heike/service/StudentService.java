@@ -72,6 +72,13 @@ public interface StudentService {
 	 * @param id
 	 */
 	public void updatePassword(String newpassword, Integer id);
+
+	/**
+	 * 根据学生学号查询
+	 * @param number
+	 * @return
+	 */
+	public Student query(String number);
 	
 }
 

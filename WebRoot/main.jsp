@@ -236,7 +236,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
  
 	<div class="bottom_box">
 	    <div class="bottom">
-	        <p>感谢您访问站长素材网站！<br>站长素材是一家大型综合设计类素材网站。</p>
+	        <p> Copyright &copy; 2014 安徽农业大学学生资助管理中心All Rights Reserved 
+	        <br>技术支持：<a href="gyhk.htm" target="_blank">嘿客科技传媒</a>.   联系邮箱：1784160856@qq.com</p>
 	        <a href="register.jsp" target="_blank" class="register">
 				<img src="img/btn_register.png" width="112" height="39" />
 			</a>

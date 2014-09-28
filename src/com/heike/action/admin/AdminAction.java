@@ -27,6 +27,8 @@ public class AdminAction extends ActionSupport implements RequestAware, SessionA
 	
 	private Integer empId;
 	
+	private Integer stuId;	//学生id号
+	
 	/**
 	 * 添加二级用户
 	 * @return
@@ -73,8 +75,6 @@ public class AdminAction extends ActionSupport implements RequestAware, SessionA
 		
 		return "updateEmployer";
 	}
-	
-	
 	/**
 	 * 管理员列举所有的二级用户
 	 * @return
@@ -100,10 +100,20 @@ public class AdminAction extends ActionSupport implements RequestAware, SessionA
 	 * @throws Exception
 	 */
 	public String preLoadSalary() throws Exception {
-		
 		return "preLoadSalary";
 	}
-	
+
+	/**
+	 * 跳转到修改学生密码页面
+	 * @return
+	 */
+	public String preupdateStupwd(){
+		Employer admin = (Employer) session.get("employer");
+		if(null == admin || admin.getAuthority() != ConstantUtils.ADMIN) {
+			return ERROR;
+		}
+		return "preupdateStupwd";
+	}
 	
 	public Employer getEmployer() {
 		return employer;
@@ -128,6 +138,12 @@ public class AdminAction extends ActionSupport implements RequestAware, SessionA
 	}
 	public void setEmpId(Integer empId) {
 		this.empId = empId;
+	}
+	public Integer getStuId() {
+		return stuId;
+	}
+	public void setStuId(Integer stuId) {
+		this.stuId = stuId;
 	}
 	
 }

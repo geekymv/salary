@@ -16,6 +16,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <!--<link rel="stylesheet" type="text/css" href="./styles.css">-->
 
 <style type="text/css">
+body{
+	height: 900px;
+}
 label {
 	width: 10em;
 	float: left;

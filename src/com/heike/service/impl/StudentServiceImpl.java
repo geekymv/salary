@@ -96,6 +96,12 @@ public class StudentServiceImpl implements StudentService {
 	public void updatePassword(String newpassword, Integer id) {
 		
 		studentDAO.updatePassword(newpassword, id);
+	}
+
+	@Override
+	public Student query(String number) {
+		
+		return studentDAO.query(number);
 	}	
 
 }

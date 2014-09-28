@@ -10,7 +10,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<head>
 	<base href="<%=basePath%>">
 	<meta charset="utf-8">
-	<title>管理员</title>
+	<title>修改学生密码</title>
 	<link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">	
 	
 	<style type="text/css">
@@ -49,7 +49,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			          <li >
 			            <h4 >学生管理</h4>
 			            <div class="list-item none">
-			              <p ><a href="admin/admin-preupdateStupwd" target="_self">修改密码</a></p>
+			              <p ><a href="admin/updateStupwd.do" target="_self">修改密码</a></p>
 			            </div>
 			          </li>
 			          <li >
@@ -84,26 +84,21 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     	
       	<div class="col-md-10">
 	        <div class="panel panel-primary">
-	          <div class="panel-heading">招聘信息</div>
-	          <div class="panel-body">
-	            <p>招聘啦！admin</p>
-	          </div>
-	        
-	          <!-- Table -->
-	          <table class="table table-bordered table-hover table-condensed">
-	            <thead>
-	            	
-	                <tr>
-	                   	<th>招聘信息标题</th> <th>发布单位</th> <th>发布时间</th>
-			  			<th>岗位名称</th><th>截止日期</th>  <th>查看</th>
-	                </tr>
-	            </thead>
-	            <tbody>
-                 	<tr>
-                   		<td>招聘信息标题</td> <td>发布单位</td> <td>发布时间</td>
-		  				<td>岗位名称</td><td>截止日期</td>  <td>备注</td>
-                 	</tr>
-	          </table>
+	          <div class="panel-heading">修改学生密码</div>
+	          
+				 <form action="admin/update-stupwd.do" method="post">
+				 
+		     		学生学号：<input type="text" name="number"/> 
+		     			<s:fielderror fieldName="number"></s:fielderror> <br />
+		     	
+		     		新密码：<input type="password" name="password"/>
+		     			<s:fielderror fieldName="password"></s:fielderror>  <br />
+		     	
+		     		确认密码：<input type="password" name="repassword"/> <br />
+		     		<s:fielderror fieldName="repassword"></s:fielderror>  <br />
+		        	<input type="submit" value="保存"/>
+		        </form>
+
 	        </div> <!-- end of panel -->
 	      
     	</div>

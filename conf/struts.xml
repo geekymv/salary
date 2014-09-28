@@ -161,8 +161,16 @@
 			<result name="preLoadSalary">/WEB-INF/admin/load-salary.jsp</result>
 			
 			<result name="error" type="redirect">/login.jsp</result>
+			
+			<!-- 跳转至修改学生密码页面 -->
+			<result name="preupdateStupwd">/WEB-INF/admin/update-stupwd.jsp</result>
 		</action>
-		
+		<!-- 修改学生密码 -->
+		<action name="update-stupwd" class="updateStudentPasswordAction">
+			<result name="success">/login.jsp</result>
+			<result name="input">/WEB-INF/admin/update-stupwd.jsp</result>
+			<result name="error" type="redirect">/login.jsp</result>
+		</action>
 		
 		<!-- 工资表下载 -->
 		<action name="download" class="downloadExcelAction" method="loadSalary">
