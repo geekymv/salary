@@ -45,7 +45,20 @@ public class Student {
 	
 	private Set<RecruitStudent> recruitStudents = new LinkedHashSet<RecruitStudent>();
 	
-	
+	public Student() {
+	}
+
+	public Student(String number, String password, String name, String gender,
+			String college, String profession, String mobile, String introduce) {
+		this.number = number;
+		this.password = password;
+		this.name = name;
+		this.gender = gender;
+		this.college = college;
+		this.profession = profession;
+		this.mobile = mobile;
+		this.introduce = introduce;
+	}
 
 	@Id
 	@GeneratedValue

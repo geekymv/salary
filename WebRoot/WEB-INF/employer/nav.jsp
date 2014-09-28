@@ -41,8 +41,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     	<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
            <ul class="nav navbar-nav">
                 <li><a href="#">系统简介</a></li>
-                <li><a href="#">关于我们</a></li>
-              
+                <li><a href="gyhk.htm" target="_blank">开发团队</a></li>
+              	
+              	<%--
                 <li role="presentation" class="dropdown">
                   <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                		 开发人员
@@ -59,6 +60,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                     <li><a href="#">One more separated link</a></li>
                   </ul>
                 </li>
+                 --%>
           </ul>
 		  <ul class="nav navbar-nav navbar-right">
 	         	<li>

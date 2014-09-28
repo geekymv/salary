@@ -1,6 +1,5 @@
 package com.heike.action;
 
-import java.util.Date;
 import java.util.Map;
 
 import org.apache.struts2.dispatcher.SessionMap;
@@ -90,24 +89,24 @@ public class UserAction extends ActionSupport implements SessionAware{
 	}
 	
 	
-	/**
-	 * 用户注册
-	 * @return
-	 * @throws Exception
-	 */
-	public String register() throws Exception {
-		
-		student.setRegTime(new Date());	//设置注册时间
-		String password = student.getPassword();
-		
-		//对密码使用md5加密
-		password = EncryptUtil.md5Encrypt(password);
-		student.setPassword(password);
-		
-		studentService.save(student);
-		
-		return "registerSuccess";
-	}
+//	/**
+//	 * 用户注册
+//	 * @return
+//	 * @throws Exception
+//	 */
+//	public String register() throws Exception {
+//		
+//		student.setRegTime(new Date());	//设置注册时间
+//		String password = student.getPassword();
+//		
+//		//对密码使用md5加密
+//		password = EncryptUtil.md5Encrypt(password);
+//		student.setPassword(password);
+//		
+//		studentService.save(student);
+//		
+//		return "registerSuccess";
+//	}
 	
 	
 	private Map<String, Object> session;

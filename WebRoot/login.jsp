@@ -22,16 +22,22 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
       <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
-
+	
     <style type="text/css">
     	.container {
     		width: 960px;
     	}
     	
     	.errors{
-    		background-color: red;
+    		color: red;
     	}
-    	
+    	body { 
+			background-color: #f4fbfd; 
+			background-image: url("img/bg.png"); 
+			background-repeat: repeat-x; 
+			padding-top: 30px; 
+		}
+		
     </style>
   </head>
   <body>
@@ -40,7 +46,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<h1 class="page-header">用户登录</h1>
 		<form class="form-horizontal" role="form"  action="user/user-login.do" method="post">
 			<fieldset> 
-				<legend>登录也是一种美德哦！</legend>	
+				<legend>登录也是一种美德哦！<small>还没注册账号，<a href="register.jsp">立即注册</a></small></legend>	
 				<div class="errors">
 					<s:if test="actionErrors != null && actionErrors.size() != 0">
 						<s:property value="actionErrors[0]"/>
@@ -50,7 +56,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			  	<div class="form-group">
 			    	<label class="col-sm-5 control-label" for="usermame">用户名</label>
 			   		<div class="col-sm-3">
-			      		<input type="text" class="form-control" placeholder="username" id="usermame" name="account" required autofocus>
+			      		<input type="text" class="form-control" placeholder="username" 
+			      			id="usermame" name="account" required autofocus>
 			  			<span class="help-block">请输入用户名</span>
 			  		</div>
 			  	</div>
@@ -58,7 +65,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			  	<div class="form-group">
 			    	<label class="col-sm-5 control-label" for="password">密码</label>
 			    	<div class="col-sm-3">
-			      		<input type="password" class="form-control" id="password" placeholder="password" name="password" required>
+			      		<input type="password" class="form-control" 
+			      			id="password" placeholder="password" name="password" required>
 			    		<span class="help-block">请输入密码</span>
 			    	</div>
 			  	</div>
@@ -79,8 +87,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		
     </div> 
 
-    <script src="jquery/jquery-1.11.1.js"></script>
-    <script src="bootstrap/js/bootstrap.min.js"></script>
   </body>
 </html>
 

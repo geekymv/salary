@@ -23,8 +23,12 @@ public class PayoffAction extends ActionSupport implements SessionAware {
 	@Autowired
 	private SalaryService salaryService;
 
-	private List<String> ids;
-	private List<Float> salarys;
+	private List<String> ids;	//学生和用工单位的id
+	private List<Float> salarys;	//基本工资
+	private List<Float> toolfees;	//工具费
+	private List<Float> bonus;	//奖金
+	private List<String> remarks;	//备注
+	
 	private Integer month;
 	
 	
@@ -34,9 +38,12 @@ public class PayoffAction extends ActionSupport implements SessionAware {
 			return ERROR;
 		}
 		
+		System.out.println("month = " + month);
 		System.out.println(ids);
 		System.out.println("salary = " + salarys);
-		System.out.println("month = " + month);
+		System.out.println("toolfees = " + toolfees);
+		System.out.println("bonus = " + bonus);
+		System.out.println("remarks = " + remarks);
 		
 		salaryService.add(ids, salarys, month);
 		
@@ -61,9 +68,26 @@ public class PayoffAction extends ActionSupport implements SessionAware {
 	public void setMonth(Integer month) {
 		this.month = month;
 	}
-	
+	public List<Float> getToolfees() {
+		return toolfees;
+	}
+	public void setToolfees(List<Float> toolfees) {
+		this.toolfees = toolfees;
+	}
+	public List<Float> getBonus() {
+		return bonus;
+	}
+	public void setBonus(List<Float> bonus) {
+		this.bonus = bonus;
+	}
+	public List<String> getRemarks() {
+		return remarks;
+	}
+	public void setRemarks(List<String> remarks) {
+		this.remarks = remarks;
+	}
+
 	private Map<String, Object> session;
-	
 	@Override
 	public void setSession(Map<String, Object> session) {
 		this.session = session;

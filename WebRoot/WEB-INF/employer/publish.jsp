@@ -37,7 +37,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			margin-top: 10px;
 		}
 	</style>
-	
+
 	<link rel="stylesheet" type="text/css" href="jquery-ui/jquery-ui.css">
 	<link rel="stylesheet" type="text/css" href="jquery-ui/jquery-ui.theme.css">
 	<style>
@@ -48,9 +48,26 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		#menu li {
 			line-height: 35px;
 		}
+		em{
+			font-weight: bold;
+			margin-left: 1em;
+			vertical-align: middle;
+			color: red;
+		}
 	</style>
+
+<script type="text/javascript" src="validation/jquery-1.10.0.js"></script>
+<script type="text/javascript" src="validation/jquery.validate.js"></script>
+<script type="text/javascript" src="validation/jquery.metadata.js"></script>
+<script type="text/javascript" src="validation/messages_zh.js"></script>
 	
-	
+<script type="text/javascript">
+	$(function() {
+		$("#commentForm").validate();
+	});
+
+</script>
+
 	
 	</head>
 
@@ -60,17 +77,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
        
     <div class="row">
     	<div class="col-md-2">
-    		<%--
-    		<div class="panel panel-primary">
-		        <div class="panel-heading">功能导航</div>
-			   	<div class="list-group">
-				  <a href="employer/emp-empInfo.do" class="list-group-item">我的资料</a>
-				  <a href="employer/emp-recruitList.do" class="list-group-item">我的招聘</a>
-				  <a href="employer/publish.do" class="list-group-item">发布招聘</a>
-				  <a href="employer/emp-stuList.do" class="list-group-item">发放工资</a>
-				</div>
-			</div>
-			 --%>
 		<div class="panel panel-primary">	 
 		<div class="panel-heading">功能导航</div>
 		<ul id="menu">
@@ -131,14 +137,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
       		 <div class="panel panel-primary">
 	          <div class="panel-heading">发布招聘信息</div>
 	          	<div class="publish">
-			     	<form action="employer/emp-publish.do" method="post">
-			   		招聘标题:<input type="text" name="recruit.title"/> <br />
-			   		岗位名称:<input type="text" name="recruit.postName"/> <br />
-			   		招聘人数:<input type="text" name="recruit.postNum"/> <br />
-			   		薪资待遇:<input type="text" name="recruit.salary"/> <br />
-			   		工作要求：<br/><textarea rows="5" cols="40" name="recruit.context"></textarea><br/>
-			   		截止日期:<input type="text" id="datepicker" name="recruit.endDate"/> <br />
-			   		备注:<input type="text" name="recruit.remarks"/> <br />
+			     	<form action="employer/emp-publish.do" id="commentForm" method="post">
+			   		招聘标题:<input type="text" id="title" name="recruit.title" class="required"/><em>*</em> <br />
+			   		岗位名称:<input type="text" name="recruit.postName"/><em>*</em> <br />
+			   		招聘人数:<input type="text" name="recruit.postNum"/><em>*</em> <br />
+			   		薪资待遇:<input type="text" name="recruit.salary"/><em>*</em> <br />
+			   		工作要求：<br/><textarea id="context" rows="5" cols="40" name="recruit.context"></textarea><em>*</em><br/>
+			   		截止日期:<input type="text" id="datepicker" name="recruit.endDate"/><em>*</em> <br />
+			   		备注:<input type="text" name="recruit.remarks"/><em>&nbsp;</em> <br />
 			   		
 			   		<input type="submit" value="发布">
 			   		
@@ -169,7 +175,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	});
 	
 </script>
-	
 <script src="jquery-ui/external/jquery/jquery.js"></script>
 <script src="jquery-ui/jquery-ui.js"></script>
 <script>
